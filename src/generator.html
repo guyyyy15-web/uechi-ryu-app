@@ -69,7 +69,7 @@ footer{text-align:center;padding:1.5rem;color:#7d6b4d;font-size:.72rem;border-to
   <div class="workout" id="workoutResult"></div>
 </div>
 
-<footer>稽古 · Training Generator · אוקינאווה</footer>
+<footer>稽古 · Training Generator</footer>
 
 <script>
 function pickRandom(arr, n){
@@ -173,7 +173,10 @@ function renderWorkout(workout){
   el.classList.add('show');
 
   el.querySelectorAll('.step').forEach(function(step){
-    step.addEventListener('click', function(){ step.classList.toggle('done'); });
+    step.addEventListener('click', function(e){
+      if (e.target.closest('.s-thumb')) return;
+      step.classList.toggle('done');
+    });
   });
 }
 

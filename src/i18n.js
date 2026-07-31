@@ -62,7 +62,23 @@ const I18N = {
     gen_section_kata: "4. קאטה",
     gen_reps_suffix: " חזרות",
     gen_reps_side_suffix: " חזרות לכל צד",
-    gen_empty_kihon: "אין מונחי מכות זמינים כרגע."
+    gen_empty_kihon: "אין מונחי מכות זמינים כרגע.",
+
+    glossary_subtitle: "מילון מונחים · יפנית ↔ עברית",
+    glossary_search_placeholder: "חיפוש מונח... (יפנית או עברית)",
+    glossary_credit_note: "לחלק מהמונחים תמונת מקור (Wikimedia Commons / YouTube), עם קרדיט מתחת לתמונה.",
+    glossary_no_results: "לא נמצאו מונחים תואמים.",
+    cat_all: "הכל",
+    cat_cmd: "פקודות דוג'ו",
+    cat_num: "ספירה",
+    cat_stance: "עמידות",
+    cat_weapon: "נשק הגוף",
+    cat_strike: "מכות ובעיטות",
+    cat_tech: "טכניקות הוג'ו אונדו",
+    cat_kata: "קאטות",
+    cat_concept: "מושגי ליבה",
+    cat_gear: "ציוד",
+    cat_general: "מונחים כלליים"
   },
   en: {
     nav_toggle_label: "Open navigation menu",
@@ -127,7 +143,23 @@ const I18N = {
     gen_section_kata: "4. Kata",
     gen_reps_suffix: " reps",
     gen_reps_side_suffix: " reps per side",
-    gen_empty_kihon: "No striking terms available right now."
+    gen_empty_kihon: "No striking terms available right now.",
+
+    glossary_subtitle: "Glossary · Japanese ↔ English",
+    glossary_search_placeholder: "Search a term... (Japanese or English)",
+    glossary_credit_note: "Some terms have a reference image (Wikimedia Commons / YouTube), credited below the image.",
+    glossary_no_results: "No matching terms found.",
+    cat_all: "All",
+    cat_cmd: "Dojo Commands",
+    cat_num: "Counting",
+    cat_stance: "Stances",
+    cat_weapon: "Body Weapons",
+    cat_strike: "Strikes & Kicks",
+    cat_tech: "Hojo Undo Techniques",
+    cat_kata: "Kata",
+    cat_concept: "Core Concepts",
+    cat_gear: "Gear",
+    cat_general: "General Terms"
   }
 };
 
@@ -168,4 +200,13 @@ function applyI18n(lang){
 
   const langToggle = document.getElementById('langToggle');
   if(langToggle) langToggle.textContent = lang === 'he' ? 'EN' : 'עב';
+
+  I18N_RERENDER.forEach(function(fn){
+    try{ fn(lang); }catch(e){}
+  });
+}
+
+const I18N_RERENDER = [];
+function registerI18nRerender(fn){
+  I18N_RERENDER.push(fn);
 }

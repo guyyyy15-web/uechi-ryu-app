@@ -99,9 +99,11 @@ function buildWorkout(){
     return {num:h.num, name:h.name, jp:h.jp, ro:h.ro, thumb:h.thumb, link:h.link, vid:h.vid, reps: randInt(8,15)};
   });
 
+  const lang = getLang();
   const kihonAll = (typeof TERMS !== 'undefined') ? TERMS.filter(function(t){return t.cat==='strike';}) : [];
   const kihonPicked = pickRandom(kihonAll, 3).map(function(k){
-    return {name:k.he, ro:k.ro, jp:k.jp, thumb:k.img||'', link:k.vid?('https://www.youtube.com/watch?v='+k.vid):'', vid:k.vid||'', reps: randInt(10,20)};
+    const name = (lang==='en' && k.en) ? k.en : k.he;
+    return {name:name, ro:k.ro, jp:k.jp, thumb:k.img||'', link:k.vid?('https://www.youtube.com/watch?v='+k.vid):'', vid:k.vid||'', reps: randInt(10,20)};
   });
 
   const kataAll = Array.from(document.querySelectorAll('#view-kata .kata')).map(function(el){

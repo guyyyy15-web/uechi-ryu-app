@@ -137,8 +137,58 @@ Authentic Karate Training Center). תרגיל 5 (אשי קן) לא אותר כת
 - גי/אובי: [TOKYODO_karate_uniforms_and_belts.jpg](https://commons.wikimedia.org/wiki/File:TOKYODO_karate_uniforms_and_belts.jpg) – Yong9111, CC BY-SA 3.0
 
 ### לא נמצא מקור פתוח (מילון)
-בעיטות/חסימות כלליות (Mae/Yoko/Mawashi/Ushiro/Hiza Geri, Gedan Barai,
-Age/Soto/Uchi Uke), פקודות דוג'ו (Rei, Kiotsuke, Yoi וכו'), ספירה (1-10),
+פקודות דוג'ו (Rei, Kiotsuke, Yoi וכו'), ספירה (1-10),
 ומושגי הליבה האוקינאוויים (Chinkuchi, Muchimi, Gamaku, Zanshin, Kime, Maai,
 Kiai) – אלה מונחים מופשטים או ללא תצלום ייעודי שאותרתי ברישיון פתוח.
 ניגירי גאמי (צנצנות אחיזה) – רק תמונות מוצר מסחריות, לא ברישיון פתוח.
+(הבעיטות/חסימות הכלליות – ראו למטה: נפתרו בסרטוני הדגמה במקום תמונות.)
+
+---
+
+## וידאו הדגמה – קיהון (מונחי strike במילון)
+
+כל 11 מונחי הבסיס (`cat:"strike"`) קושרו לסרטון YouTube אמיתי, מוטמע
+בלחיצה (זהה למנגנון בקאטות/הוג'ו אונדו). מקורות שונים לגיוון/אמינות:
+
+| מונח | ערוץ |
+|---|---|
+| Gyaku Zuki, Oi Zuki | Asahi Shotokan Karate (Sensei Richard Scott) |
+| Mae Geri, Ushiro Geri | John Gardiner (JKG Karate) |
+| Yoko Geri, Mawashi Geri | Sensei Jason |
+| Hiza Geri | Saikou Karate (Full Contact Karate) |
+| Gedan Barai | Karate Dojo waKu |
+| Age Uke, Soto Uke, Uchi Uke | Seamus O'Dowd |
+
+(Gyaku Zuki שמר גם על התמונה הקיימת שלו – Judcosta, CC BY-SA 3.0 – כתמונה
+מוצגת, עם הווידאו החדש כתוכן שנפתח בלחיצה.)
+
+8 מונחי הקאטות (`cat:"kata"`) הפכו גם הם ללחיצים/מוטמעים באותו אופן –
+ה-vid כבר היה חבוי בכתובת התמונה הממוזערת, רק חסר כשדה נפרד.
+
+## פלייליסט מוזיקה מסורתית (עמוד חימום)
+
+"The Sound of Japanese Traditional" – פלייליסט Spotify רשמי (חשבון
+"The Sounds of Spotify"), אמנים אמיתיים: Goro Yamaguchi (שקוהאצ'י),
+Michio Miyagi, Tadao Sawai (קוטו), Satomi Saeki, Yamato Ensemble.
+קישור פתיחה בלבד (לא iframe) – לפי בקשת המשתמש, כדי לתת גישה לנגן
+Spotify המלא ולא לחוויית web מצומצמת.
+https://open.spotify.com/playlist/4xcqsrLM9kK2oopGhZ9Fte
+
+## תיקוני דיוק תוכן (מחקר ממוקד)
+
+- **KOI NO SHIPO UCHI → KOI NO SHIPPO UCHI** (תרגילים 12/13) – איות שגוי
+  תוקן; 尻尾/shippo מחייב P כפולה ברומאניזציה תקנית (Hepburn), מאומת מול
+  כמה מקורות קראטה.
+- **סייצ'ין (קאטה 4)**: הטקסט הקודם "מושפעת מסין" יצר סתירה מול ההערה
+  המרכזית שרק סנצ'ין/סייסאן/סאנסיירו הובאו מסין. תוקן להבהיר: נוצרה
+  באוקינאווה (לא הובאה מסין), אך משקפת השפעה סינית חזקה בתנועות.
+- **תרגיל 6 בהוג'ו אונדו** (קומבינציית וא-אוקה/שוטו/אורקן/שוקן): הטענה
+  "הטכניקה הכי מייצגת של הסגנון" לא אותרה במקור עצמאי בר-ציטוט – רוככה
+  ל"משלבת עקרונות נמר/דרקון/עגור המרכזיים לסגנון".
+- שאר הטענות ההיסטוריות (סדר החגורות, מקור כל קאטה, טענות ניגירי-גאמי,
+  עמידת סנצ'ין כבסיס הוג'ו אונדו, הגדרות chinkuchi/kiai) אומתו כנכונות –
+  לא שונו.
+- שיוך קאטה-לחיה (נמר/עגור/דרקון) נמצא כתחום שנוי במחלוקת בין מקורות
+  אוצ'י-ריו שונים (למשל סייסאן=נמר מול סייסאן=עגור במקורות שונים) – נשאר
+  כפי שהוא באתר כטקסט-גוון, לא שונה, כי זו וריאציה לגיטימית בין שיטות
+  ולא טעות מובהקת.

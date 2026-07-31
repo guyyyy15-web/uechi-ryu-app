@@ -191,7 +191,7 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     </div>
     <div class="k-info">
       <div class="k-meaning"><b>שם:</b> עשר קרבות – בגרות מתקדמת יותר מסנצ'ין.</div>
-      <p class="k-desc">מושפעת מסין, טכניקות מעגליות ותנועות דרקון. דורשת גמישות.</p>
+      <p class="k-desc">נוצרה באוקינאווה (לא הובאה מסין כמו סנצ'ין/סייסאן/סאנסיירו), אך משקפת השפעה סינית חזקה בטכניקות המעגליות ותנועות הדרקון. דורשת גמישות.</p>
       <div class="k-points">
         <div class="k-do"><b>✓ חשוב</b>גמישות וזרימה חלקה בין תנועות.</div>
         <div class="k-dont"><b>✗ להימנע</b>תנועה שנעצרת כ"תחנה" נפרדת.</div><div class="k-bunkai"><div class="bt">בונקאי</div>תפיסה וקריעה בסגנון סיני קלאסי. תנועות דרקון. שליטה על גפי היריב, לא מכה ישירה.</div>
@@ -318,23 +318,33 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
 </span></footer>
 
 <script>
-document.querySelectorAll('.video-wrap[data-vid]').forEach(function(a){
-  if (location.protocol === 'file:') return;
-  var vid = a.dataset.vid;
-  var originalHTML = a.innerHTML;
-  a.addEventListener('click', function(e){
-    e.preventDefault();
-    if (e.target.closest('.video-close')) {
-      a.classList.remove('playing');
-      a.innerHTML = originalHTML;
+(function(){
+  var originalHtmlMap = new WeakMap();
+  function embed(a){
+    var vid = a.dataset.vid;
+    var src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1';
+    if (!originalHtmlMap.has(a)) originalHtmlMap.set(a, a.innerHTML);
+    a.classList.add('playing');
+    a.innerHTML = '<iframe src="' + src + '" title="וידאו" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+      + '<button type="button" class="video-close" aria-label="סגור סרטון">✕</button>';
+  }
+  document.addEventListener('click', function(e){
+    if (location.protocol === 'file:') return;
+    var closeBtn = e.target.closest('.video-close');
+    if (closeBtn) {
+      var wrap = closeBtn.closest('.video-wrap[data-vid]');
+      if (!wrap) return;
+      e.preventDefault();
+      wrap.classList.remove('playing');
+      if (originalHtmlMap.has(wrap)) wrap.innerHTML = originalHtmlMap.get(wrap);
       return;
     }
-    if (a.classList.contains('playing')) return;
-    a.classList.add('playing');
-    a.innerHTML = '<iframe src="https://www.youtube.com/embed/' + vid + '?autoplay=1" title="קאטה" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-      + '<button type="button" class="video-close" aria-label="סגור סרטון">✕</button>';
+    var a = e.target.closest('.video-wrap[data-vid]');
+    if (!a || a.classList.contains('playing')) return;
+    e.preventDefault();
+    embed(a);
   });
-});
+})();
 </script>
 </body>
 </html>

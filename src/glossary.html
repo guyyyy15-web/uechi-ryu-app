@@ -6,7 +6,7 @@
 <title>מילון מונחים – אוצ'י ריו | Terminology</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Noto+Serif+JP:wght@700&display=swap');
-:root{--bg:#080808;--card:#111;--gold:#e8c44a;--red:#cc2200;--blue:#3399cc;--w:#f0ead8;--gr:#888;--border:#222;}
+:root{--bg:#e8dcc0;--card:#faf5e6;--gold:#97711a;--red:#a8271a;--blue:#1f7699;--w:#2b2013;--gr:#7d6b4d;--border:#d9c8a0;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--w);font-family:'Heebo',sans-serif;padding:1rem;}
 header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--gold);margin-bottom:1.5rem;}
@@ -17,26 +17,27 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .app-nav a:hover{border-color:var(--gold);color:var(--gold);}
 .app-nav a.active{background:var(--gold);color:#000;border-color:var(--gold);}
 .wrap{max-width:1000px;margin:0 auto;}
-.search-box{display:block;width:100%;max-width:400px;margin:0 auto 1rem;background:#141414;border:1px solid var(--border);color:var(--w);font-family:'Heebo',sans-serif;font-size:.85rem;padding:.6rem 1rem;border-radius:20px;text-align:center;}
+.search-box{display:block;width:100%;max-width:400px;margin:0 auto 1rem;background:#faf5e6;border:1px solid var(--border);color:var(--w);font-family:'Heebo',sans-serif;font-size:.85rem;padding:.6rem 1rem;border-radius:20px;text-align:center;}
 .search-box:focus{outline:none;border-color:var(--gold);}
-.search-box::placeholder{color:#555;}
+.search-box::placeholder{color:#a89878;}
 .cat-filters{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:1.6rem;}
 .cat-btn{font-size:.68rem;padding:.35rem .8rem;border-radius:14px;border:1px solid var(--border);background:none;color:var(--gr);cursor:pointer;font-family:'Heebo',sans-serif;font-weight:700;transition:.15s;}
 .cat-btn:hover{border-color:var(--gold);color:var(--gold);}
 .cat-btn.active{background:var(--gold);color:#000;border-color:var(--gold);}
 .cat-title{font-size:.85rem;color:var(--gold);font-weight:700;margin:1.6rem 0 .7rem;padding-right:.3rem;border-right:3px solid var(--gold);}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.6rem;}
-.term{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.7rem .8rem;display:flex;gap:.6rem;}
-.term-img{width:50px;height:50px;object-fit:cover;background:#f0ead8;border:1px solid var(--border);flex-shrink:0;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem;}
+.term{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.8rem;display:flex;gap:.8rem;}
+.term-img{width:120px;height:120px;object-fit:cover;background:#f0ead8;border:1px solid var(--border);flex-shrink:0;}
 .term-body{flex:1;min-width:0;}
+@media(max-width:600px){.term-img{width:80px;height:80px;}}
 .term .t-top{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;margin-bottom:.25rem;}
 .term .jp{font-family:'Noto Serif JP',serif;color:var(--gold);font-size:1rem;}
 .term .ro{font-size:.68rem;color:var(--gr);letter-spacing:.05em;font-weight:700;}
 .term .he{font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:.15rem;}
 .term .note{font-size:.68rem;color:var(--gr);line-height:1.5;}
-.no-results{text-align:center;color:#555;font-size:.85rem;padding:2rem;display:none;}
-.img-credit-note{text-align:center;color:#444;font-size:.62rem;margin-bottom:1rem;}
-footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1px solid var(--border);margin-top:2rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
+.no-results{text-align:center;color:#7d6b4d;font-size:.85rem;padding:2rem;display:none;}
+.img-credit-note{text-align:center;color:#7d6b4d;font-size:.62rem;margin-bottom:1rem;}
+footer{text-align:center;padding:1.5rem;color:#7d6b4d;font-size:.72rem;border-top:1px solid var(--border);margin-top:2rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
 </style>
 </head>
 <body>

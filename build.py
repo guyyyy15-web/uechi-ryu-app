@@ -8,9 +8,9 @@ FILES = {
     "home": "home.html",
     "hojo": "hojo-3d.html",
     "kata": "kata.html",
-    "bunkai": "bunkai.html",
     "warmup": "warmup.html",
     "glossary": "glossary.html",
+    "generator": "generator.html",
 }
 
 def read(fn):
@@ -61,19 +61,6 @@ def fix_home_links(body):
     return re.sub(r'href="([a-z0-9-]+\.html)"', repl, body)
 views["home"] = fix_home_links(views["home"])
 
-# bunkai.html: href="kata.html#k1" target="_blank" rel="noopener" -> in-app jump
-def fix_bunkai_links(body):
-    def repl(m):
-        kid = m.group(1)
-        return 'href="#' + kid + '" onclick="return jumpTo(' + chr(39) + 'kata' + chr(39) + ',' + chr(39) + kid + chr(39) + ')"'
-    body = re.sub(
-        r'href="kata\.html#(k\d+)"(\s*target="_blank")?(\s*rel="noopener")?',
-        repl,
-        body,
-    )
-    return body
-views["bunkai"] = fix_bunkai_links(views["bunkai"])
-
 # dedupe the @import font line -- keep only first occurrence
 seen_import = False
 cleaned_styles = []
@@ -104,7 +91,7 @@ header{padding:1.3rem 1rem .9rem;}
   border-left:1px solid var(--border);border-radius:0;background:none;font-weight:400;transition:color .15s;}
 .app-nav a:first-child{border-left:none;}
 .app-nav a:hover{color:var(--gold);}
-.app-nav a.active{color:var(--gold);background:#141414;}
+.app-nav a.active{color:var(--gold);background:#f3e6c4;}
 
 .card,.term,.step,.kata,.b-card,.exercise{border-radius:0;}
 .card:hover{transform:none;box-shadow:none;}
@@ -115,6 +102,30 @@ header{padding:1.3rem 1rem .9rem;}
   color:#fff;font-size:2.4rem;padding:0;}
 .video-wrap:hover .play-overlay span{background:none;transform:none;color:var(--red);}
 .s-check{border-radius:0;}
+
+/* ---- parchment texture + faint per-section kanji watermark ---- */
+body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(120,90,40,.05) 0%, transparent 42%),
+    radial-gradient(circle at 85% 15%, rgba(120,90,40,.04) 0%, transparent 38%),
+    radial-gradient(circle at 75% 80%, rgba(120,90,40,.05) 0%, transparent 45%),
+    radial-gradient(circle at 25% 85%, rgba(80,60,20,.04) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,.02) 0%, transparent 65%);
+  background-attachment:fixed;
+}
+.view{position:relative;}
+.view::before{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Noto Serif JP',serif;font-size:22rem;line-height:1;white-space:nowrap;
+  color:var(--gold);opacity:.07;pointer-events:none;user-select:none;
+}
+#view-home::before{content:"上地流";}
+#view-hojo::before{content:"補助運動";font-size:14rem;}
+#view-kata::before{content:"型";}
+#view-warmup::before{content:"準備運動";font-size:14rem;}
+#view-glossary::before{content:"用語集";}
+#view-generator::before{content:"稽古";}
 """
 
 router_js = """
@@ -160,13 +171,13 @@ nav_html = """
   <a href="#home" data-view="home">בית</a>
   <a href="#hojo" data-view="hojo">הוג'ו אונדו</a>
   <a href="#kata" data-view="kata">קאטות</a>
-  <a href="#bunkai" data-view="bunkai">בונקאי</a>
   <a href="#warmup" data-view="warmup">חימום</a>
   <a href="#glossary" data-view="glossary">מילון</a>
+  <a href="#generator" data-view="generator">מחולל אימון</a>
 </nav>
 """
 
-view_order = ["home", "hojo", "kata", "bunkai", "warmup", "glossary"]
+view_order = ["home", "hojo", "kata", "warmup", "glossary", "generator"]
 sections_html = "\n".join(
     f'<section class="view{" active" if key=="home" else ""}" id="view-{key}">\n{views[key]}\n</section>'
     for key in view_order

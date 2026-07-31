@@ -26,8 +26,20 @@ references/     מקורות מחקר + תמונות רפרנס אמיתיות (
 ```
 python build.py
 ```
-זה בונה מחדש את `index.html`. אין לערוך את `index.html` ישירות — הוא נדרס
-בכל הרצה.
+זה בונה מחדש את `index.html` — לצפייה מקומית בלבד. **אין לערוך את `index.html`
+ידנית ואין להעלות אותו ל-Git** — הוא לא במעקב Git (`.gitignore`) ונבנה מחדש
+אוטומטית ב-CI (ראו "פרסום" למטה).
+
+## פרסום (GitHub Pages)
+כל פוש ל-`master` מפעיל את `.github/workflows/deploy.yml`, שמריץ
+`python build.py` ומפרסם את התוצאה ל-GitHub Pages. יש להפעיל פעם אחת:
+**Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+### אנליטיקס
+מחובר GoatCounter (ללא עוגיות, ללא צורך בהודעת הסכמה) דרך משתנה
+`GOATCOUNTER_CODE` בראש `build.py`. יש להירשם בחינם ב-
+https://www.goatcounter.com/ ולהחליף את הערך בקוד האתר שלכם (ה-subdomain)
+לפני שמפרסמים בפועל — אחרת הנתונים לא ייאספו לשום מקום אמיתי.
 
 ## קרדיטים
 תמונות המקור בעמוד ההוג'ו אונדו (`references/images/`) הן מ-Wikimedia Commons,

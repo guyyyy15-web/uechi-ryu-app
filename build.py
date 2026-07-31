@@ -195,6 +195,9 @@ function showView(name){
   });
   closeNavDropdown();
   window.scrollTo(0,0);
+  if(window.goatcounter && window.goatcounter.count){
+    window.goatcounter.count({path: '/'+name});
+  }
 }
 function jumpTo(view,id){
   showView(view);
@@ -282,12 +285,37 @@ sections_html = "\n".join(
     for key in view_order
 )
 
+SITE_URL = "https://guyyyy15-web.github.io/uechi-ryu-app/"
+SITE_TITLE = "אוצ'י ריו – מדריך אימון | Uechi-Ryu Training Companion"
+SITE_DESC = ("מדריך אימון אישי לקראטה אוצ'י ריו: הוג'ו אונדו, קאטות, חימום, מילון מונחים "
+             "ומחולל אימון אקראי. Uechi-Ryu karate training companion — Hojo Undo, kata, "
+             "warmup and a workout generator.")
+OG_IMAGE = "https://img.youtube.com/vi/Q7DVoKahmMc/hqdefault.jpg"
+FAVICON = ("data:image/svg+xml,"
+           "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E"
+           "%3Crect width='100' height='100' fill='%23e8dcc0'/%3E"
+           "%3Ctext x='50' y='68' font-size='64' text-anchor='middle' "
+           "font-family='serif' fill='%2397711a'%3E上%3C/text%3E%3C/svg%3E")
+
+# Analytics: cookie-free GoatCounter. Replace with your own code at
+# https://www.goatcounter.com/ before going live (see README).
+GOATCOUNTER_CODE = "uechi-ryu-app"
+
 final_html = f"""<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>אוצ'י ריו – מדריך אימון | Uechi-Ryu Training Companion</title>
+<title>{SITE_TITLE}</title>
+<meta name="description" content="{SITE_DESC}">
+<link rel="icon" href="{FAVICON}">
+<link rel="canonical" href="{SITE_URL}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{SITE_TITLE}">
+<meta property="og:description" content="{SITE_DESC}">
+<meta property="og:image" content="{OG_IMAGE}">
+<meta property="og:url" content="{SITE_URL}">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 {''.join(cleaned_styles)}
 {router_css}
@@ -302,6 +330,8 @@ final_html = f"""<!DOCTYPE html>
 {chr(10).join(scripts_all)}
 {router_js}
 </script>
+<script data-goatcounter="https://{GOATCOUNTER_CODE}.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
 """

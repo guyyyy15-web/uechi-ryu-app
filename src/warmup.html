@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חימום – אוצ'י ריו | Warm-up Companion</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Noto+Serif+JP:wght@700&display=swap');
+:root{--bg:#080808;--card:#111;--gold:#e8c44a;--red:#cc2200;--blue:#3399cc;--w:#f0ead8;--gr:#888;--border:#222;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--w);font-family:'Heebo',sans-serif;padding:1rem;}
+header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--gold);margin-bottom:1.5rem;}
+.main-title{font-family:'Noto Serif JP',serif;font-size:2.4rem;color:var(--gold);letter-spacing:.2em;}
+.sub-title{font-size:.9rem;color:var(--gr);margin-top:.3rem;letter-spacing:.1em;}
+.app-nav{display:flex;justify-content:center;gap:.5rem;margin-top:.9rem;flex-wrap:wrap;}
+.app-nav a{color:var(--gr);text-decoration:none;font-size:.8rem;padding:.4rem 1.1rem;border:1px solid var(--border);border-radius:20px;transition:.15s;font-weight:700;}
+.app-nav a:hover{border-color:var(--gold);color:var(--gold);}
+.app-nav a.active{background:var(--gold);color:#000;border-color:var(--gold);}
+.intro-note{background:#120800;border:1px solid #3a2a10;border-right:4px solid var(--gold);margin:0 auto 1.5rem;max-width:760px;padding:.8rem 1rem;font-size:.8rem;color:var(--w);line-height:1.7;}
+.intro-note strong{color:var(--gold);}
+.wrap{max-width:760px;margin:0 auto;}
+.progress-bar{height:6px;background:#1a1a1a;border-radius:3px;margin-bottom:1.5rem;overflow:hidden;}
+.progress-fill{height:100%;width:0%;background:var(--gold);transition:width .3s;}
+.step{display:flex;gap:.9rem;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.9rem 1rem;margin-bottom:.8rem;cursor:pointer;transition:.15s;}
+.step:hover{border-color:#3a2a10;}
+.step.done{opacity:.55;}
+.step.done .s-title{text-decoration:line-through;}
+.s-check{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--gold);font-weight:900;margin-top:.1rem;}
+.step.done .s-check{background:var(--gold);color:#000;}
+.s-body{flex:1;}
+.s-top{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;flex-wrap:wrap;}
+.s-title{font-size:.92rem;font-weight:700;color:var(--w);}
+.s-dur{font-size:.65rem;color:var(--gold);background:#1a1408;padding:.15rem .5rem;border-radius:10px;white-space:nowrap;}
+.s-desc{font-size:.76rem;color:var(--gr);line-height:1.6;margin-top:.3rem;}
+.section-title{font-size:.85rem;color:var(--gold);font-weight:700;margin:1.6rem 0 .7rem;padding-right:.3rem;border-right:3px solid var(--gold);}
+.reset-btn{display:block;margin:1.5rem auto 0;background:none;border:1px solid var(--border);color:var(--gr);font-size:.72rem;padding:.5rem 1.2rem;border-radius:20px;cursor:pointer;font-family:'Heebo',sans-serif;}
+.reset-btn:hover{border-color:var(--red);color:var(--red);}
+footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1px solid var(--border);margin-top:2rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
+</style>
+</head>
+<body>
+<header>
+  <div class="main-title">準備運動</div>
+  <div class="sub-title">חימום · לפני כל אימון · דוג'ו אורי אלישר</div>
+  <nav class="app-nav">
+    <a href="index.html">🏠 בית</a>
+    <a href="hojo-3d.html">🥋 הוג'ו אונדו</a>
+    <a href="kata.html">型 קאטות</a>
+    <a href="bunkai.html">🔑 בונקאי</a>
+    <a href="warmup.html" class="active">🔥 חימום</a>
+    <a href="glossary.html">📖 מילון</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <div class="intro-note">
+    <strong>מטרה:</strong> העלאת דופק, שחרור מפרקים, הכנת הגוף. לא מתיחות עומק – אלה שמורות לסוף האימון.
+    כ-10 דקות.
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="pbar"></div></div>
+
+  <div class="section-title">1. העלאת דופק</div>
+  <div class="step" data-id="s1">
+    <div class="s-check">✓</div>
+    <div class="s-body">
+      <div class="s-top"><span class="s-title">הליכה / ריצה קלה במקום</span><span class="s-dur">2-3 דק'</span></div>
+      <div class="s-desc">קצב עולה בהדרגה, עד הזעה קלה.</div>
+    </div>
+  </div>
+
+  <div class="section-title">2. סיבובי מפרקים (מלמעלה למטה)</div>
+  <div class="step" data-id="s2">
+    <div class="s-check">✓</div>
+    <div class="s-body">
+      <div class="s-top"><span class="s-title">צוואר וכתפיים</span><span class="s-dur">1 דק'</span></div>
+      <div class="s-desc">סיבובים איטיים לצוואר (בלי לזרוק ראש אחורה) וכתפיים.</div>
+    </div>
+  </div>
+  <div class="step" data-id="s3">
+    <div class="s-check">✓</div>
+    <div class="s-body">
+      <div class="s-top"><span class="s-title">מרפקים ושורשי כף יד</span><span class="s-dur">1 דק'</span></div>
+      <div class="s-desc">שורש כף יד לשני הכיוונים, כיפוף ויישור מרפקים.</div>
+    </div>
+  </div>
+  <div class="step" data-id="s4">
+    <div class="s-check">✓</div>
+    <div class="s-body">
+      <div class="s-top"><span class="s-title">מותניים, ברכיים וקרסוליים</span><span class="s-dur">1-2 דק'</span></div>
+      <div class="s-desc">סיבובי אגן, ברך בעדינות, קרסול לכל כף רגל.</div>
+    </div>
+  </div>
+
+  <div class="section-title">3. מתיחות דינמיות</div>
+  <div class="step" data-id="s5">
+    <div class="s-check">✓</div>
+    <div class="s-body">
+      <div class="s-top"><span class="s-title">נדנוד רגליים (Leg Swings)</span><span class="s-dur">1 דק' לכל רגל</span></div>
+      <div class="s-desc">קדימה-אחורה, אחר כך ימינה-שמאלה. יד על קיר לאיזון.</div>
+    </div>
+  </div>
+  <div class="step" data-id="s6">
+    <div class="s-check">✓</div>
+    <div class="s-body">
+      <div class="s-top"><span class="s-title">סיבובי זרועות גדולים</span><span class="s-dur">30 שנ'</span></div>
+      <div class="s-desc">סיבובים מלאים קדימה ואחורה, מגבירים טווח תנועה בכתף.</div>
+    </div>
+  </div>
+
+  <div class="section-title">4. הכנה ספציפית לאוצ'י ריו</div>
+  <div class="step" data-id="s7">
+    <div class="s-check">✓</div>
+    <div class="s-body">
+      <div class="s-top"><span class="s-title">עמידת סנצ'ין + נשימות איברקי</span><span class="s-dur">2 דק'</span></div>
+      <div class="s-desc">עמידת סנצ'ין, 8-10 נשימות עמוקות מהבטן, כיווץ מבוקר.</div>
+    </div>
+  </div>
+  <div class="step" data-id="s8">
+    <div class="s-check">✓</div>
+    <div class="s-body">
+      <div class="s-top"><span class="s-title">קיהון איטי – כמה אגרופים ובעיטות</span><span class="s-dur">1-2 דק'</span></div>
+      <div class="s-desc">כמה חזרות איטיות של אגרוף ובעיטה, בלי כוח מלא.</div>
+    </div>
+  </div>
+
+  <button class="reset-btn" id="resetBtn">איפוס הרשימה</button>
+</div>
+
+<footer>準備運動 · Warm-up · דוג'ו אורי אלישר · אוקינאווה</footer>
+
+<script>
+document.querySelectorAll('.step').forEach(el=>{
+  const id = el.dataset.id;
+  if(localStorage.getItem('warmup_'+id)==='1') el.classList.add('done');
+  el.addEventListener('click', ()=>{
+    el.classList.toggle('done');
+    localStorage.setItem('warmup_'+id, el.classList.contains('done')?'1':'0');
+    updateProgress();
+  });
+});
+function updateProgress(){
+  const all = document.querySelectorAll('.step');
+  const done = document.querySelectorAll('.step.done');
+  document.getElementById('pbar').style.width = (done.length/all.length*100)+'%';
+}
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  document.querySelectorAll('.step').forEach(el=>{
+    el.classList.remove('done');
+    localStorage.setItem('warmup_'+el.dataset.id,'0');
+  });
+  updateProgress();
+});
+updateProgress();
+</script>
+</body>
+</html>

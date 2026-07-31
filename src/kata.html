@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קאטות – אוצ'י ריו | Uechi-Ryu Kata Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Noto+Serif+JP:wght@700&display=swap');
+:root{--bg:#080808;--card:#111;--gold:#e8c44a;--red:#cc2200;--blue:#3399cc;--w:#f0ead8;--gr:#888;--border:#222;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--w);font-family:'Heebo',sans-serif;padding:1rem;}
+header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--gold);margin-bottom:1.5rem;}
+.main-title{font-family:'Noto Serif JP',serif;font-size:2.4rem;color:var(--gold);letter-spacing:.2em;}
+.sub-title{font-size:.9rem;color:var(--gr);margin-top:.3rem;letter-spacing:.1em;}
+.app-nav{display:flex;justify-content:center;gap:.5rem;margin-top:.9rem;flex-wrap:wrap;}
+.app-nav a{color:var(--gr);text-decoration:none;font-size:.8rem;padding:.4rem 1.1rem;border:1px solid var(--border);border-radius:20px;transition:.15s;font-weight:700;}
+.app-nav a:hover{border-color:var(--gold);color:var(--gold);}
+.app-nav a.active{background:var(--gold);color:#000;border-color:var(--gold);}
+.intro-note{background:#120800;border:1px solid #3a2a10;border-right:4px solid var(--gold);margin:0 auto 1.2rem;max-width:960px;padding:.8rem 1rem;font-size:.8rem;color:var(--w);line-height:1.7;}
+.intro-note strong{color:var(--gold);}
+.belt-track{display:flex;justify-content:center;gap:.3rem;flex-wrap:wrap;margin:0 auto 1.5rem;max-width:960px;}
+.belt-chip{font-size:.6rem;padding:.25rem .6rem;border-radius:3px;font-weight:700;color:#000;white-space:nowrap;}
+.kata{background:var(--card);border:1px solid var(--border);border-right:4px solid var(--gold);margin:0 auto 1.2rem;max-width:960px;}
+.k-header{display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem;background:#000;border-bottom:1px solid var(--border);}
+.k-num{font-size:1.6rem;font-weight:900;color:var(--gold);min-width:2rem;line-height:1;}
+.k-names{flex:1;}
+.k-names .jp{font-family:'Noto Serif JP',serif;font-size:1rem;color:var(--gold);}
+.k-names .ro{font-size:.65rem;color:var(--gr);letter-spacing:.1em;margin-top:1px;}
+.k-names .he{font-size:.88rem;font-weight:700;color:var(--w);margin-top:2px;}
+.k-belt{font-size:.62rem;padding:.3rem .7rem;border-radius:3px;font-weight:700;color:#000;white-space:nowrap;height:fit-content;}
+.k-body{display:flex;flex-wrap:wrap;}
+.k-video{flex:1 1 320px;padding:.9rem;border-left:1px solid var(--border);}
+.video-wrap{position:relative;display:block;width:100%;padding-top:56.25%;background:#000;border-radius:6px;overflow:hidden;border:1px solid var(--border);text-decoration:none;}
+.video-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.2s;}
+.video-wrap:hover img{opacity:.75;}
+.play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.play-overlay span{width:58px;height:58px;border-radius:50%;background:rgba(204,34,0,.88);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 0 0 6px rgba(0,0,0,.35);transition:.2s;}
+.video-wrap:hover .play-overlay span{background:var(--red);transform:scale(1.08);}
+.video-link{display:block;text-align:center;margin-top:.5rem;font-size:.68rem;color:var(--blue);text-decoration:none;}
+.video-link:hover{text-decoration:underline;}
+.video-credit{text-align:center;font-size:.6rem;color:#555;margin-top:.25rem;}
+.k-info{flex:1 1 320px;padding:.9rem;}
+.k-desc{font-size:.8rem;color:var(--w);line-height:1.7;margin-bottom:.7rem;}
+.k-meaning{font-size:.72rem;color:var(--gr);margin-bottom:.6rem;line-height:1.6;}
+.k-meaning b{color:var(--gold);}
+.k-points{display:flex;flex-direction:column;gap:.5rem;}
+.k-do,.k-dont{font-size:.73rem;line-height:1.6;padding:.5rem .7rem;border-radius:5px;}
+.k-do{background:#0a1a08;border-right:3px solid #4a8a2a;color:#c9e8b8;}
+.k-dont{background:#1a0808;border-right:3px solid var(--red);color:#e8b8b0;}
+.k-do b,.k-dont b{display:block;margin-bottom:.15rem;color:#f0ead8;}
+footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1px solid var(--border);margin-top:1rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
+@media(max-width:600px){.k-video{border-left:none;border-bottom:1px solid var(--border);}}
+</style>
+</head>
+<body>
+<header>
+  <div class="main-title">型</div>
+  <div class="sub-title">קאטות · 8 הצורות של אוצ'י ריו · לפי סדר חגורות · דוג'ו אורי אלישר</div>
+  <nav class="app-nav">
+    <a href="index.html">🏠 בית</a>
+    <a href="hojo-3d.html">🥋 הוג'ו אונדו</a>
+    <a href="kata.html" class="active">型 קאטות</a>
+    <a href="bunkai.html">🔑 בונקאי</a>
+    <a href="warmup.html">🔥 חימום</a>
+    <a href="glossary.html">📖 מילון</a>
+  </nav>
+</header>
+
+<div class="intro-note">
+  <strong>קאטה:</strong> רצף תנועות קבוע נגד יריבים דמיוניים. 8 קאטות באוצ'י ריו, לפי סדר חגורות.
+  סנצ'ין, סייסאן וסאנסיירו הובאו מסין; השאר נוספו ע"י קנאי אוצ'י.
+</div>
+
+<div class="belt-track">
+  <span class="belt-chip" style="background:#f0ead8">לבנה</span>
+  <span class="belt-chip" style="background:#e8d84a">צהובה</span>
+  <span class="belt-chip" style="background:#4a8a2a;color:#fff">ירוקה</span>
+  <span class="belt-chip" style="background:#8a5a2a;color:#fff">חומה</span>
+  <span class="belt-chip" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה (דאן 1-4)</span>
+</div>
+
+<!-- 1. Sanchin -->
+<div class="kata" id="k1">
+  <div class="k-header">
+    <div class="k-num">1</div>
+    <div class="k-names">
+      <div class="jp">三戦</div>
+      <div class="ro">SANCHIN</div>
+      <div class="he">שלוש קרבות</div>
+    </div>
+    <div class="k-belt" style="background:#f0ead8">חגורה לבנה</div>
+  </div>
+  <div class="k-body">
+    <div class="k-video">
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=1E_MJRR0PiA" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/1E_MJRR0PiA/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=1E_MJRR0PiA" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <div class="video-credit">הדרכה איטית לתרגול, YouTube</div>
+    </div>
+    <div class="k-info">
+      <div class="k-meaning"><b>שם:</b> שלוש קרבות – גוף, נשימה, תודעה.</div>
+      <p class="k-desc">קאטת היסוד. קנבון אוצ'י תרגל רק אותה שלוש שנים בסין. עמידת סנצ'ין וחסימת קשת (Wa Uke) – הבסיס לכל טכניקה בסגנון.</p>
+      <div class="k-points">
+        <div class="k-do"><b>✓ חשוב</b>נשימה עמוקה וסדירה, כיווץ מבוקר לאורך כל הקאטה.</div>
+        <div class="k-dont"><b>✗ להימנע</b>נעילת ברכיים מלאה. עצירת נשימה בין תנועות.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Kanshiwa -->
+<div class="kata" id="k2">
+  <div class="k-header">
+    <div class="k-num">2</div>
+    <div class="k-names">
+      <div class="jp">完子和</div>
+      <div class="ro">KANSHIWA</div>
+      <div class="he">לזכר קנבון ושו שיווה</div>
+    </div>
+    <div class="k-belt" style="background:#e8d84a">חגורה צהובה</div>
+  </div>
+  <div class="k-body">
+    <div class="k-video">
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=Q7DVoKahmMc" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/Q7DVoKahmMc/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=Q7DVoKahmMc" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <div class="video-credit">Gustavo Gondra, 8º Dan – YouTube</div>
+    </div>
+    <div class="k-info">
+      <div class="k-meaning"><b>שם:</b> לכבוד קנבון אוצ'י ומורו שו שיווה.</div>
+      <p class="k-desc">הראשונה שנוספה לסגנון. סגנון נמר – חסימות כף יד פתוחה ובעיטות בזווית 45°, בעיתוי בינארי בין חסימה למכה.</p>
+      <div class="k-points">
+        <div class="k-do"><b>✓ חשוב</b>תיאום מדויק יד-רגל, זווית 45° נכונה בבעיטה.</div>
+        <div class="k-dont"><b>✗ להימנע</b>מהירות על חשבון דיוק.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Kanshu -->
+<div class="kata" id="k3">
+  <div class="k-header">
+    <div class="k-num">3</div>
+    <div class="k-names">
+      <div class="jp">完周</div>
+      <div class="ro">KANSHU</div>
+      <div class="he">מבוא לסייסאן</div>
+    </div>
+    <div class="k-belt" style="background:#4a8a2a;color:#fff">חגורה ירוקה</div>
+  </div>
+  <div class="k-body">
+    <div class="k-video">
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=kNCkcGTC4ms" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/kNCkcGTC4ms/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=kNCkcGTC4ms" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <div class="video-credit">Gustavo Gondra, 8º Dan – YouTube</div>
+    </div>
+    <div class="k-info">
+      <div class="k-meaning"><b>שם:</b> לכבוד קנבון אוצ'י ושו שיווה. נקראה בעבר "סייסאן שנייה".</div>
+      <p class="k-desc">הכנה לסייסאן, קו תנועה משותף. טכניקות בהשראת העגור.</p>
+      <div class="k-points">
+        <div class="k-do"><b>✓ חשוב</b>דיוק בתזמון ובזוויות.</div>
+        <div class="k-dont"><b>✗ להימנע</b>דיוק שמוקרב למען מהירות.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Seichin -->
+<div class="kata" id="k4">
+  <div class="k-header">
+    <div class="k-num">4</div>
+    <div class="k-names">
+      <div class="jp">十戦</div>
+      <div class="ro">SEICHIN</div>
+      <div class="he">עשר קרבות</div>
+    </div>
+    <div class="k-belt" style="background:#8a5a2a;color:#fff">חגורה חומה</div>
+  </div>
+  <div class="k-body">
+    <div class="k-video">
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=XjL4avcncp0" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/XjL4avcncp0/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=XjL4avcncp0" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <div class="video-credit">Gustavo Gondra, 8º Dan – YouTube</div>
+    </div>
+    <div class="k-info">
+      <div class="k-meaning"><b>שם:</b> עשר קרבות – בגרות מתקדמת יותר מסנצ'ין.</div>
+      <p class="k-desc">מושפעת מסין, טכניקות מעגליות ותנועות דרקון. דורשת גמישות.</p>
+      <div class="k-points">
+        <div class="k-do"><b>✓ חשוב</b>גמישות וזרימה חלקה בין תנועות.</div>
+        <div class="k-dont"><b>✗ להימנע</b>תנועה שנעצרת כ"תחנה" נפרדת.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. Seisan -->
+<div class="kata" id="k5">
+  <div class="k-header">
+    <div class="k-num">5</div>
+    <div class="k-names">
+      <div class="jp">十三</div>
+      <div class="ro">SEISAN</div>
+      <div class="he">שלוש עשרה</div>
+    </div>
+    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה · שודאן</div>
+  </div>
+  <div class="k-body">
+    <div class="k-video">
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=pp9hGwpOSUw" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/pp9hGwpOSUw/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=pp9hGwpOSUw" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <div class="video-credit">Henry Thom, 10º Dan Hanshi – YouTube</div>
+    </div>
+    <div class="k-info">
+      <div class="k-meaning"><b>שם:</b> שלוש עשרה דרכי תקיפה/הגנה; גיל בגרות בריוקיו העתיקה.</div>
+      <p class="k-desc">הובאה מסין ע"י קנבון אוצ'י. שליטה בה נדרשת לחגורה שחורה (שודאן).</p>
+      <div class="k-points">
+        <div class="k-do"><b>✓ חשוב</b>הרפיה בין תנועות, תנופה קדימה רציפה.</div>
+        <div class="k-dont"><b>✗ להימנע</b>תנועות מנותקות זו מזו.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. Seiryu -->
+<div class="kata" id="k6">
+  <div class="k-header">
+    <div class="k-num">6</div>
+    <div class="k-names">
+      <div class="jp">十六</div>
+      <div class="ro">SEIRYU</div>
+      <div class="he">שש עשרה</div>
+    </div>
+    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה · נידאן</div>
+  </div>
+  <div class="k-body">
+    <div class="k-video">
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=LWv2PhfvvnI" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/LWv2PhfvvnI/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=LWv2PhfvvnI" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <div class="video-credit">Henry Thom, 10º Dan Hanshi – YouTube</div>
+    </div>
+    <div class="k-info">
+      <div class="k-meaning"><b>שם:</b> שש עשרה – בגרות מעבר לגיל 13 המסורתי.</div>
+      <p class="k-desc">נוצרה ע"י קנאי אוצ'י. טכניקות דרקון תוך סיבוב, שיווי משקל ותיאום גבוה.</p>
+      <div class="k-points">
+        <div class="k-do"><b>✓ חשוב</b>יציבות בכל סיבוב, רגליים חזקות.</div>
+        <div class="k-dont"><b>✗ להימנע</b>איבוד שיווי משקל במעברי כיוון.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. Kanchin -->
+<div class="kata" id="k7">
+  <div class="k-header">
+    <div class="k-num">7</div>
+    <div class="k-names">
+      <div class="jp">完戦</div>
+      <div class="ro">KANCHIN</div>
+      <div class="he">קרבו של קנבון</div>
+    </div>
+    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה · סאנדאן</div>
+  </div>
+  <div class="k-body">
+    <div class="k-video">
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=f753jh02uNg" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/f753jh02uNg/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=f753jh02uNg" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <div class="video-credit">Gustavo Gondra, 8º Dan – YouTube</div>
+    </div>
+    <div class="k-info">
+      <div class="k-meaning"><b>שם:</b> "קרבו של קנבון".</div>
+      <p class="k-desc">הנצחה לקנבון אוצ'י ע"י בנו קנאי. כוללת חסימה כפולה (Watari Uke) מסאנסיירו.</p>
+      <div class="k-points">
+        <div class="k-do"><b>✓ חשוב</b>דיוק בחסימה הכפולה – המאפיין הייחודי כאן.</div>
+        <div class="k-dont"><b>✗ להימנע</b>דילוג על פירוט החסימה הכפולה.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. Sanseiryu -->
+<div class="kata" id="k8">
+  <div class="k-header">
+    <div class="k-num">8</div>
+    <div class="k-names">
+      <div class="jp">三十六</div>
+      <div class="ro">SANSEIRYU</div>
+      <div class="he">שלושים ושש</div>
+    </div>
+    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה · יונדאן</div>
+  </div>
+  <div class="k-body">
+    <div class="k-video">
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=h4PR6NC89_A" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/h4PR6NC89_A/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=h4PR6NC89_A" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <div class="video-credit">Henry Thom, 10º Dan Hanshi – YouTube</div>
+    </div>
+    <div class="k-info">
+      <div class="k-meaning"><b>שם:</b> שלושים ושש דרכי תקיפה/הגנה.</div>
+      <p class="k-desc">המתקדמת ביותר, הובאה מסין. משלבת נמר, עגור ודרקון – סיכום הסגנון.</p>
+      <div class="k-points">
+        <div class="k-do"><b>✓ חשוב</b>זיהוי רכיבים מקאטות קודמות בכל תנועה.</div>
+        <div class="k-dont"><b>✗ להימנע</b>גישה אליה לפני שקאטות 1-7 יציבות.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>型 · Uechi-Ryu Kata · דוג'ו אורי אלישר · אוקינאווה<br>
+<span style="font-size:.6rem;opacity:.4;display:block;margin-top:.3rem;font-family:Heebo,sans-serif">
+מקורות: uechiryu-oryukai.com · uechi-ryu.com · Wikipedia
+</span></footer>
+</body>
+</html>

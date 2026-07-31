@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מילון מונחים – אוצ'י ריו | Terminology</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Noto+Serif+JP:wght@700&display=swap');
+:root{--bg:#080808;--card:#111;--gold:#e8c44a;--red:#cc2200;--blue:#3399cc;--w:#f0ead8;--gr:#888;--border:#222;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--w);font-family:'Heebo',sans-serif;padding:1rem;}
+header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--gold);margin-bottom:1.5rem;}
+.main-title{font-family:'Noto Serif JP',serif;font-size:2.4rem;color:var(--gold);letter-spacing:.2em;}
+.sub-title{font-size:.9rem;color:var(--gr);margin-top:.3rem;letter-spacing:.1em;}
+.app-nav{display:flex;justify-content:center;gap:.5rem;margin-top:.9rem;flex-wrap:wrap;}
+.app-nav a{color:var(--gr);text-decoration:none;font-size:.8rem;padding:.4rem 1.1rem;border:1px solid var(--border);border-radius:20px;transition:.15s;font-weight:700;}
+.app-nav a:hover{border-color:var(--gold);color:var(--gold);}
+.app-nav a.active{background:var(--gold);color:#000;border-color:var(--gold);}
+.wrap{max-width:1000px;margin:0 auto;}
+.search-box{display:block;width:100%;max-width:400px;margin:0 auto 1rem;background:#141414;border:1px solid var(--border);color:var(--w);font-family:'Heebo',sans-serif;font-size:.85rem;padding:.6rem 1rem;border-radius:20px;text-align:center;}
+.search-box:focus{outline:none;border-color:var(--gold);}
+.search-box::placeholder{color:#555;}
+.cat-filters{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:1.6rem;}
+.cat-btn{font-size:.68rem;padding:.35rem .8rem;border-radius:14px;border:1px solid var(--border);background:none;color:var(--gr);cursor:pointer;font-family:'Heebo',sans-serif;font-weight:700;transition:.15s;}
+.cat-btn:hover{border-color:var(--gold);color:var(--gold);}
+.cat-btn.active{background:var(--gold);color:#000;border-color:var(--gold);}
+.cat-title{font-size:.85rem;color:var(--gold);font-weight:700;margin:1.6rem 0 .7rem;padding-right:.3rem;border-right:3px solid var(--gold);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.6rem;}
+.term{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.7rem .8rem;}
+.term .t-top{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;margin-bottom:.25rem;}
+.term .jp{font-family:'Noto Serif JP',serif;color:var(--gold);font-size:1rem;}
+.term .ro{font-size:.68rem;color:var(--gr);letter-spacing:.05em;font-weight:700;}
+.term .he{font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:.15rem;}
+.term .note{font-size:.68rem;color:var(--gr);line-height:1.5;}
+.no-results{text-align:center;color:#555;font-size:.85rem;padding:2rem;display:none;}
+footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1px solid var(--border);margin-top:2rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
+</style>
+</head>
+<body>
+<header>
+  <div class="main-title">用語集</div>
+  <div class="sub-title">מילון מונחים · יפנית ↔ עברית · דוג'ו אורי אלישר</div>
+  <nav class="app-nav">
+    <a href="index.html">🏠 בית</a>
+    <a href="hojo-3d.html">🥋 הוג'ו אונדו</a>
+    <a href="kata.html">型 קאטות</a>
+    <a href="bunkai.html">🔑 בונקאי</a>
+    <a href="warmup.html">🔥 חימום</a>
+    <a href="glossary.html" class="active">📖 מילון</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <input type="text" class="search-box" id="search" placeholder="חיפוש מונח... (יפנית או עברית)">
+  <div class="cat-filters" id="catFilters">
+    <button class="cat-btn active" data-cat="all">הכל</button>
+    <button class="cat-btn" data-cat="cmd">פקודות דוג'ו</button>
+    <button class="cat-btn" data-cat="num">ספירה</button>
+    <button class="cat-btn" data-cat="stance">עמידות</button>
+    <button class="cat-btn" data-cat="weapon">נשק הגוף</button>
+    <button class="cat-btn" data-cat="tech">טכניקות הוג'ו אונדו</button>
+    <button class="cat-btn" data-cat="kata">קאטות</button>
+    <button class="cat-btn" data-cat="gear">ציוד</button>
+    <button class="cat-btn" data-cat="general">מונחים כלליים</button>
+  </div>
+
+  <div id="results"></div>
+  <div class="no-results" id="noResults">לא נמצאו מונחים תואמים.</div>
+</div>
+
+<footer>用語集 · Terminology · דוג'ו אורי אלישר · אוקינאווה</footer>
+
+<script>
+const CATS = {cmd:"פקודות דוג'ו", num:"ספירה", stance:"עמידות", weapon:"נשק הגוף", tech:"טכניקות הוג'ו אונדו", kata:"קאטות", gear:"ציוד", general:"מונחים כלליים"};
+
+const TERMS = [
+  // Dojo commands
+  {jp:"礼", ro:"REI", he:"קידה", note:"בתחילת וסוף כל שיעור/תרגול, וכלפי בן-זוג לפני ואחרי תרגול משותף.", cat:"cmd"},
+  {jp:"気を付け", ro:"KIOTSUKE", he:"עמידת דום", note:"'שימו לב!' – התייצבות זקופה ודרוכה.", cat:"cmd"},
+  {jp:"用意", ro:"YOI", he:"היכון", note:"עמדו בעמידת מוכנות, לפני תחילת תרגיל.", cat:"cmd"},
+  {jp:"始め", ro:"HAJIME", he:"התחל", note:"פקודת התחלה לתרגיל, קאטה או קרב.", cat:"cmd"},
+  {jp:"止め", ro:"YAME", he:"עצור", note:"עצירה מיידית של כל פעילות.", cat:"cmd"},
+  {jp:"黙想", ro:"MOKUSO", he:"מדיטציה/ריכוז", note:"עצימת עיניים ונשימות מבוקרות, לרוב בתחילת/סוף שיעור.", cat:"cmd"},
+  {jp:"先生", ro:"SENSEI", he:"מורה", note:"פנייה כבודה למדריך.", cat:"cmd"},
+  {jp:"先輩", ro:"SEMPAI", he:"חבר בכיר", note:"תלמיד ותיק/עוזר הדרכה.", cat:"cmd"},
+  {jp:"道場", ro:"DOJO", he:"מקום האימון", note:"מילולית: \"מקום הדרך\".", cat:"cmd"},
+
+  // Counting
+  {jp:"一", ro:"ICHI", he:"1", cat:"num"},
+  {jp:"二", ro:"NI", he:"2", cat:"num"},
+  {jp:"三", ro:"SAN", he:"3", cat:"num"},
+  {jp:"四", ro:"SHI / YON", he:"4", cat:"num"},
+  {jp:"五", ro:"GO", he:"5", cat:"num"},
+  {jp:"六", ro:"ROKU", he:"6", cat:"num"},
+  {jp:"七", ro:"SHICHI / NANA", he:"7", cat:"num"},
+  {jp:"八", ro:"HACHI", he:"8", cat:"num"},
+  {jp:"九", ro:"KU / KYU", he:"9", cat:"num"},
+  {jp:"十", ro:"JU", he:"10", cat:"num"},
+
+  // Stance
+  {jp:"三戦立ち", ro:"SANCHIN DACHI", he:"עמידת סנצ'ין", note:"הבסיס לכל תרגיל וקאטה בסגנון. רגליים כרוחב כתפיים, אצבעות פנימה, כיווץ מבוקר.", cat:"stance"},
+
+  // Body weapons
+  {jp:"正拳", ro:"SEIKEN", he:"אגרוף סגור", note:"4 המפרקים הראשונים (אצבע-זרת).", cat:"weapon"},
+  {jp:"平拳", ro:"HIRAKEN", he:"אגרוף שטוח", note:"מפרק שני שטוח – לא כף יד ישרה, רק מפרק ראשון מתקפל.", cat:"weapon"},
+  {jp:"中高一本拳", ro:"NAKADAKA IPPON KEN (שוקן)", he:"מפרק אמצעי בולט", note:"האצבע האמצעית בולטת מעל שאר האגרוף. לנקודות לחץ.", cat:"weapon"},
+  {jp:"裏拳", ro:"URAKEN", he:"גב אגרוף", note:"שני המפרקים הראשונים בגב היד.", cat:"weapon"},
+  {jp:"手刀", ro:"SHUTO", he:"חרב יד", note:"הקצה החיצוני (צד הזרת), אצבעות ישרות וצמודות.", cat:"weapon"},
+  {jp:"貫手", ro:"NUKITE", he:"חנית יד", note:"4 קצות אצבעות ישרות וצמודות יחד.", cat:"weapon"},
+  {jp:"足刀", ro:"SOKUTO", he:"להב כף הרגל", note:"הקצה החיצוני, בהן גדולה למעלה ושאר האצבעות כפופות.", cat:"weapon"},
+  {jp:"爪先", ro:"TSUMASAKI (סוקוסן)", he:"קצה הבהן הגדולה", note:"שאר האצבעות מכופפות פנימה.", cat:"weapon"},
+  {jp:"拇趾球", ro:"KOSHI / CHUSOKU (אשי קן)", he:"כדור כף הרגל", note:"אצבעות מכופפות אחורה, הכדור מתחתן הוא הנשק.", cat:"weapon"},
+  {jp:"背手", ro:"HAISHU", he:"גב כף היד הפתוחה", note:"קרוב למשפחת \"זנב הקרפיון\" (עצם פרק כף היד).", cat:"weapon"},
+
+  // Hojo Undo technique names
+  {jp:"足刀蹴り", ro:"SOKUTOU GERI", he:"בעיטת להב כף הרגל", note:"תרגיל 1 בהוג'ו אונדו.", cat:"tech"},
+  {jp:"正面蹴り", ro:"SHUMEN GERI", he:"בעיטת שן הנמר (סוקוסן)", note:"תרגיל 2 בהוג'ו אונדו.", cat:"tech"},
+  {jp:"廻し突き", ro:"MAWASHI TSUKI", he:"אגרוף סיבובי", note:"תרגיל 3 – מגיע בקשת, לא בקו ישר.", cat:"tech"},
+  {jp:"弾き受け", ro:"HAJIKI UKE", he:"חסימת קפיץ", note:"חלק מתרגיל 4, בו-זמנית עם הירקן.", cat:"tech"},
+  {jp:"肘突き", ro:"HIJI TSUKI", he:"מכת מרפק", note:"תרגיל 7 – 3 כיוונים אפשריים.", cat:"tech"},
+  {jp:"転身", ro:"TENSHIN", he:"סיבוב 180°", note:"תרגילים 8-10, סיבוב מלא + טכניקה.", cat:"tech"},
+  {jp:"正面弾き", ro:"SHOMEN HAJIKI", he:"דקירת 4 אצבעות", note:"תרגיל 11 – חנית יד קדימה.", cat:"tech"},
+  {jp:"鯉の尾打ち", ro:"KOI NO SHIPPO UCHI", he:"זנב הקרפיון", note:"תרגילים 12-13 – מכת עצם פרק כף היד, אנכי ואופקי.", cat:"tech"},
+
+  // Kata
+  {jp:"三戦", ro:"SANCHIN", he:"שלוש קרבות", note:"קאטה 1 · חגורה לבנה", cat:"kata"},
+  {jp:"完子和", ro:"KANSHIWA", he:"לזכר קנבון ושו שיווה", note:"קאטה 2 · חגורה צהובה", cat:"kata"},
+  {jp:"完周", ro:"KANSHU", he:"מבוא לסייסאן", note:"קאטה 3 · חגורה ירוקה", cat:"kata"},
+  {jp:"十戦", ro:"SEICHIN", he:"עשר קרבות", note:"קאטה 4 · חגורה חומה", cat:"kata"},
+  {jp:"十三", ro:"SEISAN", he:"שלוש עשרה", note:"קאטה 5 · שודאן", cat:"kata"},
+  {jp:"十六", ro:"SEIRYU", he:"שש עשרה", note:"קאטה 6 · נידאן", cat:"kata"},
+  {jp:"完戦", ro:"KANCHIN", he:"קרבו של קנבון", note:"קאטה 7 · סאנדאן", cat:"kata"},
+  {jp:"三十六", ro:"SANSEIRYU", he:"שלושים ושש", note:"קאטה 8 · יונדאן, המתקדמת ביותר", cat:"kata"},
+
+  // Gear
+  {jp:"巻藁", ro:"MAKIWARA", he:"לוח חבטה", note:"לוח מרופד לחיזוק ודיוק הידיים.", cat:"gear"},
+  {jp:"握り甕", ro:"NIGIRI GAME", he:"צנצנות אחיזה", note:"לחיזוק האצבעות, קריטי לפני נוקיטה/הירקן.", cat:"gear"},
+  {jp:"棒", ro:"BO", he:"מקל ארוך", note:"נשק קובודו.", cat:"gear"},
+  {jp:"ヌンチャク", ro:"NUNCHAKU", he:"נונצ'קו", note:"שני מקלים מחוברים, נשק קובודו.", cat:"gear"},
+  {jp:"釵", ro:"SAI", he:"סאי", note:"שלוח מתכת מחודד, נשק קובודו.", cat:"gear"},
+
+  // General
+  {jp:"型", ro:"KATA", he:"צורה / קאטה", note:"רצף תנועות קבוע נגד יריבים דמיוניים.", cat:"general"},
+  {jp:"基本", ro:"KIHON", he:"יסודות", note:"תרגול טכניקות בסיס בנפרד.", cat:"general"},
+  {jp:"組手", ro:"KUMITE", he:"קרב מבוקר", note:"תרגול מול יריב אמיתי.", cat:"general"},
+  {jp:"分解", ro:"BUNKAI", he:"פירוק / יישום", note:"ניתוח המשמעות הקרבית של תנועות קאטה.", cat:"general"},
+  {jp:"補助運動", ro:"HOJO UNDO", he:"תרגילי עזר", note:"13 התרגילים המשלימים בקובץ הראשי.", cat:"general"},
+  {jp:"道着", ro:"GI", he:"מדי אימון", cat:"general"},
+  {jp:"帯", ro:"OBI", he:"חגורה", cat:"general"},
+  {jp:"級", ro:"KYU", he:"דרגת חגורה צבעונית", note:"יורד במספר ככל שמתקדמים (למשל מ-8 ל-1), עד לחגורה שחורה.", cat:"general"},
+  {jp:"段", ro:"DAN", he:"דרגת חגורה שחורה", note:"עולה במספר ככל שמתקדמים (דאן 1, 2, 3...).", cat:"general"},
+];
+
+const resultsEl = document.getElementById('results');
+const noResultsEl = document.getElementById('noResults');
+let activeCat = 'all';
+
+function render(){
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const filtered = TERMS.filter(t=>{
+    const matchCat = activeCat==='all' || t.cat===activeCat;
+    if(!matchCat) return false;
+    if(!q) return true;
+    return (t.jp+t.ro+t.he+(t.note||'')).toLowerCase().includes(q);
+  });
+  resultsEl.innerHTML = '';
+  noResultsEl.style.display = filtered.length ? 'none' : 'block';
+
+  const byCat = {};
+  filtered.forEach(t=>{ (byCat[t.cat] = byCat[t.cat]||[]).push(t); });
+  const order = ['cmd','num','stance','weapon','tech','kata','gear','general'];
+  order.forEach(cat=>{
+    if(!byCat[cat]) return;
+    const title = document.createElement('div');
+    title.className = 'cat-title';
+    title.textContent = CATS[cat];
+    resultsEl.appendChild(title);
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    byCat[cat].forEach(t=>{
+      const el = document.createElement('div');
+      el.className = 'term';
+      el.innerHTML = `<div class="t-top"><span class="jp">${t.jp}</span><span class="ro">${t.ro}</span></div>
+        <div class="he">${t.he}</div>${t.note?`<div class="note">${t.note}</div>`:''}`;
+      grid.appendChild(el);
+    });
+    resultsEl.appendChild(grid);
+  });
+}
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('catFilters').addEventListener('click', e=>{
+  if(e.target.tagName!=='BUTTON') return;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  activeCat = e.target.dataset.cat;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

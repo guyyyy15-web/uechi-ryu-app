@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בונקאי – יישומי הקאטות | Uechi-Ryu Bunkai</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Noto+Serif+JP:wght@700&display=swap');
+:root{--bg:#080808;--card:#111;--gold:#e8c44a;--red:#cc2200;--blue:#3399cc;--w:#f0ead8;--gr:#888;--border:#222;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--w);font-family:'Heebo',sans-serif;padding:1rem;}
+header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--gold);margin-bottom:1.5rem;}
+.main-title{font-family:'Noto Serif JP',serif;font-size:2.4rem;color:var(--gold);letter-spacing:.2em;}
+.sub-title{font-size:.9rem;color:var(--gr);margin-top:.3rem;letter-spacing:.1em;}
+.app-nav{display:flex;justify-content:center;gap:.5rem;margin-top:.9rem;flex-wrap:wrap;}
+.app-nav a{color:var(--gr);text-decoration:none;font-size:.8rem;padding:.4rem 1.1rem;border:1px solid var(--border);border-radius:20px;transition:.15s;font-weight:700;}
+.app-nav a:hover{border-color:var(--gold);color:var(--gold);}
+.app-nav a.active{background:var(--gold);color:#000;border-color:var(--gold);}
+.wrap{max-width:900px;margin:0 auto;}
+.intro-note{background:#120800;border:1px solid #3a2a10;border-right:4px solid var(--gold);margin:0 auto 1.5rem;padding:.8rem 1rem;font-size:.8rem;color:var(--w);line-height:1.7;}
+.intro-note strong{color:var(--gold);}
+.disclaimer{background:#1a0808;border:1px solid #3a1010;border-right:4px solid var(--red);margin:0 auto 1.5rem;padding:.8rem 1rem;font-size:.76rem;color:#e8b8b0;line-height:1.7;}
+.disclaimer strong{color:var(--red);}
+.b-card{background:var(--card);border:1px solid var(--border);border-right:4px solid var(--gold);margin-bottom:1rem;}
+.b-header{display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem;background:#000;border-bottom:1px solid var(--border);}
+.b-num{font-size:1.4rem;font-weight:900;color:var(--gold);min-width:1.8rem;}
+.b-names{flex:1;}
+.b-names .jp{font-family:'Noto Serif JP',serif;font-size:.95rem;color:var(--gold);}
+.b-names .he{font-size:.8rem;color:var(--w);font-weight:700;}
+.formal-tag{font-size:.6rem;background:#0a1a08;color:#8fd66a;border:1px solid #2a4a1a;padding:.2rem .6rem;border-radius:10px;font-weight:700;white-space:nowrap;}
+.b-body{padding:.9rem 1rem;}
+.b-theme{font-size:.78rem;color:var(--gr);line-height:1.7;margin-bottom:.6rem;}
+.b-theme b{color:var(--w);}
+.b-example{background:#0d0d0d;border-right:3px solid var(--blue);padding:.6rem .8rem;border-radius:5px;font-size:.75rem;line-height:1.65;color:var(--w);margin-bottom:.5rem;}
+.b-example b{color:var(--blue);display:block;margin-bottom:.2rem;}
+.b-link{display:inline-block;font-size:.68rem;color:var(--gold);text-decoration:none;margin-top:.3rem;}
+.b-link:hover{text-decoration:underline;}
+footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1px solid var(--border);margin-top:1rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
+</style>
+</head>
+<body>
+<header>
+  <div class="main-title">分解</div>
+  <div class="sub-title">בונקאי · מה כל קאטה בעצם מגינה מפני · דוג'ו אורי אלישר</div>
+  <nav class="app-nav">
+    <a href="index.html">🏠 בית</a>
+    <a href="hojo-3d.html">🥋 הוג'ו אונדו</a>
+    <a href="kata.html">型 קאטות</a>
+    <a href="bunkai.html" class="active">🔑 בונקאי</a>
+    <a href="warmup.html">🔥 חימום</a>
+    <a href="glossary.html">📖 מילון</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <div class="intro-note">
+    <strong>בונקאי:</strong> ניתוח קרבי של תנועות קאטה – מול איזו תקיפה כל תנועה מגינה.
+  </div>
+  <div class="disclaimer">
+    <strong>רשמי:</strong> רק קאנשיווה וסייסאן. שאר הקאטות – אופי כללי, לא רצף מוסכם. בונקאי משתנה
+    בין מורים; בדקו את הגרסה הנהוגה בדוג'ו.
+  </div>
+
+  <!-- 1. Sanchin -->
+  <div class="b-card" id="b1">
+    <div class="b-header">
+      <div class="b-num">1</div>
+      <div class="b-names"><div class="jp">三戦 · SANCHIN</div><div class="he">חסימת הקשת (Wa Uke)</div></div>
+    </div>
+    <div class="b-body">
+      <div class="b-theme">חסימה מעגלית ראשונה בסגנון. שתי נקודות פגיעה – נמוכה מרגל קדמית, גבוהה מהצד השני.</div>
+      <div class="b-example"><b>דוגמה</b>חסימה, אז מכת קשקש אגודל ללסת. או: תפיסה + מכה לגרון כחלק מהפלה.</div>
+      <a class="b-link" href="kata.html#k1" target="_blank">↗ צפו בקאטה סנצ'ין</a>
+    </div>
+  </div>
+
+  <!-- 2. Kanshiwa -->
+  <div class="b-card" id="b2">
+    <div class="b-header">
+      <div class="b-num">2</div>
+      <div class="b-names"><div class="jp">完子和 · KANSHIWA</div><div class="he">תרגיל זוגי רשמי</div></div>
+      <div class="formal-tag">✓ בונקאי רשמי</div>
+    </div>
+    <div class="b-body">
+      <div class="b-theme">תרגיל זוגי קבוע: תקיפה מול תגובה מתוך הקאטה. דרישה למבחן חגורה ירוקה.</div>
+      <div class="b-example"><b>נקודה</b>לתרגל בעוצמה גבוהה – הכנה לתחושת לחץ אמיתית.</div>
+      <a class="b-link" href="kata.html#k2" target="_blank">↗ צפו בקאטה קאנשיווה</a>
+    </div>
+  </div>
+
+  <!-- 3. Kanshu -->
+  <div class="b-card" id="b3">
+    <div class="b-header">
+      <div class="b-num">3</div>
+      <div class="b-names"><div class="jp">完周 · KANSHU</div><div class="he">תפיסות ושחרורים</div></div>
+    </div>
+    <div class="b-body">
+      <div class="b-theme">הכנה לסייסאן. טכניקות עגור, דיוק ותזמון. דגש על תפיסות ושחרורים.</div>
+      <a class="b-link" href="kata.html#k3" target="_blank">↗ צפו בקאטה קאנשו</a>
+    </div>
+  </div>
+
+  <!-- 4. Seichin -->
+  <div class="b-card" id="b4">
+    <div class="b-header">
+      <div class="b-num">4</div>
+      <div class="b-names"><div class="jp">十戦 · SEICHIN</div><div class="he">תפיסה וקריעה</div></div>
+    </div>
+    <div class="b-body">
+      <div class="b-theme">תפיסה וקריעה בסגנון סיני קלאסי. תנועות דרקון. שליטה על גפי היריב, לא מכה ישירה.</div>
+      <a class="b-link" href="kata.html#k4" target="_blank">↗ צפו בקאטה סייצ'ין</a>
+    </div>
+  </div>
+
+  <!-- 5. Seisan -->
+  <div class="b-card" id="b5">
+    <div class="b-header">
+      <div class="b-num">5</div>
+      <div class="b-names"><div class="jp">十三 · SEISAN</div><div class="he">תרגיל זוגי רשמי</div></div>
+      <div class="formal-tag">✓ בונקאי רשמי</div>
+    </div>
+    <div class="b-body">
+      <div class="b-theme">בונקאי רשמי, נדרש משודאן. סגנון נמר: עומק-רקמה, תפיסה וקריעה. קאטת שדה, לא ספורט.</div>
+      <a class="b-link" href="kata.html#k5" target="_blank">↗ צפו בקאטה סייסאן</a>
+    </div>
+  </div>
+
+  <!-- 6. Seiryu -->
+  <div class="b-card" id="b6">
+    <div class="b-header">
+      <div class="b-num">6</div>
+      <div class="b-names"><div class="jp">十六 · SEIRYU</div><div class="he">ניצול סיבוב</div></div>
+    </div>
+    <div class="b-body">
+      <div class="b-theme">טכניקות דרקון תוך סיבוב. ניצול סיבוב הגוף להטיית שיווי המשקל של היריב.</div>
+      <a class="b-link" href="kata.html#k6" target="_blank">↗ צפו בקאטה סיירו</a>
+    </div>
+  </div>
+
+  <!-- 7. Kanchin -->
+  <div class="b-card" id="b7">
+    <div class="b-header">
+      <div class="b-num">7</div>
+      <div class="b-names"><div class="jp">完戦 · KANCHIN</div><div class="he">חסימה כפולה</div></div>
+    </div>
+    <div class="b-body">
+      <div class="b-theme">הנצחה לקנבון אוצ'י. חסימת "ווטארי אוקה" כפולה מסאנסיירו – שתי חסימות רצופות שפותחות דרך למכה.</div>
+      <a class="b-link" href="kata.html#k7" target="_blank">↗ צפו בקאטה קאנצ'ין</a>
+    </div>
+  </div>
+
+  <!-- 8. Sanseiryu -->
+  <div class="b-card" id="b8">
+    <div class="b-header">
+      <div class="b-num">8</div>
+      <div class="b-names"><div class="jp">三十六 · SANSEIRYU</div><div class="he">אחיזה + מכת כף יד</div></div>
+    </div>
+    <div class="b-body">
+      <div class="b-theme">אחיזות ומכות כף יד פתוחה. משלבת נמר, עגור ודרקון.</div>
+      <div class="b-example"><b>אזהרה</b>דורשת ליווי מדריך בכיר – לא לימוד עצמי.</div>
+      <a class="b-link" href="kata.html#k8" target="_blank">↗ צפו בקאטה סאנסיירו</a>
+    </div>
+  </div>
+</div>
+
+<footer>分解 · Bunkai · דוג'ו אורי אלישר · אוקינאווה<br>
+<span style="font-size:.6rem;opacity:.4;display:block;margin-top:.3rem;font-family:Heebo,sans-serif">
+מקורות: uechiryu-oryukai.com · uechi-insights.com · forums.uechi-ryu.com · wpd-rc.com
+</span></footer>
+</body>
+</html>

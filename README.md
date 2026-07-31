@@ -35,4 +35,4 @@ python build.py
 ורישיון ב-`references/technique-notes.md`.
 
 ---
-דוג'ו אורי אלישר · אוקינאווה
+אוקינאווה

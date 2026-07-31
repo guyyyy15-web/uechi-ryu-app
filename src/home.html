@@ -15,15 +15,15 @@ header{text-align:center;padding:2rem 1rem 1.2rem;}
 .wrap{max-width:760px;margin:0 auto;}
 .list{border-top:1px solid var(--border);}
 .row{display:flex;align-items:center;gap:1.2rem;padding:1.1rem .3rem;text-decoration:none;
-  border-bottom:1px solid var(--border);border-right:2px solid transparent;transition:border-color .15s;}
-.row:hover{border-right-color:var(--red);}
+  border-bottom:1px solid var(--border);border-inline-start:2px solid transparent;transition:border-color .15s;}
+.row:hover{border-inline-start-color:var(--red);}
 .row .jp{font-family:'Noto Serif JP',serif;color:var(--gold);font-size:1.3rem;width:2.4em;text-align:center;flex-shrink:0;}
 .row .txt{flex:1;}
 .row .he{font-size:.92rem;font-weight:700;color:var(--w);}
 .row .desc{font-size:.74rem;color:var(--gr);margin-top:.2rem;line-height:1.5;}
 .row.featured{background:#f6ecd2;border:1px solid #e0cc9c;border-bottom:1px solid #e0cc9c;
-  border-right:4px solid var(--gold);padding:1.3rem .9rem;margin-bottom:.4rem;}
-.row.featured:hover{border-right-color:var(--red);}
+  border-inline-start:4px solid var(--gold);padding:1.3rem .9rem;margin-bottom:.4rem;}
+.row.featured:hover{border-inline-start-color:var(--red);}
 .row.featured .jp{font-size:1.7rem;}
 .row.featured .he{font-size:1.05rem;color:var(--gold);}
 .row.featured .desc{font-size:.78rem;}
@@ -40,23 +40,23 @@ footer{text-align:center;padding:2rem 1rem 1rem;color:#7d6b4d;font-size:.7rem;ma
   <div class="list">
     <a class="row featured" href="generator.html">
       <span class="jp">稽古</span>
-      <span class="txt"><div class="he">מחולל אימון</div><div class="desc">לחיצה אחת בונה אימון אקראי מתוך כל התרגילים.</div></span>
+      <span class="txt"><div class="he" data-i18n="home_row_generator_title">מחולל אימון</div><div class="desc" data-i18n="home_row_generator_desc">לחיצה אחת בונה אימון אקראי מתוך כל התרגילים.</div></span>
     </a>
     <a class="row" href="warmup.html">
       <span class="jp">準備</span>
-      <span class="txt"><div class="he">חימום</div><div class="desc">8 שלבים לפני אימון, ניתנים לסימון.</div></span>
+      <span class="txt"><div class="he" data-i18n="home_row_warmup_title">חימום</div><div class="desc" data-i18n="home_row_warmup_desc">8 שלבים לפני אימון, ניתנים לסימון.</div></span>
     </a>
     <a class="row" href="hojo-3d.html">
       <span class="jp">補助</span>
-      <span class="txt"><div class="he">הוג'ו אונדו</div><div class="desc">13 תרגילי העזר – סרטון הדגמה ותמונת מקור לכל תרגיל.</div></span>
+      <span class="txt"><div class="he" data-i18n="home_row_hojo_title">הוג'ו אונדו</div><div class="desc" data-i18n="home_row_hojo_desc">13 תרגילי העזר – סרטון הדגמה ותמונת מקור לכל תרגיל.</div></span>
     </a>
     <a class="row" href="kata.html">
       <span class="jp">型</span>
-      <span class="txt"><div class="he">קאטות</div><div class="desc">8 הקאטות לפי סדר חגורות, עם הסבר, בונקאי וסרטון.</div></span>
+      <span class="txt"><div class="he" data-i18n="home_row_kata_title">קאטות</div><div class="desc" data-i18n="home_row_kata_desc">8 הקאטות לפי סדר חגורות, עם הסבר, בונקאי וסרטון.</div></span>
     </a>
     <a class="row" href="glossary.html">
       <span class="jp">用語</span>
-      <span class="txt"><div class="he">מילון מונחים</div><div class="desc">מונחי יפנית שבשימוש באפליקציה, עם חיפוש.</div></span>
+      <span class="txt"><div class="he" data-i18n="home_row_glossary_title">מילון מונחים</div><div class="desc" data-i18n="home_row_glossary_desc">מונחי יפנית שבשימוש באפליקציה, עם חיפוש.</div></span>
     </a>
   </div>
 </div>

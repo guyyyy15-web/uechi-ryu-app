@@ -33,8 +33,10 @@ def strip_script(body):
     body_wo = re.sub(r"<script[^>]*>.*?</script>\s*", "", body, flags=re.S)
     return body_wo, scripts
 
+SHARED_SCRIPTS = ["i18n.js"]
+
 styles = []
-scripts_all = []
+scripts_all = [read(fn) for fn in SHARED_SCRIPTS]
 views = {}
 
 for key, fn in FILES.items():
@@ -125,7 +127,7 @@ header{padding:1.3rem 1rem .9rem;}
 .nav-cta:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 
 .nav-dropdown{
-  position:absolute;top:100%;right:1rem;
+  position:absolute;top:100%;inset-inline-end:1rem;
   min-width:200px;max-width:calc(100vw - 2rem);
   background:var(--card);border:1px solid var(--border);
   box-shadow:0 4px 14px rgba(0,0,0,.18);
@@ -135,14 +137,23 @@ header{padding:1.3rem 1rem .9rem;}
 .nav-dropdown ul{list-style:none;margin:0;padding:.4rem 0;}
 .nav-dropdown a{
   display:block;padding:.65rem 1.1rem;color:var(--w);text-decoration:none;font-size:.85rem;
-  border-right:3px solid transparent;transition:background .15s,border-color .15s,color .15s;
+  border-inline-start:3px solid transparent;transition:background .15s,border-color .15s,color .15s;
 }
-.nav-dropdown a:hover{background:#f3e6c4;border-right-color:var(--gold);color:var(--gold);}
-.nav-dropdown a.active{background:#f3e6c4;color:var(--gold);border-right-color:var(--red);font-weight:700;}
+.nav-dropdown a:hover{background:#f3e6c4;border-inline-start-color:var(--gold);color:var(--gold);}
+.nav-dropdown a.active{background:#f3e6c4;color:var(--gold);border-inline-start-color:var(--red);font-weight:700;}
 .nav-dropdown a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;background:#f3e6c4;}
 
+.lang-toggle{
+  display:flex;justify-content:center;align-items:center;
+  min-width:40px;height:40px;padding:0 .6rem;border:1px solid var(--border);background:var(--card);
+  cursor:pointer;flex-shrink:0;font-size:.8rem;font-weight:700;color:var(--w);
+  font-family:'Heebo',sans-serif;
+}
+.lang-toggle:hover{border-color:var(--gold);color:var(--gold);}
+.lang-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
 @media(max-width:420px){
-  .nav-dropdown{right:.5rem;min-width:180px;}
+  .nav-dropdown{inset-inline-end:.5rem;min-width:180px;}
 }
 
 header a.logo-link{color:inherit;text-decoration:none;display:inline-block;}
@@ -254,7 +265,15 @@ if(navToggleBtn && navDropdownEl){
   });
 }
 
+const langToggleBtn = document.getElementById('langToggle');
+if(langToggleBtn){
+  langToggleBtn.addEventListener('click', function(){
+    setLang(getLang()==='he' ? 'en' : 'he');
+  });
+}
+
 (function(){
+  applyI18n(getLang());
   const initial = (location.hash||'#home').replace('#','');
   showView(document.getElementById('view-'+initial) ? initial : 'home');
 })();
@@ -262,17 +281,18 @@ if(navToggleBtn && navDropdownEl){
 
 nav_html = """
 <div class="nav-bar">
-  <button type="button" id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navDropdown" aria-label="פתיחת תפריט ניווט">
+  <button type="button" id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navDropdown" data-i18n-attr="aria-label:nav_toggle_label" aria-label="פתיחת תפריט ניווט">
     <span class="nav-toggle-bar"></span>
   </button>
-  <a href="#generator" data-view="generator" class="nav-cta">מחולל אימון</a>
+  <a href="#generator" data-view="generator" class="nav-cta" data-i18n="nav_generator">מחולל אימון</a>
+  <button type="button" id="langToggle" class="lang-toggle" data-i18n-attr="aria-label:lang_toggle_label" aria-label="Switch language">EN</button>
   <div id="navDropdown" class="nav-dropdown" hidden>
-    <nav aria-label="ניווט בין דפי האפליקציה">
+    <nav data-i18n-attr="aria-label:nav_dropdown_label" aria-label="ניווט בין דפי האפליקציה">
       <ul>
-        <li><a href="#hojo" data-view="hojo">הוג'ו אונדו</a></li>
-        <li><a href="#kata" data-view="kata">קאטות</a></li>
-        <li><a href="#warmup" data-view="warmup">חימום</a></li>
-        <li><a href="#glossary" data-view="glossary">מילון</a></li>
+        <li><a href="#hojo" data-view="hojo" data-i18n="nav_hojo">הוג'ו אונדו</a></li>
+        <li><a href="#kata" data-view="kata" data-i18n="nav_kata">קאטות</a></li>
+        <li><a href="#warmup" data-view="warmup" data-i18n="nav_warmup">חימום</a></li>
+        <li><a href="#glossary" data-view="glossary" data-i18n="nav_glossary">מילון</a></li>
       </ul>
     </nav>
   </div>
@@ -305,6 +325,16 @@ final_html = f"""<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<script>
+(function(){{
+  try{{
+    if(localStorage.getItem('lang')==='en'){{
+      document.documentElement.lang='en';
+      document.documentElement.dir='ltr';
+    }}
+  }}catch(e){{}}
+}})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{SITE_TITLE}</title>
 <meta name="description" content="{SITE_DESC}">
@@ -319,11 +349,11 @@ final_html = f"""<!DOCTYPE html>
 <style>
 {''.join(cleaned_styles)}
 {router_css}
-.noscript-warn{{background:#1a0808;border:1px solid #3a1010;border-right:4px solid var(--red);margin:1rem auto;max-width:900px;padding:.8rem 1rem;font-size:.8rem;color:#e8b8b0;}}
+.noscript-warn{{background:#1a0808;border:1px solid #3a1010;border-inline-start:4px solid var(--red);margin:1rem auto;max-width:900px;padding:.8rem 1rem;font-size:.8rem;color:#e8b8b0;}}
 </style>
 </head>
 <body>
-<noscript><div class="noscript-warn">האפליקציה דורשת JavaScript לניווט בין החלקים. פתחו את הקובץ בדפדפן רגיל (כרום/אדג'/פיירפוקס) ולא בתצוגה מקוצרת.</div></noscript>
+<noscript><div class="noscript-warn">האפליקציה דורשת JavaScript לניווט בין החלקים. פתחו את הקובץ בדפדפן רגיל (כרום/אדג'/פיירפוקס) ולא בתצוגה מקוצרת.<br>This app requires JavaScript to navigate between sections. Please open it in a regular browser (Chrome/Edge/Firefox).</div></noscript>
 {nav_html}
 {sections_html}
 <script>

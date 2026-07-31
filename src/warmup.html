@@ -32,7 +32,7 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .s-title{font-size:.92rem;font-weight:700;color:var(--w);}
 .s-dur{font-size:.65rem;color:var(--gold);background:#f3e6c4;padding:.15rem .5rem;border-radius:10px;white-space:nowrap;}
 .s-desc{font-size:.76rem;color:var(--gr);line-height:1.6;margin-top:.3rem;}
-.section-title{font-size:.85rem;color:var(--gold);font-weight:700;margin:1.6rem 0 .7rem;padding-right:.3rem;border-right:3px solid var(--gold);}
+.section-title{font-size:.85rem;color:var(--gold);font-weight:700;margin:1.6rem 0 .7rem;padding-inline-start:.3rem;border-inline-start:3px solid var(--gold);}
 .reset-btn{display:block;margin:1.5rem auto 0;background:none;border:1px solid var(--border);color:var(--gr);font-size:.72rem;padding:.5rem 1.2rem;border-radius:20px;cursor:pointer;font-family:'Heebo',sans-serif;}
 .reset-btn:hover{border-color:var(--red);color:var(--red);}
 .spotify-link{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;margin:0 auto 1.5rem;max-width:760px;text-decoration:none;color:var(--w);font-size:.82rem;font-weight:700;transition:.15s;}
@@ -44,86 +44,86 @@ footer{text-align:center;padding:1.5rem;color:#7d6b4d;font-size:.72rem;border-to
 <body>
 <header>
   <div class="main-title">準備運動</div>
-  <div class="sub-title">חימום · לפני כל אימון</div>
+  <div class="sub-title" data-i18n="warmup_subtitle">חימום · לפני כל אימון</div>
 </header>
 
 <div class="wrap">
-  <div class="intro-note">
+  <div class="intro-note" data-i18n-html="warmup_intro">
     <strong>מטרה:</strong> העלאת דופק, שחרור מפרקים, הכנת הגוף. לא מתיחות עומק – אלה שמורות לסוף האימון.
     כ-10 דקות.
   </div>
   <a class="spotify-link" href="https://open.spotify.com/playlist/4xcqsrLM9kK2oopGhZ9Fte" target="_blank" rel="noopener">
     <span class="spotify-link-icon">♪</span>
-    <span class="spotify-link-text">מוזיקת רקע מסורתית (רשות) – פתחו פלייליסט יפני מסורתי ב-Spotify ↗</span>
+    <span class="spotify-link-text" data-i18n="warmup_spotify_text">מוזיקת רקע מסורתית (רשות) – פתחו פלייליסט יפני מסורתי ב-Spotify ↗</span>
   </a>
 
   <div class="progress-bar"><div class="progress-fill" id="pbar"></div></div>
 
-  <div class="section-title">1. העלאת דופק</div>
+  <div class="section-title" data-i18n="warmup_section1">1. העלאת דופק</div>
   <div class="step" data-id="s1">
     <div class="s-check">✓</div>
     <div class="s-body">
-      <div class="s-top"><span class="s-title">הליכה / ריצה קלה במקום</span><span class="s-dur">2-3 דק'</span></div>
-      <div class="s-desc">קצב עולה בהדרגה, עד הזעה קלה.</div>
+      <div class="s-top"><span class="s-title" data-i18n="warmup_s1_title">הליכה / ריצה קלה במקום</span><span class="s-dur" data-i18n="warmup_s1_dur">2-3 דק'</span></div>
+      <div class="s-desc" data-i18n="warmup_s1_desc">קצב עולה בהדרגה, עד הזעה קלה.</div>
     </div>
   </div>
 
-  <div class="section-title">2. סיבובי מפרקים (מלמעלה למטה)</div>
+  <div class="section-title" data-i18n="warmup_section2">2. סיבובי מפרקים (מלמעלה למטה)</div>
   <div class="step" data-id="s2">
     <div class="s-check">✓</div>
     <div class="s-body">
-      <div class="s-top"><span class="s-title">צוואר וכתפיים</span><span class="s-dur">1 דק'</span></div>
-      <div class="s-desc">סיבובים איטיים לצוואר (בלי לזרוק ראש אחורה) וכתפיים.</div>
+      <div class="s-top"><span class="s-title" data-i18n="warmup_s2_title">צוואר וכתפיים</span><span class="s-dur" data-i18n="warmup_s2_dur">1 דק'</span></div>
+      <div class="s-desc" data-i18n="warmup_s2_desc">סיבובים איטיים לצוואר (בלי לזרוק ראש אחורה) וכתפיים.</div>
     </div>
   </div>
   <div class="step" data-id="s3">
     <div class="s-check">✓</div>
     <div class="s-body">
-      <div class="s-top"><span class="s-title">מרפקים ושורשי כף יד</span><span class="s-dur">1 דק'</span></div>
-      <div class="s-desc">שורש כף יד לשני הכיוונים, כיפוף ויישור מרפקים.</div>
+      <div class="s-top"><span class="s-title" data-i18n="warmup_s3_title">מרפקים ושורשי כף יד</span><span class="s-dur" data-i18n="warmup_s3_dur">1 דק'</span></div>
+      <div class="s-desc" data-i18n="warmup_s3_desc">שורש כף יד לשני הכיוונים, כיפוף ויישור מרפקים.</div>
     </div>
   </div>
   <div class="step" data-id="s4">
     <div class="s-check">✓</div>
     <div class="s-body">
-      <div class="s-top"><span class="s-title">מותניים, ברכיים וקרסוליים</span><span class="s-dur">1-2 דק'</span></div>
-      <div class="s-desc">סיבובי אגן, ברך בעדינות, קרסול לכל כף רגל.</div>
+      <div class="s-top"><span class="s-title" data-i18n="warmup_s4_title">מותניים, ברכיים וקרסוליים</span><span class="s-dur" data-i18n="warmup_s4_dur">1-2 דק'</span></div>
+      <div class="s-desc" data-i18n="warmup_s4_desc">סיבובי אגן, ברך בעדינות, קרסול לכל כף רגל.</div>
     </div>
   </div>
 
-  <div class="section-title">3. מתיחות דינמיות</div>
+  <div class="section-title" data-i18n="warmup_section3">3. מתיחות דינמיות</div>
   <div class="step" data-id="s5">
     <div class="s-check">✓</div>
     <div class="s-body">
-      <div class="s-top"><span class="s-title">נדנוד רגליים (Leg Swings)</span><span class="s-dur">1 דק' לכל רגל</span></div>
-      <div class="s-desc">קדימה-אחורה, אחר כך ימינה-שמאלה. יד על קיר לאיזון.</div>
+      <div class="s-top"><span class="s-title" data-i18n="warmup_s5_title">נדנוד רגליים (Leg Swings)</span><span class="s-dur" data-i18n="warmup_s5_dur">1 דק' לכל רגל</span></div>
+      <div class="s-desc" data-i18n="warmup_s5_desc">קדימה-אחורה, אחר כך ימינה-שמאלה. יד על קיר לאיזון.</div>
     </div>
   </div>
   <div class="step" data-id="s6">
     <div class="s-check">✓</div>
     <div class="s-body">
-      <div class="s-top"><span class="s-title">סיבובי זרועות גדולים</span><span class="s-dur">30 שנ'</span></div>
-      <div class="s-desc">סיבובים מלאים קדימה ואחורה, מגבירים טווח תנועה בכתף.</div>
+      <div class="s-top"><span class="s-title" data-i18n="warmup_s6_title">סיבובי זרועות גדולים</span><span class="s-dur" data-i18n="warmup_s6_dur">30 שנ'</span></div>
+      <div class="s-desc" data-i18n="warmup_s6_desc">סיבובים מלאים קדימה ואחורה, מגבירים טווח תנועה בכתף.</div>
     </div>
   </div>
 
-  <div class="section-title">4. הכנה ספציפית לאוצ'י ריו</div>
+  <div class="section-title" data-i18n="warmup_section4">4. הכנה ספציפית לאוצ'י ריו</div>
   <div class="step" data-id="s7">
     <div class="s-check">✓</div>
     <div class="s-body">
-      <div class="s-top"><span class="s-title">עמידת סנצ'ין + נשימות איברקי</span><span class="s-dur">2 דק'</span></div>
-      <div class="s-desc">עמידת סנצ'ין, 8-10 נשימות עמוקות מהבטן, כיווץ מבוקר.</div>
+      <div class="s-top"><span class="s-title" data-i18n="warmup_s7_title">עמידת סנצ'ין + נשימות איברקי</span><span class="s-dur" data-i18n="warmup_s7_dur">2 דק'</span></div>
+      <div class="s-desc" data-i18n="warmup_s7_desc">עמידת סנצ'ין, 8-10 נשימות עמוקות מהבטן, כיווץ מבוקר.</div>
     </div>
   </div>
   <div class="step" data-id="s8">
     <div class="s-check">✓</div>
     <div class="s-body">
-      <div class="s-top"><span class="s-title">קיהון איטי – כמה אגרופים ובעיטות</span><span class="s-dur">1-2 דק'</span></div>
-      <div class="s-desc">כמה חזרות איטיות של אגרוף ובעיטה, בלי כוח מלא.</div>
+      <div class="s-top"><span class="s-title" data-i18n="warmup_s8_title">קיהון איטי – כמה אגרופים ובעיטות</span><span class="s-dur" data-i18n="warmup_s8_dur">1-2 דק'</span></div>
+      <div class="s-desc" data-i18n="warmup_s8_desc">כמה חזרות איטיות של אגרוף ובעיטה, בלי כוח מלא.</div>
     </div>
   </div>
 
-  <button class="reset-btn" id="resetBtn">איפוס הרשימה</button>
+  <button class="reset-btn" id="resetBtn" data-i18n="warmup_reset_btn">איפוס הרשימה</button>
 </div>
 
 <footer>準備運動 · Warm-up</footer>

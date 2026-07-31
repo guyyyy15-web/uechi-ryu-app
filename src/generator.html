@@ -17,13 +17,13 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .app-nav a:hover{border-color:var(--gold);color:var(--gold);}
 .app-nav a.active{background:var(--gold);color:#000;border-color:var(--gold);}
 .wrap{max-width:760px;margin:0 auto;}
-.intro-note{background:#f6ecd2;border:1px solid #e0cc9c;border-right:4px solid var(--gold);margin:0 auto 1.5rem;padding:.8rem 1rem;font-size:.8rem;color:var(--w);line-height:1.7;}
+.intro-note{background:#f6ecd2;border:1px solid #e0cc9c;border-inline-start:4px solid var(--gold);margin:0 auto 1.5rem;padding:.8rem 1rem;font-size:.8rem;color:var(--w);line-height:1.7;}
 .intro-note strong{color:var(--gold);}
 .gen-btn{display:block;margin:0 auto 1.8rem;background:var(--gold);color:#faf5e6;border:none;font-size:1rem;font-weight:700;padding:.9rem 2.4rem;cursor:pointer;font-family:'Heebo',sans-serif;letter-spacing:.05em;transition:.15s;}
 .gen-btn:hover{opacity:.85;}
 .workout{display:none;}
 .workout.show{display:block;}
-.w-section-title{font-size:.85rem;color:var(--gold);font-weight:700;margin:1.6rem 0 .7rem;padding-right:.3rem;border-right:3px solid var(--gold);}
+.w-section-title{font-size:.85rem;color:var(--gold);font-weight:700;margin:1.6rem 0 .7rem;padding-inline-start:.3rem;border-inline-start:3px solid var(--gold);}
 .step{display:flex;gap:.9rem;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.9rem 1rem;margin-bottom:.8rem;cursor:pointer;transition:.15s;flex-wrap:wrap;}
 .step:hover{border-color:var(--gold);}
 .step.done{opacity:.55;}
@@ -36,7 +36,7 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .s-dur{font-size:.65rem;color:var(--gold);background:#f3e6c4;padding:.15rem .5rem;border-radius:10px;white-space:nowrap;}
 .s-desc{font-size:.76rem;color:var(--gr);line-height:1.6;margin-top:.3rem;}
 .s-sub{font-size:.68rem;color:var(--gr);margin-top:.15rem;letter-spacing:.03em;}
-.s-sub .s-jp{font-family:'Noto Serif JP',serif;color:var(--gold);margin-left:.4rem;}
+.s-sub .s-jp{font-family:'Noto Serif JP',serif;color:var(--gold);margin-inline-start:.4rem;}
 .video-wrap.video-wrap-sm{width:64px;height:64px;padding-top:0;flex:0 0 auto;}
 .video-wrap.video-wrap-sm .play-overlay span{font-size:1rem;}
 .video-wrap.video-wrap-sm.playing{width:100%;height:auto;padding-top:56.25%;flex:1 1 100%;}
@@ -47,17 +47,17 @@ footer{text-align:center;padding:1.5rem;color:#7d6b4d;font-size:.72rem;border-to
 <body>
 <header>
   <div class="main-title">稽古</div>
-  <div class="sub-title">מחולל אימון · לחיצה אחת, אימון אקראי</div>
+  <div class="sub-title" data-i18n="gen_subtitle">מחולל אימון · לחיצה אחת, אימון אקראי</div>
 </header>
 
 <div class="wrap">
-  <div class="intro-note">
+  <div class="intro-note" data-i18n-html="gen_intro">
     <strong>איך זה עובד:</strong> לחיצה אחת בונה אימון אקראי מתוך התרגילים באתר – חימום קבוע,
     4 תרגילי הוג'ו אונדו, 3 טכניקות בסיס (קיהון), וקאטה אחת, כל אחד עם מספר חזרות אקראי.
     לחצו שוב לאימון חדש. אפשר לסמן כל שלב שסיימתם.
   </div>
 
-  <button class="gen-btn" id="genBtn">צור אימון</button>
+  <button class="gen-btn" id="genBtn" data-i18n="gen_btn">צור אימון</button>
 
   <div class="workout" id="workoutResult"></div>
 </div>
@@ -146,29 +146,30 @@ function stepHtml(title, dur, desc, sub, thumb, link, vid){
 
 function renderWorkout(workout){
   const el = document.getElementById('workoutResult');
+  const t = I18N[getLang()];
   let html = '';
 
-  html += '<div class="w-section-title">1. חימום</div>';
+  html += '<div class="w-section-title">' + t.gen_section_warmup + '</div>';
   workout.warmupSteps.forEach(function(w){
     html += stepHtml(w.title, w.dur, w.desc);
   });
 
-  html += '<div class="w-section-title">2. הוג\'ו אונדו</div>';
+  html += '<div class="w-section-title">' + t.gen_section_hojo + '</div>';
   workout.hojoPicked.forEach(function(h){
-    html += stepHtml(h.num + '. ' + h.name, h.reps + ' חזרות', '', subHtml(h.jp, h.ro), h.thumb, h.link, h.vid);
+    html += stepHtml(h.num + '. ' + h.name, h.reps + t.gen_reps_suffix, '', subHtml(h.jp, h.ro), h.thumb, h.link, h.vid);
   });
 
-  html += '<div class="w-section-title">3. תרגול בסיס (קיהון)</div>';
+  html += '<div class="w-section-title">' + t.gen_section_kihon + '</div>';
   if(workout.kihonPicked.length===0){
-    html += '<div class="empty-state">אין מונחי מכות זמינים כרגע.</div>';
+    html += '<div class="empty-state">' + t.gen_empty_kihon + '</div>';
   }
   workout.kihonPicked.forEach(function(k){
-    html += stepHtml(k.name, k.reps + ' חזרות לכל צד', '', subHtml(k.jp, k.ro), k.thumb, k.link, k.vid);
+    html += stepHtml(k.name, k.reps + t.gen_reps_side_suffix, '', subHtml(k.jp, k.ro), k.thumb, k.link, k.vid);
   });
 
-  html += '<div class="w-section-title">4. קאטה</div>';
+  html += '<div class="w-section-title">' + t.gen_section_kata + '</div>';
   workout.kataPicked.forEach(function(k){
-    html += stepHtml(k.name, k.reps + ' חזרות', k.belt, subHtml(k.jp, k.ro), k.thumb, k.link, k.vid);
+    html += stepHtml(k.name, k.reps + t.gen_reps_suffix, k.belt, subHtml(k.jp, k.ro), k.thumb, k.link, k.vid);
   });
 
   el.innerHTML = html;

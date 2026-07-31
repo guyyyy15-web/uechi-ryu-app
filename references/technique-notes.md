@@ -85,18 +85,48 @@
 | 6 – אורקן | [Urakenuchi.jpg](https://commons.wikimedia.org/wiki/File:Urakenuchi.jpg) | Regine Becker | שימוש חופשי |
 | 11 – נוקיטה | [Nukite.png](https://commons.wikimedia.org/wiki/File:Nukite.png) | Kurmis | CC BY 3.0 |
 
-### עדיין חסר (נחסם זמנית ע"י הגבלת קצב 429 של Wikimedia)
-מצאתי ואימתתי רישיון עבורם, אבל ההורדה נכשלה כי השרת שלהם חסם את כתובת
-ה-IP המשותפת של הסביבה הזו ("Too many requests... contact noc@wikimedia.org").
-אפשר לנסות שוב מאוחר יותר, או להוריד ידנית:
-- תרגיל 2 (סוקוסן): [Tsumasaki.svg](https://commons.wikimedia.org/wiki/File:Tsumasaki.svg) – Kurmis/Judcosta, CC BY-SA 3.0
-- תרגיל 5 (אשי קן): [Koshi.svg](https://commons.wikimedia.org/wiki/File:Koshi.svg) – Kurmis/Judcosta, CC BY-SA 3.0
-- תרגיל 10 (שוקן): [Nakadaka_ken.png](https://commons.wikimedia.org/wiki/File:Nakadaka_ken.png) – Kurmis, CC BY 3.0
-- בונוס (12/13, גב כף יד): [Haishu.png](https://commons.wikimedia.org/wiki/File:Haishu.png) – Kurmis, CC BY 3.0
-- בונוס (עמידת סנצ'ין): [Sanchin_Dachi_(Goju-ryu).jpg](https://commons.wikimedia.org/wiki/File:Sanchin_Dachi_(Goju-ryu).jpg) – Ben Bathen, CC0
-
-### לא נמצא מקור פתוח
+### לא נמצא מקור פתוח (הוג'ו אונדו)
 מרפק (היג'י, תרגיל 7) וקוי נו שיפו אוצ'י (זנב הקרפיון, 12/13) – לא אותרו
 תמונות/איורים ברישיון פתוח שתואמים בדיוק. הטכניקות הספציפיות של הוג'ו
 אונדו באוצ'י ריו כמעט ולא מתועדות במאגרים פתוחים – בעיקר
 בסרטוני יוטיוב של דוג'ואים ספציפיים, המוגנים בזכויות יוצרים.
+
+---
+
+## תמונות מקור למילון המונחים (glossary.html) – 26 מונחים
+
+בהמשך לחיפוש הקודם, הצלחתי להוריד גם את 5 הקבצים שנחסמו קודם, ועוד קבצים
+חדשים לעמידות ומכות. כולם מוטמעים כ-base64 בתוך glossary.html (המדריך).
+
+| מונח | קובץ | יוצר | רישיון |
+|---|---|---|---|
+| שוקן (Nakadaka Ippon Ken) | [Nakadaka_ken.png](https://commons.wikimedia.org/wiki/File:Nakadaka_ken.png) | Kurmis | CC BY 3.0 |
+| סוקוסן (Tsumasaki) | [Tsumasaki.svg](https://commons.wikimedia.org/wiki/File:Tsumasaki.svg) | Kurmis/Judcosta | CC BY-SA 3.0 |
+| אשי קן (Koshi) | [Koshi.svg](https://commons.wikimedia.org/wiki/File:Koshi.svg) | Kurmis/Judcosta | CC BY-SA 3.0 |
+| Haishu | [Haishu.png](https://commons.wikimedia.org/wiki/File:Haishu.png) | Kurmis | CC BY 3.0 |
+| עמידת סנצ'ין | [Sanchin_Dachi_(Goju-ryu).jpg](https://commons.wikimedia.org/wiki/File:Sanchin_Dachi_(Goju-ryu).jpg) | Ben Bathen | CC0 |
+| עמידת חתול (Neko Ashi) | [Jud-nekoashi-dashi-diagrama.gif](https://commons.wikimedia.org/wiki/File:Jud-nekoashi-dashi-diagrama.gif) | Judcosta | CC BY 3.0 |
+| עמידה קדמית (Zenkutsu) | [Jud-zenkutsu-dashi-esquema.gif](https://commons.wikimedia.org/wiki/File:Jud-zenkutsu-dashi-esquema.gif) | Judcosta | CC BY-SA 3.0 |
+| עמידה אחורית (Kokutsu) | [Jud-kokutsu-dashi-esquema.gif](https://commons.wikimedia.org/wiki/File:Jud-kokutsu-dashi-esquema.gif) | Judcosta | CC BY-SA 3.0 |
+| עמידת פרשים (Kiba) | [Jud-kiba-dashi-esquema.gif](https://commons.wikimedia.org/wiki/File:Jud-kiba-dashi-esquema.gif) | Judcosta | CC BY-SA 3.0 |
+| עמידת קידה (Musubi) | [Jud-musubi-dashi-esquema.gif](https://commons.wikimedia.org/wiki/File:Jud-musubi-dashi-esquema.gif) | Judcosta | CC BY-SA 3.0 |
+| עמידה מקבילה (Heiko) | [Jud-heiko-dashi-esquema.gif](https://commons.wikimedia.org/wiki/File:Jud-heiko-dashi-esquema.gif) | Judcosta | CC BY-SA 3.0 |
+| אגרוף הפוך (Gyaku Zuki) | [Jud-gyaku-zuki.gif](https://commons.wikimedia.org/wiki/File:Jud-gyaku-zuki.gif) | Judcosta | CC BY-SA 3.0 |
+
+בנוסף: 8 מונחי הקאטות מקושרים לתמונות הממוזערות (thumbnail) של אותם סרטוני
+היוטיוב שכבר בקאטה.html – ללא הורדה נפרדת, קישור חיצוני ל-img.youtube.com.
+
+### עדיין חסר במילון (נחסם ע"י הגבלת קצב, לא ניסיתי עוד)
+- אגרוף רודף (Oi Zuki): [Jud-oi-zuki.gif](https://commons.wikimedia.org/wiki/File:Jud-oi-zuki.gif) – Judcosta, CC BY-SA 3.0
+- לוח חבטה (Makiwara): [Funakoshi_Makiwara.jpg](https://commons.wikimedia.org/wiki/File:Funakoshi_Makiwara.jpg) – Funakoshi Gichin (1924), Public Domain
+- נונצ'קו: [Nunchaku_metal.jpg](https://commons.wikimedia.org/wiki/File:Nunchaku_metal.jpg) – Blowgun, CC BY-SA 3.0
+- סאי: [2_antique_sai.jpg](https://commons.wikimedia.org/wiki/File:2_antique_sai.jpg) – Samuraiantiqueworld, CC BY-SA 3.0
+- בו: [Bo(weapon).png](https://commons.wikimedia.org/wiki/File:Bo(weapon).png) – Chrkl (סילואט, לא תצלום), CC BY-SA 3.0
+- גי/אובי: [TOKYODO_karate_uniforms_and_belts.jpg](https://commons.wikimedia.org/wiki/File:TOKYODO_karate_uniforms_and_belts.jpg) – Yong9111, CC BY-SA 3.0
+
+### לא נמצא מקור פתוח (מילון)
+בעיטות/חסימות כלליות (Mae/Yoko/Mawashi/Ushiro/Hiza Geri, Gedan Barai,
+Age/Soto/Uchi Uke), פקודות דוג'ו (Rei, Kiotsuke, Yoi וכו'), ספירה (1-10),
+ומושגי הליבה האוקינאוויים (Chinkuchi, Muchimi, Gamaku, Zanshin, Kime, Maai,
+Kiai) – אלה מונחים מופשטים או ללא תצלום ייעודי שאותרתי ברישיון פתוח.
+ניגירי גאמי (צנצנות אחיזה) – רק תמונות מוצר מסחריות, לא ברישיון פתוח.

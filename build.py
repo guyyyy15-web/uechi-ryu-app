@@ -61,6 +61,17 @@ def fix_home_links(body):
     return re.sub(r'href="([a-z0-9-]+\.html)"', repl, body)
 views["home"] = fix_home_links(views["home"])
 
+def linkify_title(body):
+    return re.sub(
+        r'<div class="main-title">(.*?)</div>',
+        r'<a href="#home" data-view="home" class="logo-link"><div class="main-title">\1</div></a>',
+        body, count=1, flags=re.S
+    )
+
+for key in views:
+    if key != "home":
+        views[key] = linkify_title(views[key])
+
 # dedupe the @import font line -- keep only first occurrence
 seen_import = False
 cleaned_styles = []
@@ -85,13 +96,58 @@ header{padding:1.3rem 1rem .9rem;}
 .sub-title{letter-spacing:.05em;}
 .dojo-line{letter-spacing:.05em;}
 
-.app-nav{display:flex;justify-content:center;gap:0;margin-top:1rem;flex-wrap:wrap;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.app-nav a{color:var(--gr);text-decoration:none;font-size:.78rem;padding:.6rem 1.1rem;
-  border-left:1px solid var(--border);border-radius:0;background:none;font-weight:400;transition:color .15s;}
-.app-nav a:first-child{border-left:none;}
-.app-nav a:hover{color:var(--gold);}
-.app-nav a.active{color:var(--gold);background:#f3e6c4;}
+.nav-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+  padding:.6rem 1rem;position:relative;z-index:50;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.nav-toggle{
+  display:flex;justify-content:center;align-items:center;
+  width:40px;height:40px;padding:0;border:1px solid var(--border);background:var(--card);
+  cursor:pointer;flex-shrink:0;
+}
+.nav-toggle-bar{position:relative;width:20px;height:2px;background:var(--w);transition:transform .15s,opacity .15s,background .15s;}
+.nav-toggle-bar::before,.nav-toggle-bar::after{content:"";position:absolute;right:0;width:20px;height:2px;background:var(--w);transition:transform .15s,background .15s;}
+.nav-toggle-bar::before{transform:translateY(-6px);}
+.nav-toggle-bar::after{transform:translateY(6px);}
+.nav-toggle:hover .nav-toggle-bar,.nav-toggle:hover .nav-toggle-bar::before,.nav-toggle:hover .nav-toggle-bar::after{background:var(--gold);}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar{background:transparent;}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::before{transform:translateY(0) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::after{transform:translateY(0) rotate(-45deg);}
+.nav-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+.nav-cta{
+  color:var(--card);background:var(--gold);text-decoration:none;font-size:.82rem;font-weight:700;
+  padding:.55rem 1.1rem;border:1px solid var(--gold);white-space:nowrap;transition:background .15s,border-color .15s;
+}
+.nav-cta:hover{background:#7d5b14;border-color:#7d5b14;}
+.nav-cta.active{box-shadow:inset 0 0 0 2px var(--red);}
+.nav-cta:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+.nav-dropdown{
+  position:absolute;top:100%;right:1rem;
+  min-width:200px;max-width:calc(100vw - 2rem);
+  background:var(--card);border:1px solid var(--border);
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  z-index:60;
+}
+.nav-dropdown[hidden]{display:none;}
+.nav-dropdown ul{list-style:none;margin:0;padding:.4rem 0;}
+.nav-dropdown a{
+  display:block;padding:.65rem 1.1rem;color:var(--w);text-decoration:none;font-size:.85rem;
+  border-right:3px solid transparent;transition:background .15s,border-color .15s,color .15s;
+}
+.nav-dropdown a:hover{background:#f3e6c4;border-right-color:var(--gold);color:var(--gold);}
+.nav-dropdown a.active{background:#f3e6c4;color:var(--gold);border-right-color:var(--red);font-weight:700;}
+.nav-dropdown a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;background:#f3e6c4;}
+
+@media(max-width:420px){
+  .nav-dropdown{right:.5rem;min-width:180px;}
+}
+
+header a.logo-link{color:inherit;text-decoration:none;display:inline-block;}
+header a.logo-link:hover .main-title{opacity:.75;}
+header a.logo-link:focus-visible{outline:2px solid var(--blue);outline-offset:4px;}
 
 .card,.term,.step,.kata,.b-card,.exercise{border-radius:0;}
 .card:hover{transform:none;box-shadow:none;}
@@ -134,9 +190,10 @@ function showView(name){
   const target = document.getElementById('view-'+name);
   if(!target) return;
   target.classList.add('active');
-  document.querySelectorAll('.app-nav a[data-view]').forEach(a=>{
+  document.querySelectorAll('.nav-cta[data-view], #navDropdown a[data-view]').forEach(a=>{
     a.classList.toggle('active', a.dataset.view===name);
   });
+  closeNavDropdown();
   window.scrollTo(0,0);
 }
 function jumpTo(view,id){
@@ -160,6 +217,40 @@ window.addEventListener('hashchange', function(){
   const v = (location.hash||'#home').replace('#','');
   if(document.getElementById('view-'+v)) showView(v);
 });
+
+const navToggleBtn = document.getElementById('navToggle');
+const navDropdownEl = document.getElementById('navDropdown');
+function openNavDropdown(){
+  if(!navDropdownEl) return;
+  navDropdownEl.hidden = false;
+  navToggleBtn.setAttribute('aria-expanded','true');
+}
+function closeNavDropdown(){
+  if(!navDropdownEl || navDropdownEl.hidden) return;
+  navDropdownEl.hidden = true;
+  navToggleBtn.setAttribute('aria-expanded','false');
+}
+if(navToggleBtn && navDropdownEl){
+  navToggleBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(navDropdownEl.hidden) openNavDropdown(); else closeNavDropdown();
+  });
+  navDropdownEl.addEventListener('click', function(e){
+    if(e.target.closest('[data-view]')) closeNavDropdown();
+  });
+  document.addEventListener('click', function(e){
+    if(navDropdownEl.hidden) return;
+    if(navDropdownEl.contains(e.target) || e.target===navToggleBtn || navToggleBtn.contains(e.target)) return;
+    closeNavDropdown();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && !navDropdownEl.hidden){
+      closeNavDropdown();
+      navToggleBtn.focus();
+    }
+  });
+}
+
 (function(){
   const initial = (location.hash||'#home').replace('#','');
   showView(document.getElementById('view-'+initial) ? initial : 'home');
@@ -167,14 +258,22 @@ window.addEventListener('hashchange', function(){
 """
 
 nav_html = """
-<nav class="app-nav">
-  <a href="#home" data-view="home">בית</a>
-  <a href="#hojo" data-view="hojo">הוג'ו אונדו</a>
-  <a href="#kata" data-view="kata">קאטות</a>
-  <a href="#warmup" data-view="warmup">חימום</a>
-  <a href="#glossary" data-view="glossary">מילון</a>
-  <a href="#generator" data-view="generator">מחולל אימון</a>
-</nav>
+<div class="nav-bar">
+  <button type="button" id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navDropdown" aria-label="פתיחת תפריט ניווט">
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <a href="#generator" data-view="generator" class="nav-cta">מחולל אימון</a>
+  <div id="navDropdown" class="nav-dropdown" hidden>
+    <nav aria-label="ניווט בין דפי האפליקציה">
+      <ul>
+        <li><a href="#hojo" data-view="hojo">הוג'ו אונדו</a></li>
+        <li><a href="#kata" data-view="kata">קאטות</a></li>
+        <li><a href="#warmup" data-view="warmup">חימום</a></li>
+        <li><a href="#glossary" data-view="glossary">מילון</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
 """
 
 view_order = ["home", "hojo", "kata", "warmup", "glossary", "generator"]

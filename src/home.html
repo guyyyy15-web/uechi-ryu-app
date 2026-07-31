@@ -21,6 +21,12 @@ header{text-align:center;padding:2rem 1rem 1.2rem;}
 .row .txt{flex:1;}
 .row .he{font-size:.92rem;font-weight:700;color:var(--w);}
 .row .desc{font-size:.74rem;color:var(--gr);margin-top:.2rem;line-height:1.5;}
+.row.featured{background:#f6ecd2;border:1px solid #e0cc9c;border-bottom:1px solid #e0cc9c;
+  border-right:4px solid var(--gold);padding:1.3rem .9rem;margin-bottom:.4rem;}
+.row.featured:hover{border-right-color:var(--red);}
+.row.featured .jp{font-size:1.7rem;}
+.row.featured .he{font-size:1.05rem;color:var(--gold);}
+.row.featured .desc{font-size:.78rem;}
 footer{text-align:center;padding:2rem 1rem 1rem;color:#7d6b4d;font-size:.7rem;margin-top:1.5rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
 </style>
 </head>
@@ -32,6 +38,10 @@ footer{text-align:center;padding:2rem 1rem 1rem;color:#7d6b4d;font-size:.7rem;ma
 
 <div class="wrap">
   <div class="list">
+    <a class="row featured" href="generator.html">
+      <span class="jp">稽古</span>
+      <span class="txt"><div class="he">מחולל אימון</div><div class="desc">לחיצה אחת בונה אימון אקראי מתוך כל התרגילים.</div></span>
+    </a>
     <a class="row" href="warmup.html">
       <span class="jp">準備</span>
       <span class="txt"><div class="he">חימום</div><div class="desc">8 שלבים לפני אימון, ניתנים לסימון.</div></span>
@@ -47,10 +57,6 @@ footer{text-align:center;padding:2rem 1rem 1rem;color:#7d6b4d;font-size:.7rem;ma
     <a class="row" href="glossary.html">
       <span class="jp">用語</span>
       <span class="txt"><div class="he">מילון מונחים</div><div class="desc">מונחי יפנית שבשימוש באפליקציה, עם חיפוש.</div></span>
-    </a>
-    <a class="row" href="generator.html">
-      <span class="jp">稽古</span>
-      <span class="txt"><div class="he">מחולל אימון</div><div class="desc">לחיצה אחת בונה אימון אקראי מתוך כל התרגילים.</div></span>
     </a>
   </div>
 </div>

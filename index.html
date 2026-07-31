@@ -23,6 +23,12 @@ header{text-align:center;padding:2rem 1rem 1.2rem;}
 .row .txt{flex:1;}
 .row .he{font-size:.92rem;font-weight:700;color:var(--w);}
 .row .desc{font-size:.74rem;color:var(--gr);margin-top:.2rem;line-height:1.5;}
+.row.featured{background:#f6ecd2;border:1px solid #e0cc9c;border-bottom:1px solid #e0cc9c;
+  border-right:4px solid var(--gold);padding:1.3rem .9rem;margin-bottom:.4rem;}
+.row.featured:hover{border-right-color:var(--red);}
+.row.featured .jp{font-size:1.7rem;}
+.row.featured .he{font-size:1.05rem;color:var(--gold);}
+.row.featured .desc{font-size:.78rem;}
 footer{text-align:center;padding:2rem 1rem 1rem;color:#7d6b4d;font-size:.7rem;margin-top:1.5rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
 /* ---- hojo-3d.html ---- */
 
@@ -226,13 +232,58 @@ header{padding:1.3rem 1rem .9rem;}
 .sub-title{letter-spacing:.05em;}
 .dojo-line{letter-spacing:.05em;}
 
-.app-nav{display:flex;justify-content:center;gap:0;margin-top:1rem;flex-wrap:wrap;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.app-nav a{color:var(--gr);text-decoration:none;font-size:.78rem;padding:.6rem 1.1rem;
-  border-left:1px solid var(--border);border-radius:0;background:none;font-weight:400;transition:color .15s;}
-.app-nav a:first-child{border-left:none;}
-.app-nav a:hover{color:var(--gold);}
-.app-nav a.active{color:var(--gold);background:#f3e6c4;}
+.nav-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+  padding:.6rem 1rem;position:relative;z-index:50;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.nav-toggle{
+  display:flex;justify-content:center;align-items:center;
+  width:40px;height:40px;padding:0;border:1px solid var(--border);background:var(--card);
+  cursor:pointer;flex-shrink:0;
+}
+.nav-toggle-bar{position:relative;width:20px;height:2px;background:var(--w);transition:transform .15s,opacity .15s,background .15s;}
+.nav-toggle-bar::before,.nav-toggle-bar::after{content:"";position:absolute;right:0;width:20px;height:2px;background:var(--w);transition:transform .15s,background .15s;}
+.nav-toggle-bar::before{transform:translateY(-6px);}
+.nav-toggle-bar::after{transform:translateY(6px);}
+.nav-toggle:hover .nav-toggle-bar,.nav-toggle:hover .nav-toggle-bar::before,.nav-toggle:hover .nav-toggle-bar::after{background:var(--gold);}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar{background:transparent;}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::before{transform:translateY(0) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::after{transform:translateY(0) rotate(-45deg);}
+.nav-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+.nav-cta{
+  color:var(--card);background:var(--gold);text-decoration:none;font-size:.82rem;font-weight:700;
+  padding:.55rem 1.1rem;border:1px solid var(--gold);white-space:nowrap;transition:background .15s,border-color .15s;
+}
+.nav-cta:hover{background:#7d5b14;border-color:#7d5b14;}
+.nav-cta.active{box-shadow:inset 0 0 0 2px var(--red);}
+.nav-cta:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+.nav-dropdown{
+  position:absolute;top:100%;right:1rem;
+  min-width:200px;max-width:calc(100vw - 2rem);
+  background:var(--card);border:1px solid var(--border);
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  z-index:60;
+}
+.nav-dropdown[hidden]{display:none;}
+.nav-dropdown ul{list-style:none;margin:0;padding:.4rem 0;}
+.nav-dropdown a{
+  display:block;padding:.65rem 1.1rem;color:var(--w);text-decoration:none;font-size:.85rem;
+  border-right:3px solid transparent;transition:background .15s,border-color .15s,color .15s;
+}
+.nav-dropdown a:hover{background:#f3e6c4;border-right-color:var(--gold);color:var(--gold);}
+.nav-dropdown a.active{background:#f3e6c4;color:var(--gold);border-right-color:var(--red);font-weight:700;}
+.nav-dropdown a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;background:#f3e6c4;}
+
+@media(max-width:420px){
+  .nav-dropdown{right:.5rem;min-width:180px;}
+}
+
+header a.logo-link{color:inherit;text-decoration:none;display:inline-block;}
+header a.logo-link:hover .main-title{opacity:.75;}
+header a.logo-link:focus-visible{outline:2px solid var(--blue);outline-offset:4px;}
 
 .card,.term,.step,.kata,.b-card,.exercise{border-radius:0;}
 .card:hover{transform:none;box-shadow:none;}
@@ -274,14 +325,22 @@ body{
 <body>
 <noscript><div class="noscript-warn">האפליקציה דורשת JavaScript לניווט בין החלקים. פתחו את הקובץ בדפדפן רגיל (כרום/אדג'/פיירפוקס) ולא בתצוגה מקוצרת.</div></noscript>
 
-<nav class="app-nav">
-  <a href="#home" data-view="home">בית</a>
-  <a href="#hojo" data-view="hojo">הוג'ו אונדו</a>
-  <a href="#kata" data-view="kata">קאטות</a>
-  <a href="#warmup" data-view="warmup">חימום</a>
-  <a href="#glossary" data-view="glossary">מילון</a>
-  <a href="#generator" data-view="generator">מחולל אימון</a>
-</nav>
+<div class="nav-bar">
+  <button type="button" id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navDropdown" aria-label="פתיחת תפריט ניווט">
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <a href="#generator" data-view="generator" class="nav-cta">מחולל אימון</a>
+  <div id="navDropdown" class="nav-dropdown" hidden>
+    <nav aria-label="ניווט בין דפי האפליקציה">
+      <ul>
+        <li><a href="#hojo" data-view="hojo">הוג'ו אונדו</a></li>
+        <li><a href="#kata" data-view="kata">קאטות</a></li>
+        <li><a href="#warmup" data-view="warmup">חימום</a></li>
+        <li><a href="#glossary" data-view="glossary">מילון</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
 
 <section class="view active" id="view-home">
 <header>
@@ -291,6 +350,10 @@ body{
 
 <div class="wrap">
   <div class="list">
+    <a class="row featured" href="#generator" data-view="generator">
+      <span class="jp">稽古</span>
+      <span class="txt"><div class="he">מחולל אימון</div><div class="desc">לחיצה אחת בונה אימון אקראי מתוך כל התרגילים.</div></span>
+    </a>
     <a class="row" href="#warmup" data-view="warmup">
       <span class="jp">準備</span>
       <span class="txt"><div class="he">חימום</div><div class="desc">8 שלבים לפני אימון, ניתנים לסימון.</div></span>
@@ -307,10 +370,6 @@ body{
       <span class="jp">用語</span>
       <span class="txt"><div class="he">מילון מונחים</div><div class="desc">מונחי יפנית שבשימוש באפליקציה, עם חיפוש.</div></span>
     </a>
-    <a class="row" href="#generator" data-view="generator">
-      <span class="jp">稽古</span>
-      <span class="txt"><div class="he">מחולל אימון</div><div class="desc">לחיצה אחת בונה אימון אקראי מתוך כל התרגילים.</div></span>
-    </a>
   </div>
 </div>
 
@@ -318,9 +377,9 @@ body{
 </section>
 <section class="view" id="view-hojo">
 <header>
-  <div class="main-title">補助運動</div>
+  <a href="#home" data-view="home" class="logo-link"><div class="main-title">補助運動</div></a>
   <div class="sub-title">הוג'ו אונדו · וידאו ותמונות מקור · 13 תרגילים · אוצ'י ריו</div>
-  </header>
+</header>
 <div class="stance-note">
   <strong>עמידת סנצ'ין (三戦立ち) – בסיס כל התרגילים:</strong> רגליים כרוחב כתפיים, אצבעות פנימה, ברכיים נועלות פנימה, אגן מוכנס, כל הגוף בכיווץ מבוקר.
   לכל תרגיל למטה: סרטון הדגמה אמיתי, ולחלקם גם תמונת מקור מתועדת של הנשק/הטכניקה.
@@ -489,9 +548,9 @@ body{
 </section>
 <section class="view" id="view-kata">
 <header>
-  <div class="main-title">型</div>
+  <a href="#home" data-view="home" class="logo-link"><div class="main-title">型</div></a>
   <div class="sub-title">קאטות · 8 הצורות של אוצ'י ריו · לפי סדר חגורות</div>
-  </header>
+</header>
 
 <div class="intro-note">
   <strong>קאטה:</strong> רצף תנועות קבוע נגד יריבים דמיוניים. 8 קאטות באוצ'י ריו, לפי סדר חגורות.
@@ -739,9 +798,9 @@ body{
 </section>
 <section class="view" id="view-warmup">
 <header>
-  <div class="main-title">準備運動</div>
+  <a href="#home" data-view="home" class="logo-link"><div class="main-title">準備運動</div></a>
   <div class="sub-title">חימום · לפני כל אימון</div>
-  </header>
+</header>
 
 <div class="wrap">
   <div class="intro-note">
@@ -826,9 +885,9 @@ body{
 </section>
 <section class="view" id="view-glossary">
 <header>
-  <div class="main-title">用語集</div>
+  <a href="#home" data-view="home" class="logo-link"><div class="main-title">用語集</div></a>
   <div class="sub-title">מילון מונחים · יפנית ↔ עברית</div>
-  </header>
+</header>
 
 <div class="wrap">
   <input type="text" class="search-box" id="search" placeholder="חיפוש מונח... (יפנית או עברית)">
@@ -855,9 +914,9 @@ body{
 </section>
 <section class="view" id="view-generator">
 <header>
-  <div class="main-title">稽古</div>
+  <a href="#home" data-view="home" class="logo-link"><div class="main-title">稽古</div></a>
   <div class="sub-title">מחולל אימון · לחיצה אחת, אימון אקראי</div>
-  </header>
+</header>
 
 <div class="wrap">
   <div class="intro-note">
@@ -1215,9 +1274,10 @@ function showView(name){
   const target = document.getElementById('view-'+name);
   if(!target) return;
   target.classList.add('active');
-  document.querySelectorAll('.app-nav a[data-view]').forEach(a=>{
+  document.querySelectorAll('.nav-cta[data-view], #navDropdown a[data-view]').forEach(a=>{
     a.classList.toggle('active', a.dataset.view===name);
   });
+  closeNavDropdown();
   window.scrollTo(0,0);
 }
 function jumpTo(view,id){
@@ -1241,6 +1301,40 @@ window.addEventListener('hashchange', function(){
   const v = (location.hash||'#home').replace('#','');
   if(document.getElementById('view-'+v)) showView(v);
 });
+
+const navToggleBtn = document.getElementById('navToggle');
+const navDropdownEl = document.getElementById('navDropdown');
+function openNavDropdown(){
+  if(!navDropdownEl) return;
+  navDropdownEl.hidden = false;
+  navToggleBtn.setAttribute('aria-expanded','true');
+}
+function closeNavDropdown(){
+  if(!navDropdownEl || navDropdownEl.hidden) return;
+  navDropdownEl.hidden = true;
+  navToggleBtn.setAttribute('aria-expanded','false');
+}
+if(navToggleBtn && navDropdownEl){
+  navToggleBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(navDropdownEl.hidden) openNavDropdown(); else closeNavDropdown();
+  });
+  navDropdownEl.addEventListener('click', function(e){
+    if(e.target.closest('[data-view]')) closeNavDropdown();
+  });
+  document.addEventListener('click', function(e){
+    if(navDropdownEl.hidden) return;
+    if(navDropdownEl.contains(e.target) || e.target===navToggleBtn || navToggleBtn.contains(e.target)) return;
+    closeNavDropdown();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && !navDropdownEl.hidden){
+      closeNavDropdown();
+      navToggleBtn.focus();
+    }
+  });
+}
+
 (function(){
   const initial = (location.hash||'#home').replace('#','');
   showView(document.getElementById('view-'+initial) ? initial : 'home');

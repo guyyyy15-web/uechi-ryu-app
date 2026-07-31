@@ -79,17 +79,29 @@
 | תרגיל | קובץ | יוצר | רישיון |
 |---|---|---|---|
 | 1 – סוקוטו | [Sokuto.svg](https://commons.wikimedia.org/wiki/File:Sokuto.svg) | Oliver Kurmis / Judcosta | CC BY-SA 3.0 |
+| 2 – צומסאקי | [Tsumasaki.svg](https://commons.wikimedia.org/wiki/File:Tsumasaki.svg) | Kurmis/Judcosta | CC BY-SA 3.0 |
 | 3 – סייקן | [Seiken.JPG](https://commons.wikimedia.org/wiki/File:Seiken.JPG) | Francisco Mochis | Public Domain |
 | 4 – הירקן | [Hiraken.PNG](https://commons.wikimedia.org/wiki/File:Hiraken.PNG) | Francisco Mochis | Public Domain |
+| 5 – קושי (כדור כף הרגל) | [Koshi.svg](https://commons.wikimedia.org/wiki/File:Koshi.svg) | Kurmis/Judcosta | CC BY-SA 3.0 |
 | 6 – שוטו | [Shuto.png](https://commons.wikimedia.org/wiki/File:Shuto.png) | Oliver Kurmis | CC BY 3.0 |
 | 6 – אורקן | [Urakenuchi.jpg](https://commons.wikimedia.org/wiki/File:Urakenuchi.jpg) | Regine Becker | שימוש חופשי |
+| 7 – מרפק (Jud-hiji) | [Jud-hiji.svg](https://commons.wikimedia.org/wiki/File:Jud-hiji.svg) | Kurmis/Judcosta | CC BY-SA 3.0 |
+| 9 – אושירו גרי | [Kampfkunst_2011_029.JPG](https://commons.wikimedia.org/wiki/File:Kampfkunst_2011_029.JPG) | Claus Michelfelder | CC BY-SA 3.0 de |
+| 10 – איפונקן | [Jud-ipponken.svg](https://commons.wikimedia.org/wiki/File:Jud-ipponken.svg) | Kurmis/Judcosta | CC BY-SA 3.0 |
 | 11 – נוקיטה | [Nukite.png](https://commons.wikimedia.org/wiki/File:Nukite.png) | Kurmis | CC BY 3.0 |
+| 12/13 – קוקן (שורש כף יד) | [Jud-koken.svg](https://commons.wikimedia.org/wiki/File:Jud-koken.svg) | Kurmis/Judcosta | CC BY-SA 3.0 |
 
-### לא נמצא מקור פתוח (הוג'ו אונדו)
-מרפק (היג'י, תרגיל 7) וקוי נו שיפו אוצ'י (זנב הקרפיון, 12/13) – לא אותרו
-תמונות/איורים ברישיון פתוח שתואמים בדיוק. הטכניקות הספציפיות של הוג'ו
-אונדו באוצ'י ריו כמעט ולא מתועדות במאגרים פתוחים – בעיקר
-בסרטוני יוטיוב של דוג'ואים ספציפיים, המוגנים בזכויות יוצרים.
+### הערות תמונות
+- תרגיל 7 (מרפק) נמצא בסוף בכל זאת – איור Judcosta גנרי לצורת המרפק כנשק (לא תנוחת הוג'ו אונדו ספציפית).
+- תרגילים 12/13 (זנב הקרפיון): לא נמצא איור ספציפי לטכניקה עצמה. Jud-koken.svg מציג את צורת שורש כף היד הכפוף (הנשק בפועל של הטכניקה) כתחליף – לא את תנועת ה"זנב" עצמה.
+- תרגיל 8 (זנסוקו גרי) נשאר וידאו-בלבד: התמונה היחידה שנמצאה (בעיטה מסתובבת קפיצתית) לא תואמת מספיק את הטכניקה (סיבוב + בעיטת רגל קדמית ללא קפיצה) כדי להיות מטעה.
+
+### וידאו הדגמה (הוג'ו אונדו) – כל 13 התרגילים
+כל תרגיל מקושר לסרטון YouTube אמיתי (הטמעה סטנדרטית, לא הורדה). המקור העיקרי:
+ערוץ "Dojo Virtual Karate Uechi Ryu IUKF" (Yoshukai Argentina, IUKF), עם סרטון ייעודי
+כמעט לכל תרגיל. תרגילים 10, 12, 13 מקורם בערוצי אוצ'י-ריו אחרים (UFBK; Chip Quimby /
+Authentic Karate Training Center). תרגיל 5 (אשי קן) לא אותר כתרגול הוג'ו אונדו ספציפי
+בשום מקור פתוח – נעשה שימוש בסרטון הדגמת מכה קדמית (Mae Geri) גנרי כתחליף.
 
 ---
 

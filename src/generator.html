@@ -35,6 +35,10 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .s-title{font-size:.92rem;font-weight:700;color:var(--w);}
 .s-dur{font-size:.65rem;color:var(--gold);background:#f3e6c4;padding:.15rem .5rem;border-radius:10px;white-space:nowrap;}
 .s-desc{font-size:.76rem;color:var(--gr);line-height:1.6;margin-top:.3rem;}
+.s-sub{font-size:.68rem;color:var(--gr);margin-top:.15rem;letter-spacing:.03em;}
+.s-sub .s-jp{font-family:'Noto Serif JP',serif;color:var(--gold);margin-left:.4rem;}
+.s-thumb{flex-shrink:0;width:64px;height:64px;border-radius:6px;overflow:hidden;display:block;border:1px solid var(--border);}
+.s-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .empty-state{text-align:center;color:var(--gr);padding:1rem;font-size:.8rem;}
 footer{text-align:center;padding:1.5rem;color:#7d6b4d;font-size:.72rem;border-top:1px solid var(--border);margin-top:2rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
 </style>
@@ -85,31 +89,57 @@ function buildWorkout(){
   });
 
   const hojoAll = Array.from(document.querySelectorAll('#view-hojo .exercise')).map(function(el){
-    return {num: el.querySelector('.ex-num').textContent, name: el.querySelector('.ex-names .he').textContent};
+    const vw = el.querySelector('.video-wrap');
+    const photo = el.querySelector('.real-ref .rr-frame img');
+    return {
+      num: el.querySelector('.ex-num').textContent,
+      name: el.querySelector('.ex-names .he').textContent,
+      jp: el.querySelector('.ex-names .jp').textContent,
+      ro: el.querySelector('.ex-names .ro').textContent,
+      thumb: photo ? photo.src : (vw ? 'https://img.youtube.com/vi/' + vw.dataset.vid + '/hqdefault.jpg' : ''),
+      link: vw ? vw.href : ''
+    };
   });
   const hojoPicked = pickRandom(hojoAll, 4).map(function(h){
-    return {num:h.num, name:h.name, reps: randInt(8,15)};
+    return {num:h.num, name:h.name, jp:h.jp, ro:h.ro, thumb:h.thumb, link:h.link, reps: randInt(8,15)};
   });
 
   const kihonAll = (typeof TERMS !== 'undefined') ? TERMS.filter(function(t){return t.cat==='strike';}) : [];
   const kihonPicked = pickRandom(kihonAll, 3).map(function(k){
-    return {name:k.he, ro:k.ro, reps: randInt(10,20)};
+    return {name:k.he, ro:k.ro, jp:k.jp, reps: randInt(10,20)};
   });
 
   const kataAll = Array.from(document.querySelectorAll('#view-kata .kata')).map(function(el){
     const belt = el.querySelector('.k-belt');
-    return {name: el.querySelector('.k-names .he').textContent, belt: belt ? belt.textContent : ''};
+    const vw = el.querySelector('.video-wrap');
+    return {
+      name: el.querySelector('.k-names .he').textContent,
+      jp: el.querySelector('.k-names .jp').textContent,
+      ro: el.querySelector('.k-names .ro').textContent,
+      belt: belt ? belt.textContent : '',
+      thumb: vw ? 'https://img.youtube.com/vi/' + vw.dataset.vid + '/hqdefault.jpg' : '',
+      link: vw ? vw.href : ''
+    };
   });
   const kataPicked = pickRandom(kataAll, 1).map(function(k){
-    return {name:k.name, belt:k.belt, reps: randInt(2,4)};
+    return {name:k.name, jp:k.jp, ro:k.ro, belt:k.belt, thumb:k.thumb, link:k.link, reps: randInt(2,4)};
   });
 
   return {warmupSteps: warmupSteps, hojoPicked: hojoPicked, kihonPicked: kihonPicked, kataPicked: kataPicked};
 }
 
-function stepHtml(title, dur, desc){
-  return '<div class="step"><div class="s-check">✓</div><div class="s-body">'
+function subHtml(jp, ro){
+  if(!jp && !ro) return '';
+  return (jp ? '<span class="s-jp">' + jp + '</span>' : '') + (ro ? '<span class="s-ro">' + ro + '</span>' : '');
+}
+
+function stepHtml(title, dur, desc, sub, thumb, link){
+  const thumbHtml = thumb
+    ? '<a class="s-thumb" href="' + (link || '#') + '" target="_blank" rel="noopener"><img src="' + thumb + '" alt="" loading="lazy"></a>'
+    : '';
+  return '<div class="step">' + thumbHtml + '<div class="s-check">✓</div><div class="s-body">'
     + '<div class="s-top"><span class="s-title">' + title + '</span><span class="s-dur">' + dur + '</span></div>'
+    + (sub ? '<div class="s-sub">' + sub + '</div>' : '')
     + (desc ? '<div class="s-desc">' + desc + '</div>' : '')
     + '</div></div>';
 }
@@ -123,7 +153,7 @@ function renderWorkout(workout){
 
   html += '<div class="w-section-title">2. הוג\'ו אונדו</div>';
   workout.hojoPicked.forEach(function(h){
-    html += stepHtml(h.num + '. ' + h.name, h.reps + ' חזרות');
+    html += stepHtml(h.num + '. ' + h.name, h.reps + ' חזרות', '', subHtml(h.jp, h.ro), h.thumb, h.link);
   });
 
   html += '<div class="w-section-title">3. תרגול בסיס (קיהון)</div>';
@@ -131,12 +161,12 @@ function renderWorkout(workout){
     html += '<div class="empty-state">אין מונחי מכות זמינים כרגע.</div>';
   }
   workout.kihonPicked.forEach(function(k){
-    html += stepHtml(k.name + ' (' + k.ro + ')', k.reps + ' חזרות לכל צד');
+    html += stepHtml(k.name, k.reps + ' חזרות לכל צד', '', subHtml(k.jp, k.ro));
   });
 
   html += '<div class="w-section-title">4. קאטה</div>';
   workout.kataPicked.forEach(function(k){
-    html += stepHtml(k.name, k.reps + ' חזרות', k.belt);
+    html += stepHtml(k.name, k.reps + ' חזרות', k.belt, subHtml(k.jp, k.ro), k.thumb, k.link);
   });
 
   el.innerHTML = html;

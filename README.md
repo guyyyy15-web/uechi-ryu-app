@@ -26,14 +26,17 @@ references/     מקורות מחקר + תמונות רפרנס אמיתיות (
 ```
 python build.py
 ```
-זה בונה מחדש את `index.html` — לצפייה מקומית בלבד. **אין לערוך את `index.html`
-ידנית ואין להעלות אותו ל-Git** — הוא לא במעקב Git (`.gitignore`) ונבנה מחדש
-אוטומטית ב-CI (ראו "פרסום" למטה).
+זה בונה מחדש את `index.html`. **אין לערוך את `index.html` ידנית** — הוא נדרס
+בכל הרצה. `index.html` כן נשמר במעקב Git (מחויב לריפו) כדי שהאתר יעבוד גם דרך
+מצב הפרסום הבסיסי של GitHub Pages ("Deploy from a branch") מבלי להזדקק להגדרה
+נוספת — **חובה להריץ `python build.py` ולהעלות (commit) את התוצאה בכל שינוי
+תוכן**, אחרת הגרסה החיה תישאר ישנה.
 
 ## פרסום (GitHub Pages)
-כל פוש ל-`master` מפעיל את `.github/workflows/deploy.yml`, שמריץ
-`python build.py` ומפרסם את התוצאה ל-GitHub Pages. יש להפעיל פעם אחת:
-**Settings → Pages → Build and deployment → Source: GitHub Actions**.
+הריפו כולל גם את `.github/workflows/deploy.yml`, שבונה ומפרסם את האתר אוטומטית
+אם מפעילים בהגדרות **Settings → Pages → Build and deployment → Source: GitHub
+Actions**. אם לא הופעלה הגדרה זו, GitHub Pages ישתמש כברירת מחדל ב-`index.html`
+שנשמר בריפו (ראו לעיל) — ולכן חשוב לוודא שהוא תמיד מעודכן ונשמר ב-Git.
 
 ### אנליטיקס
 מחובר GoatCounter (ללא עוגיות, ללא צורך בהודעת הסכמה) דרך משתנה

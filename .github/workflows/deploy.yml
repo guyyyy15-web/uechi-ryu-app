@@ -28,6 +28,7 @@ jobs:
           mkdir -p _site
           cp index.html _site/
           cp robots.txt _site/
+          cp .nojekyll _site/
 
       - uses: actions/upload-pages-artifact@v3
         with:

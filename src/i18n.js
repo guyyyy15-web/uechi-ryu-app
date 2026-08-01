@@ -2,6 +2,7 @@ const I18N = {
   he: {
     nav_toggle_label: "פתיחת תפריט ניווט",
     lang_toggle_label: "החלפת שפה לאנגלית",
+    nav_home_label: "חזרה לדף הבית",
     nav_generator: "מחולל אימון",
     nav_dropdown_label: "ניווט בין דפי האפליקציה",
     nav_hojo: "הוג'ו אונדו",
@@ -22,7 +23,6 @@ const I18N = {
 
     warmup_subtitle: "חימום · לפני כל אימון",
     warmup_intro: "<strong>מטרה:</strong> העלאת דופק, שחרור מפרקים, הכנת הגוף. לא מתיחות עומק – אלה שמורות לסוף האימון. כ-10 דקות.",
-    warmup_spotify_text: "מוזיקת רקע מסורתית (רשות) – פתחו פלייליסט יפני מסורתי ב-Spotify ↗",
     warmup_section1: "1. העלאת דופק",
     warmup_s1_title: "הליכה / ריצה קלה במקום",
     warmup_s1_dur: "2-3 דק'",
@@ -199,6 +199,7 @@ const I18N = {
   en: {
     nav_toggle_label: "Open navigation menu",
     lang_toggle_label: "Switch language to Hebrew",
+    nav_home_label: "Back to home",
     nav_generator: "Generator",
     nav_dropdown_label: "App navigation",
     nav_hojo: "Hojo Undo",
@@ -219,7 +220,6 @@ const I18N = {
 
     warmup_subtitle: "Warm-up · Before every session",
     warmup_intro: "<strong>Goal:</strong> raise heart rate, loosen joints, prepare the body. No deep stretching — that's saved for the end of training. About 10 minutes.",
-    warmup_spotify_text: "Traditional background music (optional) – open a traditional Japanese playlist on Spotify ↗",
     warmup_section1: "1. Raise heart rate",
     warmup_s1_title: "Walking / light jogging in place",
     warmup_s1_dur: "2-3 min",

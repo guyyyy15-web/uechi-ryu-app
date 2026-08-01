@@ -103,6 +103,9 @@ header{padding:1.3rem 1rem .9rem;}
   padding:.6rem 1rem;position:relative;z-index:50;
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
 }
+html[dir="ltr"] .nav-bar{flex-direction:row-reverse;}
+.nav-icon-group{display:flex;align-items:center;gap:.4rem;flex-shrink:0;}
+html[dir="ltr"] .nav-icon-group{flex-direction:row-reverse;}
 .nav-toggle{
   display:flex;justify-content:center;align-items:center;
   width:40px;height:40px;padding:0;border:1px solid var(--border);background:var(--card);
@@ -117,12 +120,24 @@ header{padding:1.3rem 1rem .9rem;}
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar::before{transform:translateY(0) rotate(45deg);}
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar::after{transform:translateY(0) rotate(-45deg);}
 .nav-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+.nav-home{
+  display:flex;justify-content:center;align-items:center;
+  width:40px;height:40px;padding:0;border:1px solid var(--border);background:var(--card);
+  cursor:pointer;flex-shrink:0;color:var(--w);text-decoration:none;
+  transition:border-color .15s,color .15s,background .15s,box-shadow .15s;
+}
+.nav-home:hover{border-color:var(--gold);color:var(--gold);}
+.nav-home:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+.nav-home.active{background:#f3e6c4;border-color:var(--gold);color:var(--gold);box-shadow:inset 0 0 0 2px var(--red);}
 
 .nav-cta{
+  display:inline-flex;align-items:center;gap:.4rem;
   color:var(--card);background:var(--gold);text-decoration:none;font-size:.82rem;font-weight:700;
-  padding:.55rem 1.1rem;border:1px solid var(--gold);white-space:nowrap;transition:background .15s,border-color .15s;
+  padding:.55rem 1.1rem;border:1px solid var(--gold);white-space:nowrap;
+  transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;
 }
-.nav-cta:hover{background:#7d5b14;border-color:#7d5b14;}
+.nav-cta-icon{flex-shrink:0;}
+.nav-cta:hover{background:#7d5b14;border-color:#7d5b14;transform:translateY(-1px);box-shadow:0 3px 10px rgba(151,113,26,.35);}
 .nav-cta.active{box-shadow:inset 0 0 0 2px var(--red);}
 .nav-cta:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 
@@ -201,7 +216,7 @@ function showView(name){
   const target = document.getElementById('view-'+name);
   if(!target) return;
   target.classList.add('active');
-  document.querySelectorAll('.nav-cta[data-view], #navDropdown a[data-view]').forEach(a=>{
+  document.querySelectorAll('.nav-cta[data-view], .nav-home[data-view], #navDropdown a[data-view]').forEach(a=>{
     a.classList.toggle('active', a.dataset.view===name);
   });
   closeNavDropdown();
@@ -281,10 +296,24 @@ if(langToggleBtn){
 
 nav_html = """
 <div class="nav-bar">
-  <button type="button" id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navDropdown" data-i18n-attr="aria-label:nav_toggle_label" aria-label="פתיחת תפריט ניווט">
-    <span class="nav-toggle-bar"></span>
-  </button>
-  <a href="#generator" data-view="generator" class="nav-cta" data-i18n="nav_generator">מחולל אימון</a>
+  <div class="nav-icon-group">
+    <button type="button" id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navDropdown" data-i18n-attr="aria-label:nav_toggle_label" aria-label="פתיחת תפריט ניווט">
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <a href="#home" data-view="home" id="navHome" class="nav-home" data-i18n-attr="aria-label:nav_home_label" aria-label="חזרה לדף הבית">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M3 11.5 12 4l9 7.5"></path>
+        <path d="M5.5 10v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-9"></path>
+        <path d="M9.5 20v-6h5v6"></path>
+      </svg>
+    </a>
+  </div>
+  <a href="#generator" data-view="generator" class="nav-cta">
+    <svg class="nav-cta-icon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M12 2c.9 2.4-1.6 3.6-1.6 6.3a3.6 3.6 0 0 0 7.2 0c0-1-.4-2-.9-2.8 1.3.4 2.6 2.3 2.6 5a5.3 5.3 0 0 1-10.6 0c0-2.7 1.4-4.6 2-5.6-.4 1-.7 1.9.1 2.7.2-2.5-1-4.1 1.2-5.6z"></path>
+    </svg>
+    <span data-i18n="nav_generator">מחולל אימון</span>
+  </a>
   <button type="button" id="langToggle" class="lang-toggle" data-i18n-attr="aria-label:lang_toggle_label" aria-label="Switch language">EN</button>
   <div id="navDropdown" class="nav-dropdown" hidden>
     <nav data-i18n-attr="aria-label:nav_dropdown_label" aria-label="ניווט בין דפי האפליקציה">

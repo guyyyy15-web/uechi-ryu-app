@@ -16,11 +16,11 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .app-nav a{color:var(--gr);text-decoration:none;font-size:.8rem;padding:.4rem 1.1rem;border:1px solid var(--border);border-radius:20px;transition:.15s;font-weight:700;}
 .app-nav a:hover{border-color:var(--gold);color:var(--gold);}
 .app-nav a.active{background:var(--gold);color:#000;border-color:var(--gold);}
-.intro-note{background:#f6ecd2;border:1px solid #e0cc9c;border-right:4px solid var(--gold);margin:0 auto 1.2rem;max-width:960px;padding:.8rem 1rem;font-size:.8rem;color:var(--w);line-height:1.7;}
+.intro-note{background:#f6ecd2;border:1px solid #e0cc9c;border-inline-start:4px solid var(--gold);margin:0 auto 1.2rem;max-width:960px;padding:.8rem 1rem;font-size:.8rem;color:var(--w);line-height:1.7;}
 .intro-note strong{color:var(--gold);}
 .belt-track{display:flex;justify-content:center;gap:.3rem;flex-wrap:wrap;margin:0 auto 1.5rem;max-width:960px;}
 .belt-chip{font-size:.6rem;padding:.25rem .6rem;border-radius:3px;font-weight:700;color:#000;white-space:nowrap;}
-.kata{background:var(--card);border:1px solid var(--border);border-right:4px solid var(--gold);margin:0 auto 1.2rem;max-width:960px;}
+.kata{background:var(--card);border:1px solid var(--border);border-inline-start:4px solid var(--gold);margin:0 auto 1.2rem;max-width:960px;}
 .k-header{display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem;background:#f2ead4;border-bottom:1px solid var(--border);}
 .k-num{font-size:1.6rem;font-weight:900;color:var(--gold);min-width:2rem;line-height:1;}
 .k-names{flex:1;}
@@ -29,7 +29,7 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .k-names .he{font-size:.88rem;font-weight:700;color:var(--w);margin-top:2px;}
 .k-belt{font-size:.62rem;padding:.3rem .7rem;border-radius:3px;font-weight:700;color:#000;white-space:nowrap;height:fit-content;}
 .k-body{display:flex;flex-wrap:wrap;}
-.k-video{flex:1 1 320px;padding:.9rem;border-left:1px solid var(--border);}
+.k-video{flex:1 1 320px;padding:.9rem;border-inline-end:1px solid var(--border);}
 .video-wrap{position:relative;display:block;width:100%;padding-top:56.25%;background:#000;border-radius:6px;overflow:hidden;border:1px solid var(--border);text-decoration:none;}
 .video-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.2s;}
 .video-wrap:hover img{opacity:.75;}
@@ -37,7 +37,7 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .play-overlay span{width:58px;height:58px;border-radius:50%;background:rgba(204,34,0,.88);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 0 0 6px rgba(0,0,0,.35);transition:.2s;}
 .video-wrap:hover .play-overlay span{background:var(--red);transform:scale(1.08);}
 .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-.video-close{position:absolute;top:6px;right:6px;z-index:2;width:26px;height:26px;background:rgba(0,0,0,.8);color:#fff;border:1px solid rgba(255,255,255,.3);cursor:pointer;font-size:.8rem;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;}
+.video-close{position:absolute;top:6px;inset-inline-end:6px;z-index:2;width:26px;height:26px;background:rgba(0,0,0,.8);color:#fff;border:1px solid rgba(255,255,255,.3);cursor:pointer;font-size:.8rem;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;}
 .video-close:hover{background:var(--red);border-color:var(--red);}
 .video-link{display:block;text-align:center;margin-top:.5rem;font-size:.68rem;color:var(--blue);text-decoration:none;}
 .video-link:hover{text-decoration:underline;}
@@ -48,24 +48,24 @@ header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--
 .k-meaning b{color:var(--gold);}
 .k-points{display:flex;flex-direction:column;gap:.5rem;}
 .k-do,.k-dont{font-size:.73rem;line-height:1.6;padding:.5rem .7rem;border-radius:5px;}
-.k-do{background:#e6f3dc;border-right:3px solid #4a8a2a;color:#2f6b1a;}
-.k-dont{background:#fbe4de;border-right:3px solid var(--red);color:#7a2418;}
+.k-do{background:#e6f3dc;border-inline-start:3px solid #4a8a2a;color:#2f6b1a;}
+.k-dont{background:#fbe4de;border-inline-start:3px solid var(--red);color:#7a2418;}
 .k-do b,.k-dont b{display:block;margin-bottom:.15rem;color:#2b2013;}
-.k-bunkai{font-size:.73rem;line-height:1.6;padding:.5rem .7rem;border-radius:5px;background:#e3eff3;border-right:3px solid var(--blue);color:#1a4a5c;margin-top:.5rem;}
+.k-bunkai{font-size:.73rem;line-height:1.6;padding:.5rem .7rem;border-radius:5px;background:#e3eff3;border-inline-start:3px solid var(--blue);color:#1a4a5c;margin-top:.5rem;}
 .k-bunkai .bt{display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;color:var(--blue);font-weight:700;}
 .k-bunkai .formal-tag{font-size:.58rem;background:#e6f3dc;color:#2f6b1a;border:1px solid #b9dba0;padding:.15rem .5rem;border-radius:10px;font-weight:700;}
 .k-bunkai .b-ex{margin-top:.3rem;color:var(--w);}
 footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1px solid var(--border);margin-top:1rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
-@media(max-width:600px){.k-video{border-left:none;border-bottom:1px solid var(--border);}}
+@media(max-width:600px){.k-video{border-inline-end:none;border-bottom:1px solid var(--border);}}
 </style>
 </head>
 <body>
 <header>
   <div class="main-title">型</div>
-  <div class="sub-title">קאטות · 8 הצורות של אוצ'י ריו · לפי סדר חגורות</div>
+  <div class="sub-title" data-i18n="kata_subtitle">קאטות · 8 הצורות של אוצ'י ריו · לפי סדר חגורות</div>
 </header>
 
-<div class="intro-note">
+<div class="intro-note" data-i18n-html="kata_intro">
   <strong>קאטה:</strong> רצף תנועות קבוע נגד יריבים דמיוניים. 8 קאטות באוצ'י ריו, לפי סדר חגורות.
   סנצ'ין, סייסאן וסאנסיירו הובאו מסין; השאר נוספו ע"י קנאי אוצ'י. כל כרטיס כולל גם
   <strong>בונקאי</strong> (ניתוח קרבי) – רק קאנשיווה וסייסאן הם בונקאי רשמי; שאר הקאטות
@@ -73,11 +73,11 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
 </div>
 
 <div class="belt-track">
-  <span class="belt-chip" style="background:#f0ead8">לבנה</span>
-  <span class="belt-chip" style="background:#e8d84a">צהובה</span>
-  <span class="belt-chip" style="background:#4a8a2a;color:#fff">ירוקה</span>
-  <span class="belt-chip" style="background:#8a5a2a;color:#fff">חומה</span>
-  <span class="belt-chip" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה (דאן 1-4)</span>
+  <span class="belt-chip" style="background:#f0ead8" data-i18n="belt_white">לבנה</span>
+  <span class="belt-chip" style="background:#e8d84a" data-i18n="belt_yellow">צהובה</span>
+  <span class="belt-chip" style="background:#4a8a2a;color:#fff" data-i18n="belt_green">ירוקה</span>
+  <span class="belt-chip" style="background:#8a5a2a;color:#fff" data-i18n="belt_brown">חומה</span>
+  <span class="belt-chip" style="background:#111;color:#e8c44a;border:1px solid #e8c44a" data-i18n="belt_black_dan">שחורה (דאן 1-4)</span>
 </div>
 
 <!-- 1. Sanchin -->
@@ -87,22 +87,22 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     <div class="k-names">
       <div class="jp">三戦</div>
       <div class="ro">SANCHIN</div>
-      <div class="he">שלוש קרבות</div>
+      <div class="he" data-i18n="kata_1_name">שלוש קרבות</div>
     </div>
-    <div class="k-belt" style="background:#f0ead8">חגורה לבנה</div>
+    <div class="k-belt" style="background:#f0ead8" data-i18n="kata_1_belt">חגורה לבנה</div>
   </div>
   <div class="k-body">
     <div class="k-video">
-      <a class="video-wrap" href="https://www.youtube.com/watch?v=1E_MJRR0PiA" target="_blank" rel="noopener" data-vid="1E_MJRR0PiA"><img src="https://img.youtube.com/vi/1E_MJRR0PiA/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
-<a class="video-link" href="https://www.youtube.com/watch?v=1E_MJRR0PiA" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=1E_MJRR0PiA" target="_blank" rel="noopener" data-vid="1E_MJRR0PiA"><img src="https://img.youtube.com/vi/1E_MJRR0PiA/hqdefault.jpg" alt="קאטה" loading="lazy" data-i18n-attr="alt:kata_thumb_alt"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=1E_MJRR0PiA" target="_blank" rel="noopener" data-i18n="video_link_text">פתח ב-YouTube ↗</a>
       <div class="video-credit">הדרכה איטית לתרגול, YouTube</div>
     </div>
     <div class="k-info">
-      <div class="k-meaning"><b>שם:</b> שלוש קרבות – גוף, נשימה, תודעה.</div>
-      <p class="k-desc">קאטת היסוד. קנבון אוצ'י תרגל רק אותה שלוש שנים בסין. עמידת סנצ'ין וחסימת קשת (Wa Uke) – הבסיס לכל טכניקה בסגנון.</p>
+      <div class="k-meaning" data-i18n-html="kata_1_meaning"><b>שם:</b> שלוש קרבות – גוף, נשימה, תודעה.</div>
+      <p class="k-desc" data-i18n-html="kata_1_desc">קאטת היסוד. קנבון אוצ'י תרגל רק אותה שלוש שנים בסין. עמידת סנצ'ין וחסימת קשת (Wa Uke) – הבסיס לכל טכניקה בסגנון.</p>
       <div class="k-points">
-        <div class="k-do"><b>✓ חשוב</b>נשימה עמוקה וסדירה, כיווץ מבוקר לאורך כל הקאטה.</div>
-        <div class="k-dont"><b>✗ להימנע</b>נעילת ברכיים מלאה. עצירת נשימה בין תנועות.</div><div class="k-bunkai"><div class="bt">בונקאי</div>חסימה מעגלית ראשונה בסגנון (Wa Uke). שתי נקודות פגיעה – נמוכה מרגל קדמית, גבוהה מהצד השני.<div class="b-ex"><b>דוגמה:</b> חסימה, אז מכת קשקש אגודל ללסת. או תפיסה + מכה לגרון כחלק מהפלה.</div></div>
+        <div class="k-do" data-i18n-html="kata_1_do"><b>✓ חשוב</b>נשימה עמוקה וסדירה, כיווץ מבוקר לאורך כל הקאטה.</div>
+        <div class="k-dont" data-i18n-html="kata_1_dont"><b>✗ להימנע</b>נעילת ברכיים מלאה. עצירת נשימה בין תנועות.</div><div class="k-bunkai" data-i18n-html="kata_1_bunkai"><div class="bt">בונקאי</div>חסימה מעגלית ראשונה בסגנון (Wa Uke). שתי נקודות פגיעה – נמוכה מרגל קדמית, גבוהה מהצד השני.<div class="b-ex"><b>דוגמה:</b> חסימה, אז מכת קשקש אגודל ללסת. או תפיסה + מכה לגרון כחלק מהפלה.</div></div>
       </div>
     </div>
   </div>
@@ -115,22 +115,22 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     <div class="k-names">
       <div class="jp">完子和</div>
       <div class="ro">KANSHIWA</div>
-      <div class="he">לזכר קנבון ושו שיווה</div>
+      <div class="he" data-i18n="kata_2_name">לזכר קנבון ושו שיווה</div>
     </div>
-    <div class="k-belt" style="background:#e8d84a">חגורה צהובה</div>
+    <div class="k-belt" style="background:#e8d84a" data-i18n="kata_2_belt">חגורה צהובה</div>
   </div>
   <div class="k-body">
     <div class="k-video">
-      <a class="video-wrap" href="https://www.youtube.com/watch?v=Q7DVoKahmMc" target="_blank" rel="noopener" data-vid="Q7DVoKahmMc"><img src="https://img.youtube.com/vi/Q7DVoKahmMc/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
-<a class="video-link" href="https://www.youtube.com/watch?v=Q7DVoKahmMc" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=Q7DVoKahmMc" target="_blank" rel="noopener" data-vid="Q7DVoKahmMc"><img src="https://img.youtube.com/vi/Q7DVoKahmMc/hqdefault.jpg" alt="קאטה" loading="lazy" data-i18n-attr="alt:kata_thumb_alt"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=Q7DVoKahmMc" target="_blank" rel="noopener" data-i18n="video_link_text">פתח ב-YouTube ↗</a>
       <div class="video-credit">Gustavo Gondra, 8º Dan – YouTube</div>
     </div>
     <div class="k-info">
-      <div class="k-meaning"><b>שם:</b> לכבוד קנבון אוצ'י ומורו שו שיווה.</div>
-      <p class="k-desc">הראשונה שנוספה לסגנון. סגנון נמר – חסימות כף יד פתוחה ובעיטות בזווית 45°, בעיתוי בינארי בין חסימה למכה.</p>
+      <div class="k-meaning" data-i18n-html="kata_2_meaning"><b>שם:</b> לכבוד קנבון אוצ'י ומורו שו שיווה.</div>
+      <p class="k-desc" data-i18n-html="kata_2_desc">הראשונה שנוספה לסגנון. סגנון נמר – חסימות כף יד פתוחה ובעיטות בזווית 45°, בעיתוי בינארי בין חסימה למכה.</p>
       <div class="k-points">
-        <div class="k-do"><b>✓ חשוב</b>תיאום מדויק יד-רגל, זווית 45° נכונה בבעיטה.</div>
-        <div class="k-dont"><b>✗ להימנע</b>מהירות על חשבון דיוק.</div><div class="k-bunkai"><div class="bt">בונקאי <span class="formal-tag">✓ רשמי</span></div>תרגיל זוגי קבוע: תקיפה מול תגובה מתוך הקאטה. דרישה למבחן חגורה ירוקה.<div class="b-ex"><b>נקודה:</b> לתרגל בעוצמה גבוהה – הכנה לתחושת לחץ אמיתית.</div></div>
+        <div class="k-do" data-i18n-html="kata_2_do"><b>✓ חשוב</b>תיאום מדויק יד-רגל, זווית 45° נכונה בבעיטה.</div>
+        <div class="k-dont" data-i18n-html="kata_2_dont"><b>✗ להימנע</b>מהירות על חשבון דיוק.</div><div class="k-bunkai" data-i18n-html="kata_2_bunkai"><div class="bt">בונקאי <span class="formal-tag">✓ רשמי</span></div>תרגיל זוגי קבוע: תקיפה מול תגובה מתוך הקאטה. דרישה למבחן חגורה ירוקה.<div class="b-ex"><b>נקודה:</b> לתרגל בעוצמה גבוהה – הכנה לתחושת לחץ אמיתית.</div></div>
       </div>
     </div>
   </div>
@@ -143,22 +143,22 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     <div class="k-names">
       <div class="jp">完周</div>
       <div class="ro">KANSHU</div>
-      <div class="he">מבוא לסייסאן</div>
+      <div class="he" data-i18n="kata_3_name">מבוא לסייסאן</div>
     </div>
-    <div class="k-belt" style="background:#4a8a2a;color:#fff">חגורה ירוקה</div>
+    <div class="k-belt" style="background:#4a8a2a;color:#fff" data-i18n="kata_3_belt">חגורה ירוקה</div>
   </div>
   <div class="k-body">
     <div class="k-video">
-      <a class="video-wrap" href="https://www.youtube.com/watch?v=kNCkcGTC4ms" target="_blank" rel="noopener" data-vid="kNCkcGTC4ms"><img src="https://img.youtube.com/vi/kNCkcGTC4ms/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
-<a class="video-link" href="https://www.youtube.com/watch?v=kNCkcGTC4ms" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=kNCkcGTC4ms" target="_blank" rel="noopener" data-vid="kNCkcGTC4ms"><img src="https://img.youtube.com/vi/kNCkcGTC4ms/hqdefault.jpg" alt="קאטה" loading="lazy" data-i18n-attr="alt:kata_thumb_alt"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=kNCkcGTC4ms" target="_blank" rel="noopener" data-i18n="video_link_text">פתח ב-YouTube ↗</a>
       <div class="video-credit">Gustavo Gondra, 8º Dan – YouTube</div>
     </div>
     <div class="k-info">
-      <div class="k-meaning"><b>שם:</b> לכבוד קנבון אוצ'י ושו שיווה. נקראה בעבר "סייסאן שנייה".</div>
-      <p class="k-desc">הכנה לסייסאן, קו תנועה משותף. טכניקות בהשראת העגור.</p>
+      <div class="k-meaning" data-i18n-html="kata_3_meaning"><b>שם:</b> לכבוד קנבון אוצ'י ושו שיווה. נקראה בעבר "סייסאן שנייה".</div>
+      <p class="k-desc" data-i18n-html="kata_3_desc">הכנה לסייסאן, קו תנועה משותף. טכניקות בהשראת העגור.</p>
       <div class="k-points">
-        <div class="k-do"><b>✓ חשוב</b>דיוק בתזמון ובזוויות.</div>
-        <div class="k-dont"><b>✗ להימנע</b>דיוק שמוקרב למען מהירות.</div><div class="k-bunkai"><div class="bt">בונקאי</div>הכנה לסייסאן. טכניקות עגור, דיוק ותזמון. דגש על תפיסות ושחרורים.</div>
+        <div class="k-do" data-i18n-html="kata_3_do"><b>✓ חשוב</b>דיוק בתזמון ובזוויות.</div>
+        <div class="k-dont" data-i18n-html="kata_3_dont"><b>✗ להימנע</b>דיוק שמוקרב למען מהירות.</div><div class="k-bunkai" data-i18n-html="kata_3_bunkai"><div class="bt">בונקאי</div>הכנה לסייסאן. טכניקות עגור, דיוק ותזמון. דגש על תפיסות ושחרורים.</div>
       </div>
     </div>
   </div>
@@ -171,22 +171,22 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     <div class="k-names">
       <div class="jp">十戦</div>
       <div class="ro">SEICHIN</div>
-      <div class="he">עשר קרבות</div>
+      <div class="he" data-i18n="kata_4_name">עשר קרבות</div>
     </div>
-    <div class="k-belt" style="background:#8a5a2a;color:#fff">חגורה חומה</div>
+    <div class="k-belt" style="background:#8a5a2a;color:#fff" data-i18n="kata_4_belt">חגורה חומה</div>
   </div>
   <div class="k-body">
     <div class="k-video">
-      <a class="video-wrap" href="https://www.youtube.com/watch?v=XjL4avcncp0" target="_blank" rel="noopener" data-vid="XjL4avcncp0"><img src="https://img.youtube.com/vi/XjL4avcncp0/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
-<a class="video-link" href="https://www.youtube.com/watch?v=XjL4avcncp0" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=XjL4avcncp0" target="_blank" rel="noopener" data-vid="XjL4avcncp0"><img src="https://img.youtube.com/vi/XjL4avcncp0/hqdefault.jpg" alt="קאטה" loading="lazy" data-i18n-attr="alt:kata_thumb_alt"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=XjL4avcncp0" target="_blank" rel="noopener" data-i18n="video_link_text">פתח ב-YouTube ↗</a>
       <div class="video-credit">Gustavo Gondra, 8º Dan – YouTube</div>
     </div>
     <div class="k-info">
-      <div class="k-meaning"><b>שם:</b> עשר קרבות – בגרות מתקדמת יותר מסנצ'ין.</div>
-      <p class="k-desc">נוצרה באוקינאווה (לא הובאה מסין כמו סנצ'ין/סייסאן/סאנסיירו), אך משקפת השפעה סינית חזקה בטכניקות המעגליות ותנועות הדרקון. דורשת גמישות.</p>
+      <div class="k-meaning" data-i18n-html="kata_4_meaning"><b>שם:</b> עשר קרבות – בגרות מתקדמת יותר מסנצ'ין.</div>
+      <p class="k-desc" data-i18n-html="kata_4_desc">נוצרה באוקינאווה (לא הובאה מסין כמו סנצ'ין/סייסאן/סאנסיירו), אך משקפת השפעה סינית חזקה בטכניקות המעגליות ותנועות הדרקון. דורשת גמישות.</p>
       <div class="k-points">
-        <div class="k-do"><b>✓ חשוב</b>גמישות וזרימה חלקה בין תנועות.</div>
-        <div class="k-dont"><b>✗ להימנע</b>תנועה שנעצרת כ"תחנה" נפרדת.</div><div class="k-bunkai"><div class="bt">בונקאי</div>תפיסה וקריעה בסגנון סיני קלאסי. תנועות דרקון. שליטה על גפי היריב, לא מכה ישירה.</div>
+        <div class="k-do" data-i18n-html="kata_4_do"><b>✓ חשוב</b>גמישות וזרימה חלקה בין תנועות.</div>
+        <div class="k-dont" data-i18n-html="kata_4_dont"><b>✗ להימנע</b>תנועה שנעצרת כ"תחנה" נפרדת.</div><div class="k-bunkai" data-i18n-html="kata_4_bunkai"><div class="bt">בונקאי</div>תפיסה וקריעה בסגנון סיני קלאסי. תנועות דרקון. שליטה על גפי היריב, לא מכה ישירה.</div>
       </div>
     </div>
   </div>
@@ -199,22 +199,22 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     <div class="k-names">
       <div class="jp">十三</div>
       <div class="ro">SEISAN</div>
-      <div class="he">שלוש עשרה</div>
+      <div class="he" data-i18n="kata_5_name">שלוש עשרה</div>
     </div>
-    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה · שודאן</div>
+    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a" data-i18n="kata_5_belt">שחורה · שודאן</div>
   </div>
   <div class="k-body">
     <div class="k-video">
-      <a class="video-wrap" href="https://www.youtube.com/watch?v=pp9hGwpOSUw" target="_blank" rel="noopener" data-vid="pp9hGwpOSUw"><img src="https://img.youtube.com/vi/pp9hGwpOSUw/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
-<a class="video-link" href="https://www.youtube.com/watch?v=pp9hGwpOSUw" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=pp9hGwpOSUw" target="_blank" rel="noopener" data-vid="pp9hGwpOSUw"><img src="https://img.youtube.com/vi/pp9hGwpOSUw/hqdefault.jpg" alt="קאטה" loading="lazy" data-i18n-attr="alt:kata_thumb_alt"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=pp9hGwpOSUw" target="_blank" rel="noopener" data-i18n="video_link_text">פתח ב-YouTube ↗</a>
       <div class="video-credit">Henry Thom, 10º Dan Hanshi – YouTube</div>
     </div>
     <div class="k-info">
-      <div class="k-meaning"><b>שם:</b> שלוש עשרה דרכי תקיפה/הגנה; גיל בגרות בריוקיו העתיקה.</div>
-      <p class="k-desc">הובאה מסין ע"י קנבון אוצ'י. שליטה בה נדרשת לחגורה שחורה (שודאן).</p>
+      <div class="k-meaning" data-i18n-html="kata_5_meaning"><b>שם:</b> שלוש עשרה דרכי תקיפה/הגנה; גיל בגרות בריוקיו העתיקה.</div>
+      <p class="k-desc" data-i18n-html="kata_5_desc">הובאה מסין ע"י קנבון אוצ'י. שליטה בה נדרשת לחגורה שחורה (שודאן).</p>
       <div class="k-points">
-        <div class="k-do"><b>✓ חשוב</b>הרפיה בין תנועות, תנופה קדימה רציפה.</div>
-        <div class="k-dont"><b>✗ להימנע</b>תנועות מנותקות זו מזו.</div><div class="k-bunkai"><div class="bt">בונקאי <span class="formal-tag">✓ רשמי</span></div>בונקאי רשמי, נדרש משודאן. סגנון נמר: עומק-רקמה, תפיסה וקריעה. קאטת שדה, לא ספורט.</div>
+        <div class="k-do" data-i18n-html="kata_5_do"><b>✓ חשוב</b>הרפיה בין תנועות, תנופה קדימה רציפה.</div>
+        <div class="k-dont" data-i18n-html="kata_5_dont"><b>✗ להימנע</b>תנועות מנותקות זו מזו.</div><div class="k-bunkai" data-i18n-html="kata_5_bunkai"><div class="bt">בונקאי <span class="formal-tag">✓ רשמי</span></div>בונקאי רשמי, נדרש משודאן. סגנון נמר: עומק-רקמה, תפיסה וקריעה. קאטת שדה, לא ספורט.</div>
       </div>
     </div>
   </div>
@@ -227,22 +227,22 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     <div class="k-names">
       <div class="jp">十六</div>
       <div class="ro">SEIRYU</div>
-      <div class="he">שש עשרה</div>
+      <div class="he" data-i18n="kata_6_name">שש עשרה</div>
     </div>
-    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה · נידאן</div>
+    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a" data-i18n="kata_6_belt">שחורה · נידאן</div>
   </div>
   <div class="k-body">
     <div class="k-video">
-      <a class="video-wrap" href="https://www.youtube.com/watch?v=LWv2PhfvvnI" target="_blank" rel="noopener" data-vid="LWv2PhfvvnI"><img src="https://img.youtube.com/vi/LWv2PhfvvnI/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
-<a class="video-link" href="https://www.youtube.com/watch?v=LWv2PhfvvnI" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=LWv2PhfvvnI" target="_blank" rel="noopener" data-vid="LWv2PhfvvnI"><img src="https://img.youtube.com/vi/LWv2PhfvvnI/hqdefault.jpg" alt="קאטה" loading="lazy" data-i18n-attr="alt:kata_thumb_alt"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=LWv2PhfvvnI" target="_blank" rel="noopener" data-i18n="video_link_text">פתח ב-YouTube ↗</a>
       <div class="video-credit">Henry Thom, 10º Dan Hanshi – YouTube</div>
     </div>
     <div class="k-info">
-      <div class="k-meaning"><b>שם:</b> שש עשרה – בגרות מעבר לגיל 13 המסורתי.</div>
-      <p class="k-desc">נוצרה ע"י קנאי אוצ'י. טכניקות דרקון תוך סיבוב, שיווי משקל ותיאום גבוה.</p>
+      <div class="k-meaning" data-i18n-html="kata_6_meaning"><b>שם:</b> שש עשרה – בגרות מעבר לגיל 13 המסורתי.</div>
+      <p class="k-desc" data-i18n-html="kata_6_desc">נוצרה ע"י קנאי אוצ'י. טכניקות דרקון תוך סיבוב, שיווי משקל ותיאום גבוה.</p>
       <div class="k-points">
-        <div class="k-do"><b>✓ חשוב</b>יציבות בכל סיבוב, רגליים חזקות.</div>
-        <div class="k-dont"><b>✗ להימנע</b>איבוד שיווי משקל במעברי כיוון.</div><div class="k-bunkai"><div class="bt">בונקאי</div>טכניקות דרקון תוך סיבוב. ניצול סיבוב הגוף להטיית שיווי המשקל של היריב.</div>
+        <div class="k-do" data-i18n-html="kata_6_do"><b>✓ חשוב</b>יציבות בכל סיבוב, רגליים חזקות.</div>
+        <div class="k-dont" data-i18n-html="kata_6_dont"><b>✗ להימנע</b>איבוד שיווי משקל במעברי כיוון.</div><div class="k-bunkai" data-i18n-html="kata_6_bunkai"><div class="bt">בונקאי</div>טכניקות דרקון תוך סיבוב. ניצול סיבוב הגוף להטיית שיווי המשקל של היריב.</div>
       </div>
     </div>
   </div>
@@ -255,22 +255,22 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     <div class="k-names">
       <div class="jp">完戦</div>
       <div class="ro">KANCHIN</div>
-      <div class="he">קרבו של קנבון</div>
+      <div class="he" data-i18n="kata_7_name">קרבו של קנבון</div>
     </div>
-    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה · סאנדאן</div>
+    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a" data-i18n="kata_7_belt">שחורה · סאנדאן</div>
   </div>
   <div class="k-body">
     <div class="k-video">
-      <a class="video-wrap" href="https://www.youtube.com/watch?v=f753jh02uNg" target="_blank" rel="noopener" data-vid="f753jh02uNg"><img src="https://img.youtube.com/vi/f753jh02uNg/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
-<a class="video-link" href="https://www.youtube.com/watch?v=f753jh02uNg" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=f753jh02uNg" target="_blank" rel="noopener" data-vid="f753jh02uNg"><img src="https://img.youtube.com/vi/f753jh02uNg/hqdefault.jpg" alt="קאטה" loading="lazy" data-i18n-attr="alt:kata_thumb_alt"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=f753jh02uNg" target="_blank" rel="noopener" data-i18n="video_link_text">פתח ב-YouTube ↗</a>
       <div class="video-credit">Gustavo Gondra, 8º Dan – YouTube</div>
     </div>
     <div class="k-info">
-      <div class="k-meaning"><b>שם:</b> "קרבו של קנבון".</div>
-      <p class="k-desc">הנצחה לקנבון אוצ'י ע"י בנו קנאי. כוללת חסימה כפולה (Watari Uke) מסאנסיירו.</p>
+      <div class="k-meaning" data-i18n-html="kata_7_meaning"><b>שם:</b> "קרבו של קנבון".</div>
+      <p class="k-desc" data-i18n-html="kata_7_desc">הנצחה לקנבון אוצ'י ע"י בנו קנאי. כוללת חסימה כפולה (Watari Uke) מסאנסיירו.</p>
       <div class="k-points">
-        <div class="k-do"><b>✓ חשוב</b>דיוק בחסימה הכפולה – המאפיין הייחודי כאן.</div>
-        <div class="k-dont"><b>✗ להימנע</b>דילוג על פירוט החסימה הכפולה.</div><div class="k-bunkai"><div class="bt">בונקאי</div>הנצחה לקנבון אוצ'י. חסימת "ווטארי אוקה" כפולה מסאנסיירו – שתי חסימות רצופות שפותחות דרך למכה.</div>
+        <div class="k-do" data-i18n-html="kata_7_do"><b>✓ חשוב</b>דיוק בחסימה הכפולה – המאפיין הייחודי כאן.</div>
+        <div class="k-dont" data-i18n-html="kata_7_dont"><b>✗ להימנע</b>דילוג על פירוט החסימה הכפולה.</div><div class="k-bunkai" data-i18n-html="kata_7_bunkai"><div class="bt">בונקאי</div>הנצחה לקנבון אוצ'י. חסימת "ווטארי אוקה" כפולה מסאנסיירו – שתי חסימות רצופות שפותחות דרך למכה.</div>
       </div>
     </div>
   </div>
@@ -283,29 +283,29 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     <div class="k-names">
       <div class="jp">三十六</div>
       <div class="ro">SANSEIRYU</div>
-      <div class="he">שלושים ושש</div>
+      <div class="he" data-i18n="kata_8_name">שלושים ושש</div>
     </div>
-    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a">שחורה · יונדאן</div>
+    <div class="k-belt" style="background:#111;color:#e8c44a;border:1px solid #e8c44a" data-i18n="kata_8_belt">שחורה · יונדאן</div>
   </div>
   <div class="k-body">
     <div class="k-video">
-      <a class="video-wrap" href="https://www.youtube.com/watch?v=h4PR6NC89_A" target="_blank" rel="noopener" data-vid="h4PR6NC89_A"><img src="https://img.youtube.com/vi/h4PR6NC89_A/hqdefault.jpg" alt="קאטה" loading="lazy"><div class="play-overlay"><span>▶</span></div></a>
-<a class="video-link" href="https://www.youtube.com/watch?v=h4PR6NC89_A" target="_blank" rel="noopener">פתח ב-YouTube ↗</a>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=h4PR6NC89_A" target="_blank" rel="noopener" data-vid="h4PR6NC89_A"><img src="https://img.youtube.com/vi/h4PR6NC89_A/hqdefault.jpg" alt="קאטה" loading="lazy" data-i18n-attr="alt:kata_thumb_alt"><div class="play-overlay"><span>▶</span></div></a>
+<a class="video-link" href="https://www.youtube.com/watch?v=h4PR6NC89_A" target="_blank" rel="noopener" data-i18n="video_link_text">פתח ב-YouTube ↗</a>
       <div class="video-credit">Henry Thom, 10º Dan Hanshi – YouTube</div>
     </div>
     <div class="k-info">
-      <div class="k-meaning"><b>שם:</b> שלושים ושש דרכי תקיפה/הגנה.</div>
-      <p class="k-desc">המתקדמת ביותר, הובאה מסין. משלבת נמר, עגור ודרקון – סיכום הסגנון.</p>
+      <div class="k-meaning" data-i18n-html="kata_8_meaning"><b>שם:</b> שלושים ושש דרכי תקיפה/הגנה.</div>
+      <p class="k-desc" data-i18n-html="kata_8_desc">המתקדמת ביותר, הובאה מסין. משלבת נמר, עגור ודרקון – סיכום הסגנון.</p>
       <div class="k-points">
-        <div class="k-do"><b>✓ חשוב</b>זיהוי רכיבים מקאטות קודמות בכל תנועה.</div>
-        <div class="k-dont"><b>✗ להימנע</b>גישה אליה לפני שקאטות 1-7 יציבות.</div><div class="k-bunkai"><div class="bt">בונקאי</div>אחיזות ומכות כף יד פתוחה. משלבת נמר, עגור ודרקון.<div class="b-ex"><b>אזהרה:</b> דורשת ליווי מדריך בכיר – לא לימוד עצמי.</div></div>
+        <div class="k-do" data-i18n-html="kata_8_do"><b>✓ חשוב</b>זיהוי רכיבים מקאטות קודמות בכל תנועה.</div>
+        <div class="k-dont" data-i18n-html="kata_8_dont"><b>✗ להימנע</b>גישה אליה לפני שקאטות 1-7 יציבות.</div><div class="k-bunkai" data-i18n-html="kata_8_bunkai"><div class="bt">בונקאי</div>אחיזות ומכות כף יד פתוחה. משלבת נמר, עגור ודרקון.<div class="b-ex"><b>אזהרה:</b> דורשת ליווי מדריך בכיר – לא לימוד עצמי.</div></div>
       </div>
     </div>
   </div>
 </div>
 
 <footer>型 · Uechi-Ryu Kata<br>
-<span style="font-size:.6rem;opacity:.4;display:block;margin-top:.3rem;font-family:Heebo,sans-serif">
+<span style="font-size:.6rem;opacity:.4;display:block;margin-top:.3rem;font-family:Heebo,sans-serif" data-i18n-html="kata_footer_note">
 מקורות: uechiryu-oryukai.com · uechi-ryu.com · Wikipedia
 </span></footer>
 
@@ -317,8 +317,9 @@ footer{text-align:center;padding:1.5rem;color:#444;font-size:.72rem;border-top:1
     var src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1';
     if (!originalHtmlMap.has(a)) originalHtmlMap.set(a, a.innerHTML);
     a.classList.add('playing');
-    a.innerHTML = '<iframe src="' + src + '" title="וידאו" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-      + '<button type="button" class="video-close" aria-label="סגור סרטון">✕</button>';
+    var t = I18N[getLang()];
+    a.innerHTML = '<iframe src="' + src + '" title="' + t.kata_video_title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+      + '<button type="button" class="video-close" aria-label="' + t.video_close_label + '">✕</button>';
   }
   document.addEventListener('click', function(e){
     if (location.protocol === 'file:') return;

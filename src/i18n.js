@@ -9,6 +9,7 @@ const I18N = {
     nav_kata: "קאטות",
     nav_warmup: "חימום",
     nav_glossary: "מילון",
+    nav_gallery: "גלריה",
 
     home_row_generator_title: "מחולל אימון",
     home_row_generator_desc: "לחיצה אחת בונה אימון אקראי מתוך כל התרגילים.",
@@ -79,6 +80,14 @@ const I18N = {
     cat_concept: "מושגי ליבה",
     cat_gear: "ציוד",
     cat_general: "מונחים כלליים",
+
+    gallery_subtitle: "גלריה · מקורות חיצוניים נבחרים על אוצ'י ריו",
+    gallery_intro: "<strong>אוסף נבחר:</strong> סרטונים, מאמרים וחומרים נדירים על אוצ'י ריו מרחבי הרשת – היסטוריה ושושלת, העמקה בטכניקה, פנינים נדירות ומאמרים כתובים. כל פריט נפתח באתר המקור, עם קרדיט למקור.",
+    gallery_read_label: "קראו עוד ↗",
+    gallery_cat_history: "היסטוריה ושושלת",
+    gallery_cat_technique: "העמקה בטכניקה",
+    gallery_cat_rare: "פנינים נדירות",
+    gallery_cat_articles: "מאמרים",
 
     "hojo_subtitle": "הוג'ו אונדו · וידאו ותמונות מקור · 13 תרגילים · אוצ'י ריו",
     "hojo_intro": "<strong>עמידת סנצ'ין (三戦立ち) – בסיס כל התרגילים:</strong> רגליים כרוחב כתפיים, אצבעות פנימה, ברכיים נועלות פנימה, אגן מוכנס, כל הגוף בכיווץ מבוקר.\n  לכל תרגיל למטה: סרטון הדגמה אמיתי, ולחלקם גם תמונת מקור מתועדת של הנשק/הטכניקה.",
@@ -206,6 +215,7 @@ const I18N = {
     nav_kata: "Kata",
     nav_warmup: "Warm-up",
     nav_glossary: "Glossary",
+    nav_gallery: "Gallery",
 
     home_row_generator_title: "Workout Generator",
     home_row_generator_desc: "One click builds a random workout from all the exercises.",
@@ -276,6 +286,14 @@ const I18N = {
     cat_concept: "Core Concepts",
     cat_gear: "Gear",
     cat_general: "General Terms",
+
+    gallery_subtitle: "Gallery · Curated external resources on Uechi-Ryu",
+    gallery_intro: "<strong>A curated collection:</strong> videos, articles, and rare material about Uechi-Ryu from around the web — history & lineage, technique deep-dives, hidden gems, and written resources. Every item opens on its original source, credited below.",
+    gallery_read_label: "Read more ↗",
+    gallery_cat_history: "History & Lineage",
+    gallery_cat_technique: "Technique Deep-Dives",
+    gallery_cat_rare: "Hidden Gems",
+    gallery_cat_articles: "Articles",
 
     "hojo_subtitle": "Hojo Undo · videos and reference images · 13 exercises · Uechi-Ryu",
     "hojo_intro": "<strong>Sanchin stance (三戦立ち) – the foundation of every exercise:</strong> feet shoulder-width apart, toes turned inward, knees locking inward, hips tucked, the whole body in controlled tension.\n  For every exercise below: a real demo video, and for some, a documented reference image of the weapon/technique too.",

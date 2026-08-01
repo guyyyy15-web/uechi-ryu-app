@@ -10,6 +10,7 @@ FILES = {
     "kata": "kata.html",
     "warmup": "warmup.html",
     "glossary": "glossary.html",
+    "gallery": "gallery.html",
     "generator": "generator.html",
 }
 
@@ -207,6 +208,7 @@ body{
 #view-kata::before{content:"型";}
 #view-warmup::before{content:"準備運動";font-size:14rem;}
 #view-glossary::before{content:"用語集";}
+#view-gallery::before{content:"画廊";}
 #view-generator::before{content:"稽古";}
 """
 
@@ -322,13 +324,14 @@ nav_html = """
         <li><a href="#kata" data-view="kata" data-i18n="nav_kata">קאטות</a></li>
         <li><a href="#warmup" data-view="warmup" data-i18n="nav_warmup">חימום</a></li>
         <li><a href="#glossary" data-view="glossary" data-i18n="nav_glossary">מילון</a></li>
+        <li><a href="#gallery" data-view="gallery" data-i18n="nav_gallery">גלריה</a></li>
       </ul>
     </nav>
   </div>
 </div>
 """
 
-view_order = ["home", "hojo", "kata", "warmup", "glossary", "generator"]
+view_order = ["home", "hojo", "kata", "warmup", "glossary", "gallery", "generator"]
 sections_html = "\n".join(
     f'<section class="view{" active" if key=="home" else ""}" id="view-{key}">\n{views[key]}\n</section>'
     for key in view_order

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>גלריה – אוצ'י ריו | Gallery</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Noto+Serif+JP:wght@700&display=swap');
+:root{--bg:#e8dcc0;--card:#faf5e6;--gold:#97711a;--red:#a8271a;--blue:#1f7699;--w:#2b2013;--gr:#7d6b4d;--border:#d9c8a0;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--w);font-family:'Heebo',sans-serif;padding:1rem;}
+header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:2px solid var(--gold);margin-bottom:1.5rem;}
+.main-title{font-family:'Noto Serif JP',serif;font-size:2.4rem;color:var(--gold);letter-spacing:.2em;}
+.sub-title{font-size:.9rem;color:var(--gr);margin-top:.3rem;letter-spacing:.1em;}
+.wrap{max-width:1000px;margin:0 auto;}
+.intro-note{background:#f6ecd2;border:1px solid #e0cc9c;border-inline-start:4px solid var(--gold);margin:0 auto 1.5rem;max-width:960px;padding:.8rem 1rem;font-size:.8rem;color:var(--w);line-height:1.7;}
+.intro-note strong{color:var(--gold);}
+.cat-title{font-size:.85rem;color:var(--gold);font-weight:700;margin:1.6rem 0 .7rem;padding-inline-start:.3rem;border-inline-start:3px solid var(--gold);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem;}
+.term{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.8rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+.term-media{flex-shrink:0;}
+.term-body{flex:1;min-width:0;}
+.term-body .he{font-size:.86rem;font-weight:700;color:var(--w);margin-bottom:.3rem;}
+.term-body .note{font-size:.72rem;color:var(--gr);line-height:1.55;margin-bottom:.15rem;}
+.video-wrap.video-wrap-md{width:120px;height:120px;padding-top:0;flex:0 0 auto;}
+.video-wrap.video-wrap-md .play-overlay span{font-size:1.4rem;}
+.img-credit{font-size:.58rem;color:var(--gr);text-align:center;margin-top:.25rem;line-height:1.3;max-width:120px;}
+@media(max-width:600px){.video-wrap.video-wrap-md{width:80px;height:80px;}}
+footer{text-align:center;padding:1.5rem;color:#7d6b4d;font-size:.72rem;border-top:1px solid var(--border);margin-top:2rem;font-family:'Noto Serif JP',serif;letter-spacing:.1em;}
+</style>
+</head>
+<body>
+<header>
+  <div class="main-title">画廊</div>
+  <div class="sub-title" data-i18n="gallery_subtitle">גלריה · מקורות חיצוניים נבחרים על אוצ'י ריו</div>
+</header>
+
+<div class="wrap">
+  <div class="intro-note" data-i18n-html="gallery_intro">
+    <strong>אוסף נבחר:</strong> סרטונים, מאמרים וחומרים נדירים על אוצ'י ריו מרחבי הרשת – היסטוריה ושושלת, העמקה בטכניקה, פנינים נדירות ומאמרים כתובים. כל פריט נפתח באתר המקור, עם קרדיט למקור.
+  </div>
+  <div id="galleryResults"></div>
+</div>
+
+<footer>画廊 · Gallery</footer>
+
+<script>
+const GALLERY = [
+  {title:"Uechi-Ryū", type:"article", source:"Wikipedia", url:"https://en.wikipedia.org/wiki/Uechi_Ry%C5%AB", cat:"history", desc_he:"הסקירה המקיפה ביותר בעמוד אחד על מקורות הסגנון, שמונת הקאטות שלו, מבנה הדרגות והארגון המודרני – נקודת התחלה טובה לפני צלילה למקורות ראשוניים.", desc_en:"The most complete single-page overview of the style's origins, its eight kata, ranking, and modern organizational structure — the right starting point before diving into primary-source material."},
+  {title:"Kanbun Uechi", type:"article", source:"Wikipedia", url:"https://en.wikipedia.org/wiki/Uechi_Kanbun", cat:"history", desc_he:"ביוגרפיה של מייסד הסגנון, כולל למעלה מעשור של אימון פנגאינון בפוג'יאן תחת ג'ואו דזה-הה (שו שיווה), וחזרתו המהוססת להוראה באוקינאווה.", desc_en:"Biography of the founder, covering his decade-plus of Pangainoon training in Fujian under Zhou Zihe (Shū Shiwa) and his reluctant return to teaching in Okinawa."},
+  {title:"Kanei Uechi", type:"article", source:"Wikipedia", url:"https://en.wikipedia.org/wiki/Kanei_Uechi", cat:"history", desc_he:"עוסק באופן שבו בנו של קנבון ארגן מחדש את הסגנון, קרא לו על שם אביו, הרחיב את תוכנית הלימוד ובנה את המבנים הארגוניים שאפשרו לו להתפשט בעולם.", desc_en:"Covers how Kanbun's son systematized and renamed the style after his father, expanded its curriculum, and built the organizational structures that let it spread internationally."},
+  {title:"History", type:"article", source:"International Uechi-Ryu Karate Federation (IUKF)", url:"https://iukf.net/history-of-iukf/", cat:"history", desc_he:"התיעוד הרשמי של הפדרציה על האופן שבו הסניף הצפון-אמריקאי של ג'ורג' מטסון התפתח ל-IUKF של היום – שימושי להבנת השושלת הארגונית שכל מתאמן הוא בפועל חלק ממנה.", desc_en:"The federation's own account of how George Mattson's North American Chapter evolved into today's IUKF, useful for understanding the organizational lineage a practicing student is actually part of."},
+  {title:"The History of Uechi-ryu Karate", type:"article", source:"Uechi-ryu.com (George E. Mattson)", url:"https://uechi-ryu.com/the-history-of-uechi-ryu-karate/", cat:"history", desc_he:"נכתב על ידי האיש שהביא את אוצ'י ריו לאמריקה והתאמן ישירות תחת קנאי אוצ'י וריוקו טומויוזה – היסטוריה מסיפור כמעט ממקור ראשון, לא סיכום ממקור שני.", desc_en:"Written by the man who brought Uechi-Ryu to America and trained directly under Kanei Uechi and Ryuko Tomoyose — a first-hand-adjacent narrative history rather than a secondhand summary."},
+  {title:"Ryuko Tomoyose", type:"article", source:"Uechi-ryu.com", url:"https://uechi-ryu.com/ryuko-tomoyose/", cat:"history", desc_he:"ביוגרפיה של מאסטר טומויוזה מהדור השני (הנשי דאן 10, הוכרז כנכס תרבותי חי על ידי מחוז אוקינאווה) ששכנע את קנאי אוצ'י לחזור ללמד, ואימן באופן אישי את התלמידים הלא-אוקינאוויים הראשונים.", desc_en:"Biography of the second-generation Tomoyose master (Hanshi 10th Dan, designated a Living Cultural Asset by Okinawa Prefecture) who convinced Kanei Uechi to resume teaching and personally trained the first non-Okinawan students."},
+  {title:"Uechi-Ryu Karate Sanchin Kata Basic Tutorial with Slow Walkthrough", type:"video", source:"Bill Leith | Leith Karate Academy", url:"https://www.youtube.com/watch?v=1E_MJRR0PiA", vid:"1E_MJRR0PiA", cat:"technique", desc_he:"מעבר איטי ושיטתי, תנועה אחר תנועה, על קאטת היסוד של הסגנון – שימושי לבידוד פרטי עמידה, נשימה ומיקום ידיים שהולכים לאיבוד במהירות מלאה.", desc_en:"A methodical, movement-by-movement slow walkthrough of the style's foundational kata, useful for isolating stance, breathing, and hand positioning details that get lost at full speed."},
+  {title:"Uechi-ryu Karate Hojo Undo Slow Speed Demonstration", type:"video", source:"Bill Leith | Leith Karate Academy", url:"https://www.youtube.com/watch?v=0Rm9XBd9Zwg", vid:"0Rm9XBd9Zwg", cat:"technique", desc_he:"הדגמה במהירות איטית של תרגילי החיזוק המשלימים של אוצ'י ריו (מכות הבהונות/אצבעות, תרגילי חיזוק הגוף הייחודיים לסגנון) – טוב לחיקוי הצורה לפני הוספת מהירות או התנגדות.", desc_en:"Slow-speed demonstration of Uechi-Ryu's supplementary conditioning drills (the toe/finger strikes, body-hardening exercises unique to the style), good for shadowing form before adding speed or resistance."},
+  {title:"Uechi-Ryu Karate Bunkai Seminar - Bill Leith at Uechi-Con 2023", type:"video", source:"Bill Leith | Leith Karate Academy", url:"https://www.youtube.com/watch?v=3qMgp05Y2dw", vid:"3qMgp05Y2dw", cat:"technique", desc_he:"צילומי סמינר חי המפרקים יישומים מעשיים החבויים בקאטות, צולם ב-Uechi-Con, המפגש השנתי הרב-מדריכים של אוצ'י ריו.", desc_en:"Live seminar footage breaking down practical applications hidden in the kata, filmed at Uechi-Con, the annual multi-instructor Uechi-Ryu gathering."},
+  {title:"David Kelley Uechi-Ryu Bunkai Seminar | Uechi-Con 2023", type:"video", source:"Bill Leith | Leith Karate Academy", url:"https://www.youtube.com/watch?v=FFKwGV_s78o", vid:"FFKwGV_s78o", cat:"technique", desc_he:"סמינר בונקאי נוסף מאותו אירוע, בגישת הוראה שונה – כדאי לצפות יחד עם סמינר ביל לית' למעלה כדי לראות כיצד שני מדריכים בכירים מפרשים את אותן תנועות באופן שונה.", desc_en:"A second, differently-taught bunkai seminar from the same event — worth pairing with the Bill Leith seminar above to see how two senior instructors interpret the same movements differently."},
+  {title:"Kiyohide Shinjo - Sanseiryu Kata - Okinawa Fest 2018", type:"video", source:"Okikukai Uechi Ryu Serbia", url:"https://www.youtube.com/watch?v=_hqkuqrg1Ww", vid:"_hqkuqrg1Ww", cat:"technique", desc_he:"הקאטה המתקדמת ביותר בסגנון, מבוצעת חי על ידי קיוהידה שינג'ו – דאן 10, אלוף כל-אוקינאווה בקאטה/קומיטה תשע פעמים ומייסד שושלת הקניוקאי – ביצוע ייחוס ברמה הגבוהה ביותר.", desc_en:"The style's most advanced kata performed live by Kiyohide Shinjo — 10th dan, nine-time All-Okinawa kata/kumite champion, and founder of the Kenyukai lineage — a genuine top-tier reference performance."},
+  {title:"The 8 Katas of Uechi-Ryu Karate", type:"article", source:"Uechi-Ryu Karate-Do Oryukai", url:"https://uechiryu-oryukai.com/en/the-8-katas-of-uechi-ryu-karate/", cat:"technique", desc_he:"סקירה טכנית תמציתית של תוכנית הקאטות המלאה, מסנצ'ין ועד סאנסיירו, המסבירה במה כל צורה מתמקדת (השפעות נמר/עגור/דרקון) ומדוע המתומן הוא סמל הסגנון.", desc_en:"A concise technical rundown of the full kata curriculum from Sanchin through Sanseiryu, explaining what each form emphasizes (tiger/crane/dragon influences) and why the octagon is the style's symbol."},
+  {title:"Grandmaster Kanei Uechi Historical Footage & His Message to All Karate-Ka of the World", type:"video", source:"Al Cloutier's Martial Arts", url:"https://www.youtube.com/watch?v=ick2abRhudA", vid:"ick2abRhudA", cat:"rare", desc_he:"צילומי ארכיון משוחזרים של בנו של המייסד עצמו, מדגים ומדבר ישירות אל המתאמנים – אחד התיעודים הנעים המעטים ששרדו של קנאי אוצ'י.", desc_en:"Restored archival footage of the founder's son himself performing and speaking directly to practitioners — one of the few surviving moving-image records of Kanei Uechi."},
+  {title:"George Mattson Interviews Ryuko Tomoyose - 1984 (Uechi-Ryu)", type:"video", source:"Misty Mountain Video", url:"https://www.youtube.com/watch?v=1UzNh_lLvkI", vid:"1UzNh_lLvkI", cat:"rare", desc_he:"ראיון פנים אל פנים משנת 1984 בו מטסון שואל את טומויוזה ישירות על מסעו המקורי של קנבון אוצ'י לסין – היסטוריה בעל פה ממי שחווה את ההעברה ממקור ראשון.", desc_en:"A 1984 sit-down interview in which Mattson asks Tomoyose directly about Kanbun Uechi's original journey to China — oral history from someone who lived the transmission firsthand."},
+  {title:"Master Ryuko Tomoyose (Uechi Ryu) - 1999 Rengokai", type:"video", source:"Misty Mountain Video", url:"https://www.youtube.com/watch?v=eJbuBAagDoE", vid:"eJbuBAagDoE", cat:"rare", desc_he:"צילומים נדירים של טומויוזה במפגש רנגוקאי (פדרציית אוצ'י ריו) בשנות השבעים לחייו – הצצה לשלב מאוחר בקריירה של האיש שלימד את התלמידים הלא-אוקינאוויים הראשונים של הסגנון.", desc_en:"Rare footage of Tomoyose at a Rengokai (Uechi-Ryu federation) gathering in his seventies, capturing a later-career glimpse of the man who taught the style's first non-Okinawan students."},
+  {title:"2002 Summerfest with Grandmaster Ryuko Tomoyose and George Mattson", type:"video", source:"George Mattson", url:"https://www.youtube.com/watch?v=bZL-4s73fKE", vid:"bZL-4s73fKE", cat:"rare", desc_he:"צילומים מ-Summerfest של IUKF המאחדים בין שני האנשים האחראים ביותר להתפשטות הסגנון מחוץ לאוקינאווה, הועלו על ידי מטסון עצמו ולא על ידי צד שלישי.", desc_en:"Footage from an IUKF Summerfest reuniting the two men most responsible for the style's spread outside Okinawa, uploaded by Mattson himself rather than a third party."},
+  {title:"Historic Okinawa gathering in 1985", type:"article", source:"Uechi-ryu.com", url:"https://uechi-ryu.com/historic-dvd-archives/", cat:"rare", desc_he:"מתעד מפגש בינלאומי של אוצ'י ריו באוקינאווה משנת 1985 שנמשך שבוע, בראשות קנאי אוצ'י ובהשתתפות למעלה מ-100 מורים ותלמידים – חומר ארכיוני משוחזר שקשה למצוא במקומות אחרים.", desc_en:"Documents a week-long 1985 international Uechi-Ryu gathering in Okinawa officiated by Kanei Uechi with over 100 teachers and students attending — restored archival material not easily found elsewhere."},
+  {title:"Uechi-ryu Seisan Kiyohide", type:"video", source:"MrTorend, YouTube", url:"https://www.youtube.com/watch?v=acunTiqkM9g", vid:"acunTiqkM9g", cat:"rare", desc_he:"העלאה ישנה ופחות מוכרת של קיוהידה שינג'ו מבצע סייסאן – פחות מלוטש ופחות נצפה מצילומי הפסטיבל שלו, שווה חשיפה בדיוק כי זו לא התוצאה הראשונה שרוב האנשים מוצאים.", desc_en:"An older, lower-profile upload of Kiyohide Shinjo performing Seisan — less polished and less-viewed than his festival footage, worth surfacing precisely because it isn't the first result most people find."},
+  {title:"Uechi-Ryu Karate-Do", type:"article", source:"Uechi-Ryu Karate-Do Oryukai", url:"https://uechiryu-oryukai.com/en/uechi-ryu-karate-do/", cat:"articles", desc_he:"מבוא מאורגן היטב בעמוד אחד, המכסה את אימונו של קנבון אוצ'י בסין תחת ג'ואו דז'י-הה, מאפייני כף היד הפתוחה/העמידה הגבוהה של הסגנון, ומבנה הפדרציה העולמי שלו כיום.", desc_en:"A well-organized single-page primer covering Kanbun Uechi's China training under Zhou Zhi He, the style's open-hand/high-stance characteristics, and its global federation structure today."},
+  {title:"The Seminar From a Teacher's Perspective", type:"article", source:"Uechi-ryu.com (David Kahn)", url:"https://uechi-ryu.com/the-seminar-from-a-teachers-perspective-by-david-kahn/", cat:"articles", desc_he:"הרהור של מדריך פעיל על מה שהופך סמינר אוצ'י ריו ליעיל בהעברת מיומנות בפועל, מיועד למתאמנים שכבר עברו את שלב המתחילים.", desc_en:"A working instructor's reflection on what makes a Uechi-Ryu seminar actually transfer skill, aimed at practitioners past the beginner stage."},
+  {title:"Okinawan Iron Body Conditioning", type:"article", source:"Uechi-ryu.com", url:"https://uechi-ryu.com/content/pdf/elkins03.pdf", cat:"articles", desc_he:"מאמר טכני על שיטות חיזוק הגוף (חיזוק אמות ידיים/שוקיים/בהונות) המבדילות את גישת אוצ'י ריו להוג'ו אונדו מפילוסופיות אימון רכות יותר בנות זמננו.", desc_en:"A technical essay on the body-conditioning methods (forearm/shin/toe conditioning) that distinguish Uechi-Ryu's approach to hojo undo from softer contemporary training philosophies."},
+  {title:"Sanchin Kata Quick Guide", type:"article", source:"Antonis Tzounis, Shidoin, Argo Dojo Okikukai Uechi-Ryu", url:"https://argo.uechiryu.eu/downloads/Sanchin-kata-v1.3.en.final.pdf", cat:"articles", desc_he:"מדריך טכני שהופק בדוג'ו, מפרק את סנצ'ין תנועה אחר תנועה, נכתב על ידי מדריך מדורג עבור תלמידיו שלו ולא עבור קהל אינטרנט כללי.", desc_en:"A dojo-produced technical reference breaking Sanchin down movement-by-movement, written by a ranked instructor for his own students rather than a generic online audience."},
+  {title:"Sanchin Breathing: Are you hurting yourself?", type:"article", source:"Uechi-ryu.com", url:"https://uechi-ryu.com/sanchin-breathing-are-you-hurting-yourself/", cat:"articles", desc_he:"עוסק בשאלה טכנית שנויה במחלוקת של ממש – האם הרגלי נשימה נפוצים בתרגול סנצ'ין עלולים לגרום נזק – עם הניואנס שתוכן כללי מסוג \"איך לנשום בקראטה\" מדלג עליו.", desc_en:"Addresses a genuinely contested technical question — whether common breathing habits in Sanchin practice can cause harm — with the kind of nuance generic \"how to do karate breathing\" content skips."},
+  {title:"Kiyohide Shinjō", type:"article", source:"Wikipedia", url:"https://en.wikipedia.org/wiki/Kiyohide_Shinj%C5%8D", cat:"articles", desc_he:"פרופיל של מייסד הקניוקאי ואלוף דאן 10, הקשר כתוב שימושי לסרטוני הסמינר/קאטה שלו המופיעים במקום אחר באוסף זה.", desc_en:"Profile of the Kenyukai founder and 10th dan champion, useful written context for the seminar/kata videos of him listed elsewhere in this collection."},
+];
+
+const galleryOrder = ['history','technique','rare','articles'];
+
+function renderGallery(){
+  const lang = getLang();
+  const dict = I18N[lang];
+  const el = document.getElementById('galleryResults');
+  el.innerHTML = '';
+  const byCat = {};
+  GALLERY.forEach(g=>{ (byCat[g.cat] = byCat[g.cat]||[]).push(g); });
+  galleryOrder.forEach(cat=>{
+    if(!byCat[cat]) return;
+    const title = document.createElement('div');
+    title.className = 'cat-title';
+    title.textContent = dict['gallery_cat_'+cat];
+    el.appendChild(title);
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    byCat[cat].forEach(g=>{
+      const desc = (lang==='en' && g.desc_en) ? g.desc_en : g.desc_he;
+      const isVideo = g.type==='video' && g.vid;
+      const card = document.createElement('div');
+      card.className = 'term';
+      const creditHtml = isVideo && g.source ? `<div class="img-credit">© ${g.source}</div>` : '';
+      const mediaInner = isVideo
+        ? `<a class="video-wrap video-wrap-md" href="${g.url}" target="_blank" rel="noopener noreferrer"><img src="https://img.youtube.com/vi/${g.vid}/hqdefault.jpg" loading="lazy" alt="${g.title}"><div class="play-overlay"><span>▶</span></div></a>`
+        : '';
+      const mediaHtml = isVideo ? `<div class="term-media">${mediaInner}${creditHtml}</div>` : '';
+      const noteText = isVideo ? desc : `${g.source} — ${desc}`;
+      const linkLabel = isVideo ? dict.video_link_text : dict.gallery_read_label;
+      card.innerHTML = mediaHtml + `<div class="term-body"><div class="he">${g.title}</div><div class="note">${noteText}</div><a class="video-link" href="${g.url}" target="_blank" rel="noopener noreferrer">${linkLabel}</a></div>`;
+      grid.appendChild(card);
+    });
+    el.appendChild(grid);
+  });
+}
+
+registerI18nRerender(renderGallery);
+renderGallery();
+</script>
+</body>
+</html>

@@ -29,6 +29,8 @@ jobs:
           cp index.html _site/
           cp robots.txt _site/
           cp .nojekyll _site/
+          # Standalone game app — not part of build.py's output.
+          cp -r game _site/game
 
       - uses: actions/upload-pages-artifact@v3
         with:
